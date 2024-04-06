@@ -95,20 +95,21 @@ namespace POS_DePrisa.dao
 
         public bool validarUsuarioUnico(Usuario usuario)
         {
-            bool resultado = false;
+            bool resultado = true; // Cambiado a true para que sea verdadero si el usuario es único
+
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Tbl_Usuario WHERE NombreUsuario = @NombreUsuario";
+                    string query = "SELECT * FROM Tbl_Usuario WHERE nombreUsuario = @nombreUsuario";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@NombreUsuario", usuario.NombreUsuario);
+                        command.Parameters.AddWithValue("@nombreUsuario", usuario.NombreUsuario);
                         SqlDataReader reader = command.ExecuteReader();
                         if (reader.HasRows)
                         {
-                            resultado = true;
+                            resultado = false; // Cambiado a false si se encuentra una fila con el mismo nombre de usuario
                         }
                     }
                     connection.Close();
@@ -119,10 +120,12 @@ namespace POS_DePrisa.dao
                 String Error = $"Eror en validarUsuarioUnico()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
             return resultado;
         }
 
-        public bool validarCredenciales(Usuario usuario)
+
+        public bool validarCredenciales(string nombreUsuario, string contraseña)
         {
             bool resultado = false;
             try
@@ -133,8 +136,8 @@ namespace POS_DePrisa.dao
                     string query = "SELECT * FROM Tbl_Usuario WHERE NombreUsuario = @NombreUsuario AND Pw = @Pw";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@NombreUsuario", usuario.NombreUsuario);
-                        command.Parameters.AddWithValue("@Pw", usuario.Pw);
+                        command.Parameters.AddWithValue("@NombreUsuario", nombreUsuario);
+                        command.Parameters.AddWithValue("@Pw", contraseña);
                         SqlDataReader reader = command.ExecuteReader();
                         if (reader.HasRows)
                         {
@@ -151,5 +154,36 @@ namespace POS_DePrisa.dao
             }
             return resultado;
         }
+
+        public string ObtenerNombrePorNombreUsuario(string nombreUsuario)
+        {
+            string nombre = null; // Inicializamos el nombre como null
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT nombre FROM Tbl_Usuario WHERE NombreUsuario = @NombreUsuario";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@NombreUsuario", nombreUsuario);
+                        SqlDataReader reader = command.ExecuteReader();
+                        if (reader.Read()) // Si hay filas en el resultado
+                        {
+                            nombre = reader["nombre"].ToString(); // Obtenemos el nombre de la columna "nombre"
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                String Error = $"Error en ObtenerNombrePorNombreUsuario()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return nombre; // Devolvemos el nombre encontrado o null si no se encuentra coincidencia
+        }
+
     }
 }

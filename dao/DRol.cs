@@ -58,7 +58,7 @@ namespace POS_DePrisa.dao
 
 
         // Metodo para insertar un nuevo rol
-        public bool GuardarRol (Rol rol)
+        public bool GuardarRol(Rol rol)
         {
             bool resultado = false;
             try
@@ -86,6 +86,37 @@ namespace POS_DePrisa.dao
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return resultado;
+        }
+
+        // Metodo para obtener el rol de un usuario
+        public int BuscarRol(string nombreUsuario)
+        {
+            int idRol = -1; // Valor predeterminado en caso de que no se encuentre ningún rol
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT idRol FROM Tbl_Usuario WHERE nombreUsuario = @nombreUsuario";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario); // Asigna el valor del parámetro
+                        object result = command.ExecuteScalar(); // Utiliza ExecuteScalar para obtener un solo valor
+                        if (result != null)
+                        {
+                            idRol = Convert.ToInt32(result); // Convierte el resultado a entero
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                String Error = $"Eror en BuscarRol()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return idRol;
         }
     }
 }
