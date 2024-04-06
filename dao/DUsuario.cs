@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,7 +31,10 @@ namespace POS_DePrisa.dao
             DataSet ds = new DataSet();
             try
             {
-                string query = "SELECT * FROM Tbl_Usuario where Estado = 1";
+                string query = "SELECT Tbl_Usuario.idUsuario, Tbl_Usuario.nombre, " +
+                               "Tbl_Usuario.nombreUsuario, Tbl_Usuario.pw, Tbl_Usuario.fechaCreacion," +
+                               " Tbl_Usuario.estado,Tbl_Rol.nombre as N'Rol', Tbl_Usuario.idRol\r\nFROM Tbl_Usuario\r\n" +
+                               "INNER JOIN Tbl_Rol ON Tbl_Usuario.idRol = Tbl_Rol.idRol\r\nWHERE Tbl_Usuario.Estado = 1";
 
                 //Se utiliza using para que el objeto se destruya al salir del bloque
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -184,6 +188,39 @@ namespace POS_DePrisa.dao
             }
             return nombre; // Devolvemos el nombre encontrado o null si no se encuentra coincidencia
         }
+
+        public DataSet buscarUsuario(String nombre)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                string query = "SELECT Tbl_Usuario.idUsuario, Tbl_Usuario.nombre, Tbl_Usuario.nombreUsuario, " +
+                               "Tbl_Usuario.pw, Tbl_Usuario.fechaCreacion, Tbl_Usuario.estado, Tbl_Usuario.idRol, " +
+                               "Tbl_Rol.nombre as Rol FROM Tbl_Usuario INNER JOIN Tbl_Rol ON Tbl_Usuario.idRol = Tbl_Rol.idRol " +
+                               "WHERE Tbl_Usuario.nombre LIKE @nombre AND Tbl_Usuario.estado = 1";
+                
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlDataAdapter da = new SqlDataAdapter(query, connection))
+                    {
+                        da.SelectCommand.Parameters.AddWithValue("@nombre", "%" + nombre + "%");
+                        if (da != null)
+                        {
+                            da.Fill(ds);
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                String Error = $"Error en buscarUsuario()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return ds;
+        }
+
 
     }
 }

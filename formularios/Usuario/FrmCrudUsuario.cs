@@ -1,4 +1,5 @@
-﻿using POS_DePrisa.entidades;
+﻿using POS_DePrisa.dao;
+using POS_DePrisa.entidades;
 using POS_DePrisa.negocios;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace POS_DePrisa.formularios.Usuario
     public partial class FrmCrudUsuario : Form
     {
         private UsuarioServices usuarioServices;
+
         public FrmCrudUsuario()
         {
             InitializeComponent();
@@ -52,10 +54,12 @@ namespace POS_DePrisa.formularios.Usuario
             dgvListaUsuario.Columns["pw"].Visible = false;
             dgvListaUsuario.Columns["fechaCreacion"].Visible = false;
             dgvListaUsuario.Columns["estado"].Visible   = false;
+            dgvListaUsuario.Columns["Rol"].Visible = true;
 
             //cambia el nombre de la columna
             dgvListaUsuario.Columns["nombre"].HeaderText = "Nombre";
             dgvListaUsuario.Columns["nombreUsuario"].HeaderText = "Usuario";
+            dgvListaUsuario.Columns["Rol"].HeaderText = "Rol";
 
 
         }
@@ -114,6 +118,47 @@ namespace POS_DePrisa.formularios.Usuario
             cargarDgvListaUsuario();
             btnLimpiar.PerformClick();
       
+        }
+
+        private void dgvListaUsuario_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //valida que sea una fila seleccionada valida
+            if (e.RowIndex < 0)
+            {
+                return;
+            }
+
+            txtNombre.Text = dgvListaUsuario.Rows[e.RowIndex].Cells["nombre"].Value.ToString();
+            txtUserName.Text = dgvListaUsuario.Rows[e.RowIndex].Cells["nombreUsuario"].Value.ToString();
+            txtContrasena.Text = dgvListaUsuario.Rows[e.RowIndex].Cells["pw"].Value.ToString();
+            // Obtiene el valor de la celda "idRol" de la fila seleccionada y lo asigna al ComboBox cbxRol
+            int idRol = Convert.ToInt32(dgvListaUsuario.Rows[e.RowIndex].Cells["idRol"].Value);
+            cbxRol.SelectedValue = idRol;
+        }
+
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+            if (txtUsuario.Text.Length > 0)
+            {
+                var ds = usuarioServices.buscar(txtUsuario.Text);
+                dgvListaUsuario.DataSource = ds.Tables[0];
+                dgvListaUsuario.Columns["idUsuario"].Visible = false;
+                dgvListaUsuario.Columns["idRol"].Visible = false;
+                dgvListaUsuario.Columns["pw"].Visible = false;
+                dgvListaUsuario.Columns["fechaCreacion"].Visible = false;
+                dgvListaUsuario.Columns["estado"].Visible = false;
+                dgvListaUsuario.Columns["Rol"].Visible = true;
+
+                //Cambiar el nombre de las columnas 
+                dgvListaUsuario.Columns["nombre"].HeaderText = "Nombre";
+                dgvListaUsuario.Columns["nombreUsuario"].HeaderText = "Usuario";
+                dgvListaUsuario.Columns["Rol"].HeaderText = "Rol";
+            }
+            else
+            {
+               cargarDgvListaUsuario()
+;
+            }
         }
     }
 }

@@ -38,8 +38,6 @@ namespace POS_DePrisa
         public void activarBotonesCajero()
         {
             btnFacturas.Enabled = true;
-            btnReportes.Enabled = true;
-            btnProductos.Enabled = true;
         }
 
         public FrmPrincipal(string nombreCompleto, string nombreUsuario, int idRol)

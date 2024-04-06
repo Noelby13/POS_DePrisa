@@ -1,4 +1,5 @@
 ﻿using POS_DePrisa.formularios.Usuario;
+using POS_DePrisa.negocios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,5 +33,7 @@ namespace POS_DePrisa.formularios
         {
             showForm(new FrmCrudUsuario());
         }
+
+        
     }
 }
