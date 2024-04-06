@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace POS_DePrisa.entidades
 {
-    internal class Usuario
+    public class Usuario
     {
 
         // * Definicion de atributos *

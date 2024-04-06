@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,7 +31,10 @@ namespace POS_DePrisa.dao
             DataSet ds = new DataSet();
             try
             {
-                string query = "SELECT * FROM Tbl_Usuario where Estado = 1";
+                string query = "SELECT Tbl_Usuario.idUsuario, Tbl_Usuario.nombre, " +
+                               "Tbl_Usuario.nombreUsuario, Tbl_Usuario.pw, Tbl_Usuario.fechaCreacion," +
+                               " Tbl_Usuario.estado,Tbl_Rol.nombre as N'Rol', Tbl_Usuario.idRol\r\nFROM Tbl_Usuario\r\n" +
+                               "INNER JOIN Tbl_Rol ON Tbl_Usuario.idRol = Tbl_Rol.idRol\r\nWHERE Tbl_Usuario.Estado = 1";
 
                 //Se utiliza using para que el objeto se destruya al salir del bloque
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -95,20 +99,21 @@ namespace POS_DePrisa.dao
 
         public bool validarUsuarioUnico(Usuario usuario)
         {
-            bool resultado = false;
+            bool resultado = true; // Cambiado a true para que sea verdadero si el usuario es único
+
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Tbl_Usuario WHERE NombreUsuario = @NombreUsuario";
+                    string query = "SELECT * FROM Tbl_Usuario WHERE nombreUsuario = @nombreUsuario";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@NombreUsuario", usuario.NombreUsuario);
+                        command.Parameters.AddWithValue("@nombreUsuario", usuario.NombreUsuario);
                         SqlDataReader reader = command.ExecuteReader();
                         if (reader.HasRows)
                         {
-                            resultado = true;
+                            resultado = false; // Cambiado a false si se encuentra una fila con el mismo nombre de usuario
                         }
                     }
                     connection.Close();
@@ -119,10 +124,12 @@ namespace POS_DePrisa.dao
                 String Error = $"Eror en validarUsuarioUnico()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
             return resultado;
         }
 
-        public bool validarCredenciales(Usuario usuario)
+
+        public bool validarCredenciales(string nombreUsuario, string contraseña)
         {
             bool resultado = false;
             try
@@ -133,8 +140,8 @@ namespace POS_DePrisa.dao
                     string query = "SELECT * FROM Tbl_Usuario WHERE NombreUsuario = @NombreUsuario AND Pw = @Pw";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@NombreUsuario", usuario.NombreUsuario);
-                        command.Parameters.AddWithValue("@Pw", usuario.Pw);
+                        command.Parameters.AddWithValue("@NombreUsuario", nombreUsuario);
+                        command.Parameters.AddWithValue("@Pw", contraseña);
                         SqlDataReader reader = command.ExecuteReader();
                         if (reader.HasRows)
                         {
@@ -151,5 +158,69 @@ namespace POS_DePrisa.dao
             }
             return resultado;
         }
+
+        public string ObtenerNombrePorNombreUsuario(string nombreUsuario)
+        {
+            string nombre = null; // Inicializamos el nombre como null
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT nombre FROM Tbl_Usuario WHERE NombreUsuario = @NombreUsuario";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@NombreUsuario", nombreUsuario);
+                        SqlDataReader reader = command.ExecuteReader();
+                        if (reader.Read()) // Si hay filas en el resultado
+                        {
+                            nombre = reader["nombre"].ToString(); // Obtenemos el nombre de la columna "nombre"
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                String Error = $"Error en ObtenerNombrePorNombreUsuario()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return nombre; // Devolvemos el nombre encontrado o null si no se encuentra coincidencia
+        }
+
+        public DataSet buscarUsuario(String nombre)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                string query = "SELECT Tbl_Usuario.idUsuario, Tbl_Usuario.nombre, Tbl_Usuario.nombreUsuario, " +
+                               "Tbl_Usuario.pw, Tbl_Usuario.fechaCreacion, Tbl_Usuario.estado, Tbl_Usuario.idRol, " +
+                               "Tbl_Rol.nombre as Rol FROM Tbl_Usuario INNER JOIN Tbl_Rol ON Tbl_Usuario.idRol = Tbl_Rol.idRol " +
+                               "WHERE Tbl_Usuario.nombre LIKE @nombre AND Tbl_Usuario.estado = 1";
+                
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlDataAdapter da = new SqlDataAdapter(query, connection))
+                    {
+                        da.SelectCommand.Parameters.AddWithValue("@nombre", "%" + nombre + "%");
+                        if (da != null)
+                        {
+                            da.Fill(ds);
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                String Error = $"Error en buscarUsuario()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return ds;
+        }
+
+
     }
 }

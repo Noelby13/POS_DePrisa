@@ -30,26 +30,27 @@
         {
             this.tableLayoutBackGround = new System.Windows.Forms.TableLayoutPanel();
             this.panelSuperior = new System.Windows.Forms.Panel();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelShowData = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutMenu = new System.Windows.Forms.FlowLayoutPanel();
-            this.panelExitButton = new System.Windows.Forms.Panel();
-            this.lblNombre = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnFacturas = new System.Windows.Forms.Button();
             this.btnProductos = new System.Windows.Forms.Button();
             this.btnReportes = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnConfiguracion = new System.Windows.Forms.Button();
+            this.panelExitButton = new System.Windows.Forms.Panel();
+            this.pictureBoxRound1 = new POS_DePrisa.customControls.PictureBoxRound();
             this.roundedButton1 = new POS_DePrisa.customControls.RoundedButton();
             this.btnSalir = new POS_DePrisa.customControls.RoundedButton();
-            this.pictureBoxRound1 = new POS_DePrisa.customControls.PictureBoxRound();
+            this.lblNombreCompleto = new System.Windows.Forms.Label();
             this.tableLayoutBackGround.SuspendLayout();
             this.panelSuperior.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutMenu.SuspendLayout();
             this.panelExitButton.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRound1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,6 +77,7 @@
             // panelSuperior
             // 
             this.panelSuperior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(81)))), ((int)(((byte)(161)))));
+            this.panelSuperior.Controls.Add(this.lblNombreCompleto);
             this.panelSuperior.Controls.Add(this.pictureBoxRound1);
             this.panelSuperior.Controls.Add(this.lblNombre);
             this.panelSuperior.Controls.Add(this.pictureBox1);
@@ -85,6 +87,29 @@
             this.panelSuperior.Name = "panelSuperior";
             this.panelSuperior.Size = new System.Drawing.Size(1708, 98);
             this.panelSuperior.TabIndex = 0;
+            // 
+            // lblNombre
+            // 
+            this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.ForeColor = System.Drawing.Color.White;
+            this.lblNombre.Location = new System.Drawing.Point(1480, 58);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(135, 25);
+            this.lblNombre.TabIndex = 3;
+            this.lblNombre.Text = "Michael Smith";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::POS_DePrisa.Properties.Resources.logoPrisaBlueHorizontal;
+            this.pictureBox1.Location = new System.Drawing.Point(13, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(244, 95);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // panelShowData
             // 
@@ -127,43 +152,8 @@
             this.flowLayoutMenu.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutMenu.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutMenu.Name = "flowLayoutMenu";
-            this.flowLayoutMenu.Size = new System.Drawing.Size(1532, 78);
+            this.flowLayoutMenu.Size = new System.Drawing.Size(1539, 62);
             this.flowLayoutMenu.TabIndex = 3;
-            // 
-            // panelExitButton
-            // 
-            this.panelExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.panelExitButton.Controls.Add(this.btnSalir);
-            this.panelExitButton.Location = new System.Drawing.Point(1536, 4);
-            this.panelExitButton.Margin = new System.Windows.Forms.Padding(0);
-            this.panelExitButton.Name = "panelExitButton";
-            this.panelExitButton.Size = new System.Drawing.Size(160, 47);
-            this.panelExitButton.TabIndex = 4;
-            // 
-            // lblNombre
-            // 
-            this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblNombre.AutoSize = true;
-            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.ForeColor = System.Drawing.Color.White;
-            this.lblNombre.Location = new System.Drawing.Point(1561, 41);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(135, 25);
-            this.lblNombre.TabIndex = 3;
-            this.lblNombre.Text = "Michael Smith";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::POS_DePrisa.Properties.Resources.logoPrisaBlueHorizontal;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 4);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(244, 95);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // btnFacturas
             // 
@@ -249,6 +239,35 @@
             this.btnConfiguracion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnConfiguracion.UseVisualStyleBackColor = true;
             // 
+            // panelExitButton
+            // 
+            this.panelExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
+            this.panelExitButton.Controls.Add(this.btnSalir);
+            this.panelExitButton.Location = new System.Drawing.Point(1539, 0);
+            this.panelExitButton.Margin = new System.Windows.Forms.Padding(0);
+            this.panelExitButton.Name = "panelExitButton";
+            this.panelExitButton.Size = new System.Drawing.Size(169, 47);
+            this.panelExitButton.TabIndex = 4;
+            // 
+            // pictureBoxRound1
+            // 
+            this.pictureBoxRound1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxRound1.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.pictureBoxRound1.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.pictureBoxRound1.BorderColor2 = System.Drawing.Color.HotPink;
+            this.pictureBoxRound1.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.pictureBoxRound1.BorderSize = 1;
+            this.pictureBoxRound1.GradientAngle = 50F;
+            this.pictureBoxRound1.Image = global::POS_DePrisa.Properties.Resources.profilePicExample;
+            this.pictureBoxRound1.Location = new System.Drawing.Point(1390, 11);
+            this.pictureBoxRound1.Name = "pictureBoxRound1";
+            this.pictureBoxRound1.Size = new System.Drawing.Size(84, 84);
+            this.pictureBoxRound1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxRound1.TabIndex = 4;
+            this.pictureBoxRound1.TabStop = false;
+            // 
             // roundedButton1
             // 
             this.roundedButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -290,7 +309,7 @@
             this.btnSalir.ForeColor = System.Drawing.Color.Black;
             this.btnSalir.Image = global::POS_DePrisa.Properties.Resources.iconClose32;
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalir.Location = new System.Drawing.Point(53, 0);
+            this.btnSalir.Location = new System.Drawing.Point(62, 0);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(107, 47);
@@ -302,22 +321,18 @@
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click_2);
             // 
-            // pictureBoxRound1
+            // lblNombreCompleto
             // 
-            this.pictureBoxRound1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxRound1.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.pictureBoxRound1.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.pictureBoxRound1.BorderColor2 = System.Drawing.Color.HotPink;
-            this.pictureBoxRound1.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.pictureBoxRound1.BorderSize = 1;
-            this.pictureBoxRound1.GradientAngle = 50F;
-            this.pictureBoxRound1.Image = global::POS_DePrisa.Properties.Resources.profilePicExample;
-            this.pictureBoxRound1.Location = new System.Drawing.Point(1471, 11);
-            this.pictureBoxRound1.Name = "pictureBoxRound1";
-            this.pictureBoxRound1.Size = new System.Drawing.Size(84, 84);
-            this.pictureBoxRound1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxRound1.TabIndex = 4;
-            this.pictureBoxRound1.TabStop = false;
+            this.lblNombreCompleto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNombreCompleto.AutoSize = true;
+            this.lblNombreCompleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreCompleto.ForeColor = System.Drawing.Color.White;
+            this.lblNombreCompleto.Location = new System.Drawing.Point(1480, 24);
+            this.lblNombreCompleto.Name = "lblNombreCompleto";
+            this.lblNombreCompleto.Size = new System.Drawing.Size(135, 25);
+            this.lblNombreCompleto.TabIndex = 5;
+            this.lblNombreCompleto.Text = "Michael Smith";
+            this.lblNombreCompleto.Click += new System.EventHandler(this.label1_Click);
             // 
             // FrmPrincipal
             // 
@@ -338,12 +353,12 @@
             this.tableLayoutBackGround.PerformLayout();
             this.panelSuperior.ResumeLayout(false);
             this.panelSuperior.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.flowLayoutMenu.ResumeLayout(false);
             this.flowLayoutMenu.PerformLayout();
             this.panelExitButton.ResumeLayout(false);
             this.panelExitButton.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRound1)).EndInit();
             this.ResumeLayout(false);
 
@@ -367,6 +382,7 @@
         private customControls.RoundedButton roundedButton1;
         private System.Windows.Forms.Label lblNombre;
         private customControls.PictureBoxRound pictureBoxRound1;
+        private System.Windows.Forms.Label lblNombreCompleto;
     }
 }
 

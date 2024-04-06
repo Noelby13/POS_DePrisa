@@ -34,6 +34,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpProducto = new System.Windows.Forms.TabPage();
+            this.txtContrasena = new System.Windows.Forms.TextBox();
             this.btnLimpiar = new POS_DePrisa.customControls.RoundedButton();
             this.btnEliminar = new POS_DePrisa.customControls.RoundedButton();
             this.btnActualizar = new POS_DePrisa.customControls.RoundedButton();
@@ -45,7 +46,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtContrasena = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaUsuario)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -79,6 +79,7 @@
             this.dgvListaUsuario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListaUsuario.Size = new System.Drawing.Size(407, 377);
             this.dgvListaUsuario.TabIndex = 15;
+            this.dgvListaUsuario.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaUsuario_CellClick);
             // 
             // txtUsuario
             // 
@@ -87,6 +88,7 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(407, 22);
             this.txtUsuario.TabIndex = 14;
+            this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
             // 
             // label10
             // 
@@ -134,6 +136,14 @@
             this.tpProducto.Size = new System.Drawing.Size(1071, 667);
             this.tpProducto.TabIndex = 1;
             this.tpProducto.Text = "Nuevo usuario";
+            // 
+            // txtContrasena
+            // 
+            this.txtContrasena.Location = new System.Drawing.Point(176, 98);
+            this.txtContrasena.Margin = new System.Windows.Forms.Padding(4);
+            this.txtContrasena.Name = "txtContrasena";
+            this.txtContrasena.Size = new System.Drawing.Size(277, 22);
+            this.txtContrasena.TabIndex = 26;
             // 
             // btnLimpiar
             // 
@@ -303,14 +313,6 @@
             this.label2.Size = new System.Drawing.Size(73, 22);
             this.label2.TabIndex = 0;
             this.label2.Text = "Nombre";
-            // 
-            // txtContrasena
-            // 
-            this.txtContrasena.Location = new System.Drawing.Point(176, 98);
-            this.txtContrasena.Margin = new System.Windows.Forms.Padding(4);
-            this.txtContrasena.Name = "txtContrasena";
-            this.txtContrasena.Size = new System.Drawing.Size(277, 22);
-            this.txtContrasena.TabIndex = 26;
             // 
             // FrmCrudUsuario
             // 

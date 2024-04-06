@@ -1,4 +1,5 @@
-﻿using System;
+﻿using POS_DePrisa.dao;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -48,9 +49,39 @@ namespace POS_DePrisa.formularios
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            var frm = new FrmPrincipal();
-            frm.Show();
-            this.Hide();
+            DRol loginRol = new DRol();
+            DUsuario loginUsuario = new DUsuario();
+            
+
+
+
+            if (txtUser.Text.Trim() == "Usuario" && txtContra.Text.Trim() == "Contraseña")
+            {
+                // Mostrar un cuadro de diálogo de error
+                MessageBox.Show("Ingresa tus datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (loginUsuario.validarCredenciales(txtUser.Text.Trim(), txtContra.Text.Trim())) {
+                    int idRol = loginRol.BuscarRol(txtUser.Text.Trim());
+                    string nombre = loginUsuario.ObtenerNombrePorNombreUsuario(txtUser.Text.Trim());
+                    var frm = new FrmPrincipal(nombre,txtUser.Text.Trim(), idRol);
+                    frm.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Nombre de usuario o clave invalidos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtUser.Text = "Usuario";
+                    txtContra.Text = "Contraseña";
+
+
+                }
+            }
+            
+            
+            
+           
         }
     }
 }

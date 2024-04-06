@@ -1,4 +1,5 @@
 ﻿using POS_DePrisa.dao;
+using POS_DePrisa.entidades;
 using POS_DePrisa.formularios;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,46 @@ namespace POS_DePrisa
 {
     public partial class FrmPrincipal : Form
     {
-        public FrmPrincipal()
+        
+        public Usuario _usuarioSistema = new Usuario();
+        public void desactivarBotones()
         {
-            InitializeComponent();
+            btnConfiguracion.Enabled = false;
+            btnFacturas.Enabled = false;
+            btnUsuarios.Enabled = false;
+            btnReportes.Enabled = false;
+            btnProductos.Enabled = false;
+        }
+
+        public void activarBotones()
+        {
+            btnConfiguracion.Enabled = true;
+            btnFacturas.Enabled = true;
+            btnUsuarios.Enabled = true;
+            btnReportes.Enabled = true;
+            btnProductos.Enabled = true;
+        }
+
+        public void activarBotonesCajero()
+        {
+            btnFacturas.Enabled = true;
+        }
+
+        public FrmPrincipal(string nombreCompleto, string nombreUsuario, int idRol)
+        {
+            InitializeComponent(); 
+            //Activar botones deacuerdo al rol de los usuarios
+            desactivarBotones();
+            if ( idRol == 1 )
+            {
+                activarBotones();
+            }
+            else
+            {
+                activarBotonesCajero();
+            }
+            lblNombreCompleto.Text = nombreCompleto;
+            lblNombre.Text = nombreUsuario;
         }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
@@ -82,6 +120,11 @@ namespace POS_DePrisa
         private void btnSalir_Click_2(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

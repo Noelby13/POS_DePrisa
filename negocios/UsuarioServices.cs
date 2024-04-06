@@ -55,7 +55,12 @@ namespace POS_DePrisa.negocios
         public DataSet listarUsuarios()
         {
             return dUsuario.ListarUsuarios();
-        }   
+        }
+
+        public DataSet buscar(String nombre)
+        {
+            return dUsuario.buscarUsuario(nombre);
+        }
 
 
     }
