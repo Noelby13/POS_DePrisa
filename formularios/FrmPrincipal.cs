@@ -17,20 +17,6 @@ namespace POS_DePrisa
     {
         
         public Usuario _usuarioSistema = new Usuario();
-
-        // Ahora la propiedad también puede ser pública
-        public Usuario UsuarioSistema
-        {
-            get
-            {
-                return _usuarioSistema;
-            }
-            set
-            {
-                _usuarioSistema = value;
-            }
-        }
-        
         public void desactivarBotones()
         {
             btnConfiguracion.Enabled = false;
