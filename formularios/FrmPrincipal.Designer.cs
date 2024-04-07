@@ -30,28 +30,28 @@
         {
             this.tableLayoutBackGround = new System.Windows.Forms.TableLayoutPanel();
             this.panelSuperior = new System.Windows.Forms.Panel();
+            this.lblNombreCompleto = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelShowData = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutMenu = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnFacturas = new System.Windows.Forms.Button();
-            this.btnProductos = new System.Windows.Forms.Button();
-            this.btnReportes = new System.Windows.Forms.Button();
-            this.btnUsuarios = new System.Windows.Forms.Button();
-            this.btnConfiguracion = new System.Windows.Forms.Button();
             this.panelExitButton = new System.Windows.Forms.Panel();
             this.pictureBoxRound1 = new POS_DePrisa.customControls.PictureBoxRound();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnFacturas = new System.Windows.Forms.Button();
+            this.btnProductos = new System.Windows.Forms.Button();
+            this.btnReportes = new POS_DePrisa.customControls.RoundedButton();
+            this.btnUsuarios = new System.Windows.Forms.Button();
+            this.btnConfiguracion = new System.Windows.Forms.Button();
             this.roundedButton1 = new POS_DePrisa.customControls.RoundedButton();
             this.btnSalir = new POS_DePrisa.customControls.RoundedButton();
-            this.lblNombreCompleto = new System.Windows.Forms.Label();
             this.tableLayoutBackGround.SuspendLayout();
             this.panelSuperior.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutMenu.SuspendLayout();
             this.panelExitButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRound1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutBackGround
@@ -88,6 +88,18 @@
             this.panelSuperior.Size = new System.Drawing.Size(1708, 98);
             this.panelSuperior.TabIndex = 0;
             // 
+            // lblNombreCompleto
+            // 
+            this.lblNombreCompleto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNombreCompleto.AutoSize = true;
+            this.lblNombreCompleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreCompleto.ForeColor = System.Drawing.Color.White;
+            this.lblNombreCompleto.Location = new System.Drawing.Point(1480, 24);
+            this.lblNombreCompleto.Name = "lblNombreCompleto";
+            this.lblNombreCompleto.Size = new System.Drawing.Size(135, 25);
+            this.lblNombreCompleto.TabIndex = 5;
+            this.lblNombreCompleto.Text = "Michael Smith";
+            // 
             // lblNombre
             // 
             this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -99,17 +111,6 @@
             this.lblNombre.Size = new System.Drawing.Size(135, 25);
             this.lblNombre.TabIndex = 3;
             this.lblNombre.Text = "Michael Smith";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::POS_DePrisa.Properties.Resources.logoPrisaBlueHorizontal;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 4);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(244, 95);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // panelShowData
             // 
@@ -155,6 +156,46 @@
             this.flowLayoutMenu.Size = new System.Drawing.Size(1539, 62);
             this.flowLayoutMenu.TabIndex = 3;
             // 
+            // panelExitButton
+            // 
+            this.panelExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
+            this.panelExitButton.Controls.Add(this.btnSalir);
+            this.panelExitButton.Location = new System.Drawing.Point(1539, 0);
+            this.panelExitButton.Margin = new System.Windows.Forms.Padding(0);
+            this.panelExitButton.Name = "panelExitButton";
+            this.panelExitButton.Size = new System.Drawing.Size(169, 62);
+            this.panelExitButton.TabIndex = 4;
+            // 
+            // pictureBoxRound1
+            // 
+            this.pictureBoxRound1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxRound1.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.pictureBoxRound1.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.pictureBoxRound1.BorderColor2 = System.Drawing.Color.HotPink;
+            this.pictureBoxRound1.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.pictureBoxRound1.BorderSize = 1;
+            this.pictureBoxRound1.GradientAngle = 50F;
+            this.pictureBoxRound1.Image = global::POS_DePrisa.Properties.Resources.profilePicExample;
+            this.pictureBoxRound1.Location = new System.Drawing.Point(1390, 11);
+            this.pictureBoxRound1.Name = "pictureBoxRound1";
+            this.pictureBoxRound1.Size = new System.Drawing.Size(84, 84);
+            this.pictureBoxRound1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxRound1.TabIndex = 4;
+            this.pictureBoxRound1.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::POS_DePrisa.Properties.Resources.logoPrisaBlueHorizontal;
+            this.pictureBox1.Location = new System.Drawing.Point(13, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(244, 95);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // btnFacturas
             // 
             this.btnFacturas.AutoSize = true;
@@ -191,19 +232,30 @@
             // 
             // btnReportes
             // 
+            this.btnReportes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnReportes.AutoSize = true;
+            this.btnReportes.BackColor = System.Drawing.Color.White;
+            this.btnReportes.BackgroundColor = System.Drawing.Color.White;
+            this.btnReportes.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnReportes.BorderRadius = 10;
+            this.btnReportes.BorderSize = 1;
+            this.btnReportes.FlatAppearance.BorderSize = 0;
+            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportes.ForeColor = System.Drawing.Color.Black;
             this.btnReportes.Image = global::POS_DePrisa.Properties.Resources.iconPdf32;
             this.btnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReportes.Location = new System.Drawing.Point(340, 4);
             this.btnReportes.Margin = new System.Windows.Forms.Padding(4);
             this.btnReportes.Name = "btnReportes";
-            this.btnReportes.Size = new System.Drawing.Size(144, 47);
-            this.btnReportes.TabIndex = 3;
+            this.btnReportes.Size = new System.Drawing.Size(148, 47);
+            this.btnReportes.TabIndex = 7;
             this.btnReportes.Text = "Reportes";
             this.btnReportes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnReportes.TextColor = System.Drawing.Color.Black;
             this.btnReportes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnReportes.UseVisualStyleBackColor = true;
+            this.btnReportes.UseVisualStyleBackColor = false;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
             // 
             // btnUsuarios
             // 
@@ -211,7 +263,7 @@
             this.btnUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUsuarios.Image = global::POS_DePrisa.Properties.Resources.iconUsuario32;
             this.btnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsuarios.Location = new System.Drawing.Point(492, 4);
+            this.btnUsuarios.Location = new System.Drawing.Point(496, 4);
             this.btnUsuarios.Margin = new System.Windows.Forms.Padding(4);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Size = new System.Drawing.Size(144, 47);
@@ -229,7 +281,7 @@
             this.btnConfiguracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfiguracion.Image = global::POS_DePrisa.Properties.Resources.iconConfiguracion32;
             this.btnConfiguracion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConfiguracion.Location = new System.Drawing.Point(644, 4);
+            this.btnConfiguracion.Location = new System.Drawing.Point(648, 4);
             this.btnConfiguracion.Margin = new System.Windows.Forms.Padding(4);
             this.btnConfiguracion.Name = "btnConfiguracion";
             this.btnConfiguracion.Size = new System.Drawing.Size(196, 47);
@@ -238,35 +290,6 @@
             this.btnConfiguracion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnConfiguracion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnConfiguracion.UseVisualStyleBackColor = true;
-            // 
-            // panelExitButton
-            // 
-            this.panelExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.panelExitButton.Controls.Add(this.btnSalir);
-            this.panelExitButton.Location = new System.Drawing.Point(1539, 0);
-            this.panelExitButton.Margin = new System.Windows.Forms.Padding(0);
-            this.panelExitButton.Name = "panelExitButton";
-            this.panelExitButton.Size = new System.Drawing.Size(169, 47);
-            this.panelExitButton.TabIndex = 4;
-            // 
-            // pictureBoxRound1
-            // 
-            this.pictureBoxRound1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxRound1.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.pictureBoxRound1.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.pictureBoxRound1.BorderColor2 = System.Drawing.Color.HotPink;
-            this.pictureBoxRound1.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.pictureBoxRound1.BorderSize = 1;
-            this.pictureBoxRound1.GradientAngle = 50F;
-            this.pictureBoxRound1.Image = global::POS_DePrisa.Properties.Resources.profilePicExample;
-            this.pictureBoxRound1.Location = new System.Drawing.Point(1390, 11);
-            this.pictureBoxRound1.Name = "pictureBoxRound1";
-            this.pictureBoxRound1.Size = new System.Drawing.Size(84, 84);
-            this.pictureBoxRound1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxRound1.TabIndex = 4;
-            this.pictureBoxRound1.TabStop = false;
             // 
             // roundedButton1
             // 
@@ -283,7 +306,7 @@
             this.roundedButton1.ForeColor = System.Drawing.Color.Black;
             this.roundedButton1.Image = global::POS_DePrisa.Properties.Resources.iconConfiguracion32;
             this.roundedButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.roundedButton1.Location = new System.Drawing.Point(848, 4);
+            this.roundedButton1.Location = new System.Drawing.Point(852, 4);
             this.roundedButton1.Margin = new System.Windows.Forms.Padding(4);
             this.roundedButton1.Name = "roundedButton1";
             this.roundedButton1.Size = new System.Drawing.Size(197, 47);
@@ -298,8 +321,8 @@
             // 
             this.btnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSalir.AutoSize = true;
-            this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.btnSalir.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
+            this.btnSalir.BackColor = System.Drawing.Color.White;
+            this.btnSalir.BackgroundColor = System.Drawing.Color.White;
             this.btnSalir.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnSalir.BorderRadius = 10;
             this.btnSalir.BorderSize = 1;
@@ -309,7 +332,7 @@
             this.btnSalir.ForeColor = System.Drawing.Color.Black;
             this.btnSalir.Image = global::POS_DePrisa.Properties.Resources.iconClose32;
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalir.Location = new System.Drawing.Point(62, 0);
+            this.btnSalir.Location = new System.Drawing.Point(55, 5);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(107, 47);
@@ -320,19 +343,6 @@
             this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click_2);
-            // 
-            // lblNombreCompleto
-            // 
-            this.lblNombreCompleto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblNombreCompleto.AutoSize = true;
-            this.lblNombreCompleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreCompleto.ForeColor = System.Drawing.Color.White;
-            this.lblNombreCompleto.Location = new System.Drawing.Point(1480, 24);
-            this.lblNombreCompleto.Name = "lblNombreCompleto";
-            this.lblNombreCompleto.Size = new System.Drawing.Size(135, 25);
-            this.lblNombreCompleto.TabIndex = 5;
-            this.lblNombreCompleto.Text = "Michael Smith";
-            this.lblNombreCompleto.Click += new System.EventHandler(this.label1_Click);
             // 
             // FrmPrincipal
             // 
@@ -353,13 +363,13 @@
             this.tableLayoutBackGround.PerformLayout();
             this.panelSuperior.ResumeLayout(false);
             this.panelSuperior.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.flowLayoutMenu.ResumeLayout(false);
             this.flowLayoutMenu.PerformLayout();
             this.panelExitButton.ResumeLayout(false);
             this.panelExitButton.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRound1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -374,7 +384,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutMenu;
         private System.Windows.Forms.Button btnFacturas;
         private System.Windows.Forms.Button btnProductos;
-        private System.Windows.Forms.Button btnReportes;
         private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.Button btnConfiguracion;
         private System.Windows.Forms.Panel panelExitButton;
@@ -383,6 +392,7 @@
         private System.Windows.Forms.Label lblNombre;
         private customControls.PictureBoxRound pictureBoxRound1;
         private System.Windows.Forms.Label lblNombreCompleto;
+        private customControls.RoundedButton btnReportes;
     }
 }
 

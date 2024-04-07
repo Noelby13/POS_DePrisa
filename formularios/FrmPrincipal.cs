@@ -123,9 +123,9 @@ namespace POS_DePrisa
             Application.Exit();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btnReportes_Click(object sender, EventArgs e)
         {
-
+            showForm(new FrmReportes());
         }
     }
 }
