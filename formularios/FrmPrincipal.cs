@@ -15,8 +15,8 @@ namespace POS_DePrisa
 {
     public partial class FrmPrincipal : Form
     {
-        
-        public Usuario _usuarioSistema = new Usuario();
+
+        private Usuario userSistema;
         public void desactivarBotones()
         {
             btnConfiguracion.Enabled = false;
@@ -40,12 +40,13 @@ namespace POS_DePrisa
             btnFacturas.Enabled = true;
         }
 
-        public FrmPrincipal(string nombreCompleto, string nombreUsuario, int idRol)
+        public FrmPrincipal(Usuario userSistema)
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            this.userSistema = userSistema;
             //Activar botones deacuerdo al rol de los usuarios
             desactivarBotones();
-            if ( idRol == 1 )
+            if ( userSistema.IdRol == 1 )
             {
                 activarBotones();
             }
@@ -53,8 +54,8 @@ namespace POS_DePrisa
             {
                 activarBotonesCajero();
             }
-            lblNombreCompleto.Text = nombreCompleto;
-            lblNombre.Text = nombreUsuario;
+            lblNombreCompleto.Text = userSistema.Nombre;
+            lblNombre.Text = userSistema.NombreUsuario;
         }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
@@ -114,7 +115,7 @@ namespace POS_DePrisa
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-            showForm(new FrmUsuario());
+            showForm(new FrmUsuario(userSistema));
         }
 
         private void btnSalir_Click_2(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-﻿namespace POS_DePrisa.formularios.Usuario
+﻿namespace POS_DePrisa.formularios.UsuarioForm
 {
     partial class FrmCrudUsuario
     {
@@ -38,7 +38,7 @@
             this.btnLimpiar = new POS_DePrisa.customControls.RoundedButton();
             this.btnEliminar = new POS_DePrisa.customControls.RoundedButton();
             this.btnActualizar = new POS_DePrisa.customControls.RoundedButton();
-            this.btnGuardarProducto = new POS_DePrisa.customControls.RoundedButton();
+            this.btnGuardarUsuario = new POS_DePrisa.customControls.RoundedButton();
             this.cbxRol = new System.Windows.Forms.ComboBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -120,7 +120,7 @@
             this.tpProducto.Controls.Add(this.btnLimpiar);
             this.tpProducto.Controls.Add(this.btnEliminar);
             this.tpProducto.Controls.Add(this.btnActualizar);
-            this.tpProducto.Controls.Add(this.btnGuardarProducto);
+            this.tpProducto.Controls.Add(this.btnGuardarUsuario);
             this.tpProducto.Controls.Add(this.cbxRol);
             this.tpProducto.Controls.Add(this.txtUserName);
             this.tpProducto.Controls.Add(this.txtNombre);
@@ -194,6 +194,7 @@
             this.btnEliminar.TextColor = System.Drawing.Color.Black;
             this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnActualizar
             // 
@@ -219,31 +220,32 @@
             this.btnActualizar.TextColor = System.Drawing.Color.Black;
             this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
-            // btnGuardarProducto
+            // btnGuardarUsuario
             // 
-            this.btnGuardarProducto.AutoSize = true;
-            this.btnGuardarProducto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.btnGuardarProducto.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.btnGuardarProducto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnGuardarProducto.BorderRadius = 10;
-            this.btnGuardarProducto.BorderSize = 1;
-            this.btnGuardarProducto.FlatAppearance.BorderSize = 0;
-            this.btnGuardarProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardarProducto.ForeColor = System.Drawing.Color.Black;
-            this.btnGuardarProducto.Image = global::POS_DePrisa.Properties.Resources.iconAdd24;
-            this.btnGuardarProducto.Location = new System.Drawing.Point(180, 190);
-            this.btnGuardarProducto.Margin = new System.Windows.Forms.Padding(4);
-            this.btnGuardarProducto.Name = "btnGuardarProducto";
-            this.btnGuardarProducto.Size = new System.Drawing.Size(136, 47);
-            this.btnGuardarProducto.TabIndex = 21;
-            this.btnGuardarProducto.Text = "Guardar";
-            this.btnGuardarProducto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardarProducto.TextColor = System.Drawing.Color.Black;
-            this.btnGuardarProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardarProducto.UseVisualStyleBackColor = false;
-            this.btnGuardarProducto.Click += new System.EventHandler(this.btnGuardarProducto_Click);
+            this.btnGuardarUsuario.AutoSize = true;
+            this.btnGuardarUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
+            this.btnGuardarUsuario.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
+            this.btnGuardarUsuario.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnGuardarUsuario.BorderRadius = 10;
+            this.btnGuardarUsuario.BorderSize = 1;
+            this.btnGuardarUsuario.FlatAppearance.BorderSize = 0;
+            this.btnGuardarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarUsuario.ForeColor = System.Drawing.Color.Black;
+            this.btnGuardarUsuario.Image = global::POS_DePrisa.Properties.Resources.iconAdd24;
+            this.btnGuardarUsuario.Location = new System.Drawing.Point(180, 190);
+            this.btnGuardarUsuario.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGuardarUsuario.Name = "btnGuardarUsuario";
+            this.btnGuardarUsuario.Size = new System.Drawing.Size(136, 47);
+            this.btnGuardarUsuario.TabIndex = 21;
+            this.btnGuardarUsuario.Text = "Guardar";
+            this.btnGuardarUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardarUsuario.TextColor = System.Drawing.Color.Black;
+            this.btnGuardarUsuario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardarUsuario.UseVisualStyleBackColor = false;
+            this.btnGuardarUsuario.Click += new System.EventHandler(this.btnGuardarUsuario_Click);
             // 
             // cbxRol
             // 
@@ -277,9 +279,9 @@
             this.label1.Location = new System.Drawing.Point(64, 98);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 22);
+            this.label1.Size = new System.Drawing.Size(103, 22);
             this.label1.TabIndex = 7;
-            this.label1.Text = "contraseña";
+            this.label1.Text = "Contraseña";
             // 
             // label6
             // 
@@ -345,7 +347,7 @@
         private customControls.RoundedButton btnLimpiar;
         private customControls.RoundedButton btnEliminar;
         private customControls.RoundedButton btnActualizar;
-        private customControls.RoundedButton btnGuardarProducto;
+        private customControls.RoundedButton btnGuardarUsuario;
         private System.Windows.Forms.ComboBox cbxRol;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.TextBox txtNombre;

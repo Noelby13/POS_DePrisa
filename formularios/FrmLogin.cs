@@ -1,4 +1,5 @@
 ﻿using POS_DePrisa.dao;
+using POS_DePrisa.entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,7 +38,7 @@ namespace POS_DePrisa.formularios
             if (txtContra.Text == "Contraseña")
             {
                 txtContra.Text = "";
-                txtContra.PasswordChar = '*';
+                txtContra.UseSystemPasswordChar = true;
             }
         }
 
@@ -51,9 +52,8 @@ namespace POS_DePrisa.formularios
         {
             DRol loginRol = new DRol();
             DUsuario loginUsuario = new DUsuario();
-            
-
-
+            Usuario user = new Usuario();
+           
 
             if (txtUser.Text.Trim() == "Usuario" && txtContra.Text.Trim() == "Contraseña")
             {
@@ -64,8 +64,8 @@ namespace POS_DePrisa.formularios
             {
                 if (loginUsuario.validarCredenciales(txtUser.Text.Trim(), txtContra.Text.Trim())) {
                     int idRol = loginRol.BuscarRol(txtUser.Text.Trim());
-                    string nombre = loginUsuario.ObtenerNombrePorNombreUsuario(txtUser.Text.Trim());
-                    var frm = new FrmPrincipal(nombre,txtUser.Text.Trim(), idRol);
+                    user = loginUsuario.ObtenerUsuarioPorNombreUsuario(txtUser.Text.Trim());
+                    var frm = new FrmPrincipal(user);
                     frm.Show();
                     this.Hide();
                 }
@@ -82,6 +82,18 @@ namespace POS_DePrisa.formularios
             
             
            
+        }
+
+        private void chkContraseña_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkContraseña.Checked == true)
+            {
+                txtContra.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtContra.UseSystemPasswordChar = true;
+            }
         }
     }
 }
