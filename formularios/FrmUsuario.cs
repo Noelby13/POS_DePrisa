@@ -1,4 +1,5 @@
-﻿using POS_DePrisa.formularios.Usuario;
+﻿using POS_DePrisa.entidades;
+using POS_DePrisa.formularios.UsuarioForm;
 using POS_DePrisa.negocios;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,11 @@ namespace POS_DePrisa.formularios
 {
     public partial class FrmUsuario : Form
     {
-        public FrmUsuario()
+        private Usuario userSistema;
+        public FrmUsuario(Usuario userSistema)
         {
             InitializeComponent();
+            this.userSistema = userSistema;
         }
 
         private void showForm(Form form)
@@ -31,7 +34,7 @@ namespace POS_DePrisa.formularios
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            showForm(new FrmCrudUsuario());
+            showForm(new FrmCrudUsuario(userSistema));
         }
 
         
