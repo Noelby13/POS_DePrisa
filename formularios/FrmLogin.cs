@@ -95,5 +95,7 @@ namespace POS_DePrisa.formularios
                 txtContra.UseSystemPasswordChar = true;
             }
         }
+
+
     }
 }

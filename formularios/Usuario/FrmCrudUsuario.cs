@@ -240,5 +240,21 @@ namespace POS_DePrisa.formularios.UsuarioForm
             }
         }
 
+        private void chkContraseña_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkContraseña.Checked == true)
+            {
+                 txtContrasena.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtContrasena.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void txtContrasena_TextChanged(object sender, EventArgs e)
+        {
+            txtContrasena.UseSystemPasswordChar = true;
+        }
     }
 }
