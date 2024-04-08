@@ -16,5 +16,11 @@ namespace POS_DePrisa.formularios
         {
             InitializeComponent();
         }
+
+        private void FrmReporteVistaPrevia_Load(object sender, EventArgs e)
+        {
+
+            this.reportViewer1.RefreshReport();
+        }
     }
 }
