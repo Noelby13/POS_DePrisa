@@ -229,6 +229,7 @@
             this.btnGenerarReporte.TextColor = System.Drawing.Color.Black;
             this.btnGenerarReporte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGenerarReporte.UseVisualStyleBackColor = false;
+            this.btnGenerarReporte.Click += new System.EventHandler(this.btnGenerarReporte_Click);
             // 
             // gradientPanel1
             // 

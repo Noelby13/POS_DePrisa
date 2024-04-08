@@ -48,5 +48,21 @@ namespace POS_DePrisa.formularios
             tableLayoutBackGround.RowStyles[1].Height = 46;
             cambiarVisibilidadBotones(0);
         }
+
+
+        private void MostrarProductosDisponibles() { 
+
+            DBDePrisaDataSetTableAdapters.RptProductosDisponiblesTableAdapter tbl = new DBDePrisaDataSetTableAdapters.RptProductosDisponiblesTableAdapter();
+            DataTable datos = tbl.GetData();
+            reportes.CargarReportes.VerReporte(datos, "RptProductosDisponibles", "reportes/RptProductosDisponibles.rdlc");
+        }
+
+        private void btnGenerarReporte_Click(object sender, EventArgs e)
+        {
+            if (cbxTipoReporte.SelectedIndex == 1)
+            {
+                MostrarProductosDisponibles();
+            }
+        }
     }
 }
