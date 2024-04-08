@@ -31,15 +31,15 @@
             this.tableLayoutBackGround = new System.Windows.Forms.TableLayoutPanel();
             this.panelReportes = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnOcultar = new POS_DePrisa.customControls.RoundedButton();
             this.flowLayoutMenu = new System.Windows.Forms.FlowLayoutPanel();
             this.gbTipoReporte = new System.Windows.Forms.GroupBox();
             this.cbxTipoReporte = new System.Windows.Forms.ComboBox();
+            this.btnGenerarReporte = new POS_DePrisa.customControls.RoundedButton();
             this.tsMenu = new System.Windows.Forms.ToolStrip();
             this.tscbTipoReporte = new System.Windows.Forms.ToolStripComboBox();
             this.tsbGenerarReporte = new System.Windows.Forms.ToolStripButton();
             this.tsbMostrar = new System.Windows.Forms.ToolStripButton();
-            this.btnOcultar = new POS_DePrisa.customControls.RoundedButton();
-            this.btnGenerarReporte = new POS_DePrisa.customControls.RoundedButton();
             this.gradientPanel1 = new POS_DePrisa.customControls.GradientPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutBackGround.SuspendLayout();
@@ -97,6 +97,33 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1732, 55);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
+            // btnOcultar
+            // 
+            this.btnOcultar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOcultar.AutoSize = true;
+            this.btnOcultar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
+            this.btnOcultar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
+            this.btnOcultar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnOcultar.BorderRadius = 10;
+            this.btnOcultar.BorderSize = 1;
+            this.btnOcultar.FlatAppearance.BorderSize = 0;
+            this.btnOcultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOcultar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOcultar.ForeColor = System.Drawing.Color.Black;
+            this.btnOcultar.Image = global::POS_DePrisa.Properties.Resources.iconOcultar28;
+            this.btnOcultar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOcultar.Location = new System.Drawing.Point(1564, 4);
+            this.btnOcultar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnOcultar.Name = "btnOcultar";
+            this.btnOcultar.Size = new System.Drawing.Size(164, 47);
+            this.btnOcultar.TabIndex = 10;
+            this.btnOcultar.Text = "Ocultar menu";
+            this.btnOcultar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnOcultar.TextColor = System.Drawing.Color.Black;
+            this.btnOcultar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnOcultar.UseVisualStyleBackColor = false;
+            this.btnOcultar.Click += new System.EventHandler(this.btnOcultar_Click);
+            // 
             // flowLayoutMenu
             // 
             this.flowLayoutMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
@@ -133,6 +160,32 @@
             this.cbxTipoReporte.Name = "cbxTipoReporte";
             this.cbxTipoReporte.Size = new System.Drawing.Size(232, 28);
             this.cbxTipoReporte.TabIndex = 11;
+            // 
+            // btnGenerarReporte
+            // 
+            this.btnGenerarReporte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenerarReporte.AutoSize = true;
+            this.btnGenerarReporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
+            this.btnGenerarReporte.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
+            this.btnGenerarReporte.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnGenerarReporte.BorderRadius = 10;
+            this.btnGenerarReporte.BorderSize = 1;
+            this.btnGenerarReporte.FlatAppearance.BorderSize = 0;
+            this.btnGenerarReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerarReporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarReporte.ForeColor = System.Drawing.Color.Black;
+            this.btnGenerarReporte.Image = global::POS_DePrisa.Properties.Resources.iconPdf32;
+            this.btnGenerarReporte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGenerarReporte.Location = new System.Drawing.Point(258, 4);
+            this.btnGenerarReporte.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGenerarReporte.Name = "btnGenerarReporte";
+            this.btnGenerarReporte.Size = new System.Drawing.Size(191, 47);
+            this.btnGenerarReporte.TabIndex = 9;
+            this.btnGenerarReporte.Text = "Generar Reporte";
+            this.btnGenerarReporte.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGenerarReporte.TextColor = System.Drawing.Color.Black;
+            this.btnGenerarReporte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGenerarReporte.UseVisualStyleBackColor = false;
             // 
             // tsMenu
             // 
@@ -176,59 +229,6 @@
             this.tsbMostrar.Size = new System.Drawing.Size(29, 24);
             this.tsbMostrar.Text = "Mostrar Menu";
             this.tsbMostrar.Click += new System.EventHandler(this.tsbMostrar_Click);
-            // 
-            // btnOcultar
-            // 
-            this.btnOcultar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOcultar.AutoSize = true;
-            this.btnOcultar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.btnOcultar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.btnOcultar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnOcultar.BorderRadius = 10;
-            this.btnOcultar.BorderSize = 1;
-            this.btnOcultar.FlatAppearance.BorderSize = 0;
-            this.btnOcultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOcultar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOcultar.ForeColor = System.Drawing.Color.Black;
-            this.btnOcultar.Image = global::POS_DePrisa.Properties.Resources.iconOcultar28;
-            this.btnOcultar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOcultar.Location = new System.Drawing.Point(1564, 4);
-            this.btnOcultar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnOcultar.Name = "btnOcultar";
-            this.btnOcultar.Size = new System.Drawing.Size(164, 47);
-            this.btnOcultar.TabIndex = 10;
-            this.btnOcultar.Text = "Ocultar menu";
-            this.btnOcultar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnOcultar.TextColor = System.Drawing.Color.Black;
-            this.btnOcultar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnOcultar.UseVisualStyleBackColor = false;
-            this.btnOcultar.Click += new System.EventHandler(this.btnOcultar_Click);
-            // 
-            // btnGenerarReporte
-            // 
-            this.btnGenerarReporte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenerarReporte.AutoSize = true;
-            this.btnGenerarReporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.btnGenerarReporte.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.btnGenerarReporte.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnGenerarReporte.BorderRadius = 10;
-            this.btnGenerarReporte.BorderSize = 1;
-            this.btnGenerarReporte.FlatAppearance.BorderSize = 0;
-            this.btnGenerarReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGenerarReporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerarReporte.ForeColor = System.Drawing.Color.Black;
-            this.btnGenerarReporte.Image = global::POS_DePrisa.Properties.Resources.iconPdf32;
-            this.btnGenerarReporte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGenerarReporte.Location = new System.Drawing.Point(258, 4);
-            this.btnGenerarReporte.Margin = new System.Windows.Forms.Padding(4);
-            this.btnGenerarReporte.Name = "btnGenerarReporte";
-            this.btnGenerarReporte.Size = new System.Drawing.Size(191, 47);
-            this.btnGenerarReporte.TabIndex = 9;
-            this.btnGenerarReporte.Text = "Generar Reporte";
-            this.btnGenerarReporte.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGenerarReporte.TextColor = System.Drawing.Color.Black;
-            this.btnGenerarReporte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGenerarReporte.UseVisualStyleBackColor = false;
             // 
             // gradientPanel1
             // 

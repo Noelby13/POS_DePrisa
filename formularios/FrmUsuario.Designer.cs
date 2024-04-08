@@ -28,24 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUsuario));
             this.tableLayoutBackGround = new System.Windows.Forms.TableLayoutPanel();
             this.panelShowData = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnOcultar = new POS_DePrisa.customControls.RoundedButton();
             this.flowLayoutMenu = new System.Windows.Forms.FlowLayoutPanel();
+            this.tsMenu = new System.Windows.Forms.ToolStrip();
+            this.tsbNuevoUsuario = new System.Windows.Forms.ToolStripButton();
+            this.tsbMostrar = new System.Windows.Forms.ToolStripButton();
             this.btnNuevo = new POS_DePrisa.customControls.RoundedButton();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.gradientPanel1 = new POS_DePrisa.customControls.GradientPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutBackGround.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutMenu.SuspendLayout();
-            this.toolStrip2.SuspendLayout();
+            this.tsMenu.SuspendLayout();
             this.gradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +50,7 @@
             // 
             this.tableLayoutBackGround.BackColor = System.Drawing.Color.Gray;
             this.tableLayoutBackGround.ColumnCount = 1;
-            this.tableLayoutBackGround.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1732F));
+            this.tableLayoutBackGround.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1924F));
             this.tableLayoutBackGround.Controls.Add(this.panelShowData, 0, 2);
             this.tableLayoutBackGround.Controls.Add(this.tableLayoutPanel1, 0, 1);
             this.tableLayoutBackGround.Controls.Add(this.gradientPanel1, 0, 0);
@@ -65,7 +62,7 @@
             this.tableLayoutBackGround.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
             this.tableLayoutBackGround.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.tableLayoutBackGround.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutBackGround.Size = new System.Drawing.Size(1067, 554);
+            this.tableLayoutBackGround.Size = new System.Drawing.Size(1924, 554);
             this.tableLayoutBackGround.TabIndex = 2;
             // 
             // panelShowData
@@ -75,7 +72,7 @@
             this.panelShowData.Location = new System.Drawing.Point(0, 96);
             this.panelShowData.Margin = new System.Windows.Forms.Padding(0);
             this.panelShowData.Name = "panelShowData";
-            this.panelShowData.Size = new System.Drawing.Size(1732, 458);
+            this.panelShowData.Size = new System.Drawing.Size(1924, 458);
             this.panelShowData.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -93,7 +90,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1732, 55);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1924, 55);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // btnOcultar
@@ -111,7 +108,7 @@
             this.btnOcultar.ForeColor = System.Drawing.Color.Black;
             this.btnOcultar.Image = global::POS_DePrisa.Properties.Resources.iconOcultar28;
             this.btnOcultar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOcultar.Location = new System.Drawing.Point(1564, 4);
+            this.btnOcultar.Location = new System.Drawing.Point(1756, 4);
             this.btnOcultar.Margin = new System.Windows.Forms.Padding(4);
             this.btnOcultar.Name = "btnOcultar";
             this.btnOcultar.Size = new System.Drawing.Size(164, 47);
@@ -121,18 +118,53 @@
             this.btnOcultar.TextColor = System.Drawing.Color.Black;
             this.btnOcultar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnOcultar.UseVisualStyleBackColor = false;
+            this.btnOcultar.Click += new System.EventHandler(this.btnOcultar_Click);
             // 
             // flowLayoutMenu
             // 
             this.flowLayoutMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
+            this.flowLayoutMenu.Controls.Add(this.tsMenu);
             this.flowLayoutMenu.Controls.Add(this.btnNuevo);
-            this.flowLayoutMenu.Controls.Add(this.toolStrip2);
             this.flowLayoutMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutMenu.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutMenu.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutMenu.Name = "flowLayoutMenu";
-            this.flowLayoutMenu.Size = new System.Drawing.Size(1560, 55);
+            this.flowLayoutMenu.Size = new System.Drawing.Size(1733, 55);
             this.flowLayoutMenu.TabIndex = 3;
+            // 
+            // tsMenu
+            // 
+            this.tsMenu.Dock = System.Windows.Forms.DockStyle.None;
+            this.tsMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.tsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbNuevoUsuario,
+            this.tsbMostrar});
+            this.tsMenu.Location = new System.Drawing.Point(0, 0);
+            this.tsMenu.Name = "tsMenu";
+            this.tsMenu.Size = new System.Drawing.Size(110, 27);
+            this.tsMenu.TabIndex = 11;
+            this.tsMenu.Visible = false;
+            // 
+            // tsbNuevoUsuario
+            // 
+            this.tsbNuevoUsuario.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbNuevoUsuario.DoubleClickEnabled = true;
+            this.tsbNuevoUsuario.Image = global::POS_DePrisa.Properties.Resources.icon_agregar_usuario;
+            this.tsbNuevoUsuario.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNuevoUsuario.Name = "tsbNuevoUsuario";
+            this.tsbNuevoUsuario.Size = new System.Drawing.Size(29, 24);
+            this.tsbNuevoUsuario.Text = "Nuevo Usuario";
+            this.tsbNuevoUsuario.Click += new System.EventHandler(this.tsbNuevoUsuario_Click);
+            // 
+            // tsbMostrar
+            // 
+            this.tsbMostrar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbMostrar.Image = global::POS_DePrisa.Properties.Resources.ver;
+            this.tsbMostrar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbMostrar.Name = "tsbMostrar";
+            this.tsbMostrar.Size = new System.Drawing.Size(29, 24);
+            this.tsbMostrar.Text = "Mostrar Menu";
+            this.tsbMostrar.Click += new System.EventHandler(this.tsbMostrar_Click);
             // 
             // btnNuevo
             // 
@@ -149,7 +181,7 @@
             this.btnNuevo.ForeColor = System.Drawing.Color.Black;
             this.btnNuevo.Image = global::POS_DePrisa.Properties.Resources.iconAdd28;
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(4, 4);
+            this.btnNuevo.Location = new System.Drawing.Point(114, 4);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(132, 47);
@@ -161,57 +193,6 @@
             this.btnNuevo.UseVisualStyleBackColor = false;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
-            // toolStrip2
-            // 
-            this.toolStrip2.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton5,
-            this.toolStripButton6,
-            this.toolStripButton7,
-            this.toolStripButton8});
-            this.toolStrip2.Location = new System.Drawing.Point(261, 0);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(180, 31);
-            this.toolStrip2.TabIndex = 10;
-            this.toolStrip2.Visible = false;
-            // 
-            // toolStripButton5
-            // 
-            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton5.Image = global::POS_DePrisa.Properties.Resources.iconAdd16;
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(29, 28);
-            this.toolStripButton5.Text = "guardar";
-            // 
-            // toolStripButton6
-            // 
-            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton6.Image = global::POS_DePrisa.Properties.Resources.iconCategoria16;
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(29, 28);
-            this.toolStripButton6.Text = "toolStripButton2";
-            // 
-            // toolStripButton7
-            // 
-            this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
-            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(29, 28);
-            this.toolStripButton7.Text = "toolStripButton3";
-            // 
-            // toolStripButton8
-            // 
-            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton8.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton8.Image")));
-            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(29, 28);
-            this.toolStripButton8.Text = "MostrarMenu";
-            // 
             // gradientPanel1
             // 
             this.gradientPanel1.ColorLeft = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(81)))), ((int)(((byte)(161)))));
@@ -221,7 +202,7 @@
             this.gradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.gradientPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(1732, 39);
+            this.gradientPanel1.Size = new System.Drawing.Size(1924, 39);
             this.gradientPanel1.TabIndex = 4;
             // 
             // label1
@@ -241,7 +222,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(1924, 554);
             this.Controls.Add(this.tableLayoutBackGround);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmUsuario";
@@ -252,8 +233,8 @@
             this.tableLayoutPanel1.PerformLayout();
             this.flowLayoutMenu.ResumeLayout(false);
             this.flowLayoutMenu.PerformLayout();
-            this.toolStrip2.ResumeLayout(false);
-            this.toolStrip2.PerformLayout();
+            this.tsMenu.ResumeLayout(false);
+            this.tsMenu.PerformLayout();
             this.gradientPanel1.ResumeLayout(false);
             this.gradientPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -268,12 +249,10 @@
         private customControls.RoundedButton btnOcultar;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutMenu;
         private customControls.RoundedButton btnNuevo;
-        private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
-        private System.Windows.Forms.ToolStripButton toolStripButton6;
-        private System.Windows.Forms.ToolStripButton toolStripButton7;
-        private System.Windows.Forms.ToolStripButton toolStripButton8;
         private customControls.GradientPanel gradientPanel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStrip tsMenu;
+        private System.Windows.Forms.ToolStripButton tsbNuevoUsuario;
+        private System.Windows.Forms.ToolStripButton tsbMostrar;
     }
 }

@@ -31,9 +31,9 @@ namespace POS_DePrisa.formularios.Producto
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar los datos: " + ex.Message);
+                MessageBox.Show("Error al cargar los datos: "+ ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-             }
+            }
         }
 
         //genera una funciona asincrona llamada cargarData que se encarga de cargar los datos de la base de datos
@@ -58,6 +58,9 @@ namespace POS_DePrisa.formularios.Producto
             var categorias = categoriaServices.listarCategoria();
             dgvListaCategorias.DataSource = categorias.Tables[0];
             dgvListaCategorias.Columns["idCategoria"].Visible = false;
+
+            //cambia el nombre de la columna
+            dgvListaCategorias.Columns["nombre"].HeaderText = "Nombre";
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -70,7 +73,6 @@ namespace POS_DePrisa.formularios.Producto
             btnActualizar.Enabled = false;
             btnEliminar.Enabled = false;
             btnGuardar.Enabled = true;
-            tpCategoria.Text = "Nueva Categoria";
 
             categoriaSelected = null;
 
@@ -91,10 +93,11 @@ namespace POS_DePrisa.formularios.Producto
             if (!resultado.IsExitoso)
             {
                 MessageBox.Show(resultado.Mensaje);
+                btnLimpiar_Click(sender, e);
                 return;
             }
 
-            MessageBox.Show("Categoria guardada con exito");
+            MessageBox.Show("Categoría guardada con éxito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnLimpiar_Click(sender, e);
             cargarListaCategorias();
         }
@@ -104,7 +107,7 @@ namespace POS_DePrisa.formularios.Producto
             bool resultado = false;
             if (string.IsNullOrEmpty(txtCategoria.Text))
             {
-                MessageBox.Show("El campo categoria no puede estar vacio");
+                MessageBox.Show("El campo categoría no puede estar vacio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 resultado = false;
             }
             else
@@ -124,7 +127,7 @@ namespace POS_DePrisa.formularios.Producto
 
             if (!categoriaSelectedHasChanged())
             {
-                MessageBox.Show("No has modificado el nombre de la categoria");
+                MessageBox.Show("No has modificado el nombre de la categoría", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -140,7 +143,7 @@ namespace POS_DePrisa.formularios.Producto
                 return;
             }
 
-            MessageBox.Show("Categoria actualizada con exito");
+            MessageBox.Show(resultado.Mensaje, "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnLimpiar_Click(sender, e);
             cargarListaCategorias();
         }
@@ -165,7 +168,6 @@ namespace POS_DePrisa.formularios.Producto
             txtCategoria.Text = categoriaSelected.Nombre;
 
 
-            tpCategoria.Text = "Actualizar Categoria";
             btnActualizar.Enabled = true;
             btnEliminar.Enabled = true;
             btnGuardar.Enabled = false;
@@ -198,10 +200,12 @@ namespace POS_DePrisa.formularios.Producto
                     MessageBox.Show(resultado.Mensaje);
                     return;
                 }
-                MessageBox.Show("Categoria eliminada con exito");
+                MessageBox.Show("Usuario eliminado con éxito", "Eliminación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnLimpiar_Click(sender, e);
                 cargarListaCategorias();
             }
         }
+
+
     }
 }
