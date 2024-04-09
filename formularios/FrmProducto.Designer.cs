@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProducto));
             this.tableLayoutBackGround = new System.Windows.Forms.TableLayoutPanel();
             this.panelShowData = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -48,7 +49,7 @@
             // 
             this.tableLayoutBackGround.BackColor = System.Drawing.Color.Gray;
             this.tableLayoutBackGround.ColumnCount = 1;
-            this.tableLayoutBackGround.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1330F));
+            this.tableLayoutBackGround.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1773F));
             this.tableLayoutBackGround.Controls.Add(this.panelShowData, 0, 2);
             this.tableLayoutBackGround.Controls.Add(this.tableLayoutPanel1, 0, 1);
             this.tableLayoutBackGround.Controls.Add(this.gradientPanel1, 0, 0);
@@ -57,20 +58,20 @@
             this.tableLayoutBackGround.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutBackGround.Name = "tableLayoutBackGround";
             this.tableLayoutBackGround.RowCount = 3;
-            this.tableLayoutBackGround.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutBackGround.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.tableLayoutBackGround.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tableLayoutBackGround.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.tableLayoutBackGround.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutBackGround.Size = new System.Drawing.Size(1330, 450);
+            this.tableLayoutBackGround.Size = new System.Drawing.Size(1773, 554);
             this.tableLayoutBackGround.TabIndex = 2;
             // 
             // panelShowData
             // 
             this.panelShowData.BackColor = System.Drawing.Color.White;
             this.panelShowData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelShowData.Location = new System.Drawing.Point(0, 78);
+            this.panelShowData.Location = new System.Drawing.Point(0, 96);
             this.panelShowData.Margin = new System.Windows.Forms.Padding(0);
             this.panelShowData.Name = "panelShowData";
-            this.panelShowData.Size = new System.Drawing.Size(1330, 372);
+            this.panelShowData.Size = new System.Drawing.Size(1773, 458);
             this.panelShowData.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -82,12 +83,12 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.882353F));
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutMenu, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 33);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 40);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1330, 44);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1773, 55);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // flowLayoutMenu
@@ -101,7 +102,7 @@
             this.flowLayoutMenu.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutMenu.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutMenu.Name = "flowLayoutMenu";
-            this.flowLayoutMenu.Size = new System.Drawing.Size(1198, 44);
+            this.flowLayoutMenu.Size = new System.Drawing.Size(1597, 55);
             this.flowLayoutMenu.TabIndex = 3;
             // 
             // btnGuardarProducto
@@ -119,9 +120,10 @@
             this.btnGuardarProducto.ForeColor = System.Drawing.Color.Black;
             this.btnGuardarProducto.Image = global::POS_DePrisa.Properties.Resources.iconAdd28;
             this.btnGuardarProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarProducto.Location = new System.Drawing.Point(3, 3);
+            this.btnGuardarProducto.Location = new System.Drawing.Point(4, 4);
+            this.btnGuardarProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGuardarProducto.Name = "btnGuardarProducto";
-            this.btnGuardarProducto.Size = new System.Drawing.Size(92, 38);
+            this.btnGuardarProducto.Size = new System.Drawing.Size(132, 47);
             this.btnGuardarProducto.TabIndex = 6;
             this.btnGuardarProducto.Text = "Nuevo";
             this.btnGuardarProducto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -145,9 +147,10 @@
             this.roundedButton2.ForeColor = System.Drawing.Color.Black;
             this.roundedButton2.Image = global::POS_DePrisa.Properties.Resources.iconAdd28;
             this.roundedButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.roundedButton2.Location = new System.Drawing.Point(101, 3);
+            this.roundedButton2.Location = new System.Drawing.Point(144, 4);
+            this.roundedButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.roundedButton2.Name = "roundedButton2";
-            this.roundedButton2.Size = new System.Drawing.Size(92, 38);
+            this.roundedButton2.Size = new System.Drawing.Size(132, 47);
             this.roundedButton2.TabIndex = 7;
             this.roundedButton2.Text = "Nuevo";
             this.roundedButton2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -170,9 +173,10 @@
             this.roundedButton3.ForeColor = System.Drawing.Color.Black;
             this.roundedButton3.Image = global::POS_DePrisa.Properties.Resources.iconAdd28;
             this.roundedButton3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.roundedButton3.Location = new System.Drawing.Point(199, 3);
+            this.roundedButton3.Location = new System.Drawing.Point(284, 4);
+            this.roundedButton3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.roundedButton3.Name = "roundedButton3";
-            this.roundedButton3.Size = new System.Drawing.Size(92, 38);
+            this.roundedButton3.Size = new System.Drawing.Size(132, 47);
             this.roundedButton3.TabIndex = 8;
             this.roundedButton3.Text = "Nuevo";
             this.roundedButton3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -195,9 +199,10 @@
             this.roundedButton4.ForeColor = System.Drawing.Color.Black;
             this.roundedButton4.Image = global::POS_DePrisa.Properties.Resources.iconAdd28;
             this.roundedButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.roundedButton4.Location = new System.Drawing.Point(297, 3);
+            this.roundedButton4.Location = new System.Drawing.Point(424, 4);
+            this.roundedButton4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.roundedButton4.Name = "roundedButton4";
-            this.roundedButton4.Size = new System.Drawing.Size(92, 38);
+            this.roundedButton4.Size = new System.Drawing.Size(132, 47);
             this.roundedButton4.TabIndex = 9;
             this.roundedButton4.Text = "Nuevo";
             this.roundedButton4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -214,7 +219,7 @@
             this.gradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.gradientPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(1330, 32);
+            this.gradientPanel1.Size = new System.Drawing.Size(1773, 39);
             this.gradientPanel1.TabIndex = 4;
             // 
             // label1
@@ -223,20 +228,21 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(16, 7);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(21, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 20);
+            this.label1.Size = new System.Drawing.Size(109, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Productos";
             // 
             // FrmProducto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1330, 450);
+            this.ClientSize = new System.Drawing.Size(1773, 554);
             this.Controls.Add(this.tableLayoutBackGround);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmProducto";
             this.Text = "FrmProducto";
             this.tableLayoutBackGround.ResumeLayout(false);

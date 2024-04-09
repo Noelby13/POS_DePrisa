@@ -61,7 +61,7 @@ namespace POS_DePrisa.formularios
         {
             DBDePrisaDataSetTableAdapters.RptProductosDisponiblesTableAdapter tbl = new DBDePrisaDataSetTableAdapters.RptProductosDisponiblesTableAdapter();
             DataTable datos = tbl.GetData();
-            reportes.CargarReportes.VerReporte(datos, "RptProductosDisponibles", "reportes/RptProductosDisponibles.rdlc");
+            reportes.CargarReportes.VerReporte(datos, "DsProductosDisponibles", "reportes/RptProductosDisponibles.rdlc");
         }
     }
 }

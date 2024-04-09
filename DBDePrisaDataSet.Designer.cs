@@ -3274,17 +3274,17 @@ namespace POS_DePrisa {
             
             private global::System.Data.DataColumn columnID;
             
-            private global::System.Data.DataColumn columnCódigo_de_Barra;
-            
             private global::System.Data.DataColumn columnNombre;
-            
-            private global::System.Data.DataColumn columnDescripción;
             
             private global::System.Data.DataColumn columnStock;
             
-            private global::System.Data.DataColumn _columnCosto__C__;
+            private global::System.Data.DataColumn columnCodigoBarra;
             
-            private global::System.Data.DataColumn columnEs_Kit;
+            private global::System.Data.DataColumn columnDescripcion;
+            
+            private global::System.Data.DataColumn columnCosto;
+            
+            private global::System.Data.DataColumn columnEsKit;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -3329,25 +3329,9 @@ namespace POS_DePrisa {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Código_de_BarraColumn {
-                get {
-                    return this.columnCódigo_de_Barra;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn NombreColumn {
                 get {
                     return this.columnNombre;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn DescripciónColumn {
-                get {
-                    return this.columnDescripción;
                 }
             }
             
@@ -3361,17 +3345,33 @@ namespace POS_DePrisa {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn _Costo__C__Column {
+            public global::System.Data.DataColumn CodigoBarraColumn {
                 get {
-                    return this._columnCosto__C__;
+                    return this.columnCodigoBarra;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Es_KitColumn {
+            public global::System.Data.DataColumn DescripcionColumn {
                 get {
-                    return this.columnEs_Kit;
+                    return this.columnDescripcion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CostoColumn {
+                get {
+                    return this.columnCosto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EsKitColumn {
+                get {
+                    return this.columnEsKit;
                 }
             }
             
@@ -3412,16 +3412,16 @@ namespace POS_DePrisa {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public RptProductosDisponiblesRow AddRptProductosDisponiblesRow(string Código_de_Barra, string Nombre, string Descripción, int Stock, decimal _Costo__C__, string Es_Kit) {
+            public RptProductosDisponiblesRow AddRptProductosDisponiblesRow(string Nombre, int Stock, string CodigoBarra, string Descripcion, decimal Costo, string EsKit) {
                 RptProductosDisponiblesRow rowRptProductosDisponiblesRow = ((RptProductosDisponiblesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        Código_de_Barra,
                         Nombre,
-                        Descripción,
                         Stock,
-                        _Costo__C__,
-                        Es_Kit};
+                        CodigoBarra,
+                        Descripcion,
+                        Costo,
+                        EsKit};
                 rowRptProductosDisponiblesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowRptProductosDisponiblesRow);
                 return rowRptProductosDisponiblesRow;
@@ -3452,12 +3452,12 @@ namespace POS_DePrisa {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
-                this.columnCódigo_de_Barra = base.Columns["Código de Barra"];
                 this.columnNombre = base.Columns["Nombre"];
-                this.columnDescripción = base.Columns["Descripción"];
                 this.columnStock = base.Columns["Stock"];
-                this._columnCosto__C__ = base.Columns["Costo (C$)"];
-                this.columnEs_Kit = base.Columns["Es Kit"];
+                this.columnCodigoBarra = base.Columns["CodigoBarra"];
+                this.columnDescripcion = base.Columns["Descripcion"];
+                this.columnCosto = base.Columns["Costo"];
+                this.columnEsKit = base.Columns["EsKit"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3465,20 +3465,18 @@ namespace POS_DePrisa {
             private void InitClass() {
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
-                this.columnCódigo_de_Barra = new global::System.Data.DataColumn("Código de Barra", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCódigo_de_Barra);
                 this.columnNombre = new global::System.Data.DataColumn("Nombre", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNombre);
-                this.columnDescripción = new global::System.Data.DataColumn("Descripción", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDescripción);
                 this.columnStock = new global::System.Data.DataColumn("Stock", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStock);
-                this._columnCosto__C__ = new global::System.Data.DataColumn("Costo (C$)", typeof(decimal), null, global::System.Data.MappingType.Element);
-                this._columnCosto__C__.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnCosto__C__");
-                this._columnCosto__C__.ExtendedProperties.Add("Generator_UserColumnName", "Costo (C$)");
-                base.Columns.Add(this._columnCosto__C__);
-                this.columnEs_Kit = new global::System.Data.DataColumn("Es Kit", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEs_Kit);
+                this.columnCodigoBarra = new global::System.Data.DataColumn("CodigoBarra", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodigoBarra);
+                this.columnDescripcion = new global::System.Data.DataColumn("Descripcion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescripcion);
+                this.columnCosto = new global::System.Data.DataColumn("Costo", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCosto);
+                this.columnEsKit = new global::System.Data.DataColumn("EsKit", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEsKit);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -3487,15 +3485,15 @@ namespace POS_DePrisa {
                 this.columnID.AllowDBNull = false;
                 this.columnID.ReadOnly = true;
                 this.columnID.Unique = true;
-                this.columnCódigo_de_Barra.ReadOnly = true;
-                this.columnCódigo_de_Barra.MaxLength = 50;
                 this.columnNombre.AllowDBNull = false;
                 this.columnNombre.MaxLength = 100;
-                this.columnDescripción.ReadOnly = true;
-                this.columnDescripción.MaxLength = 200;
                 this.columnStock.AllowDBNull = false;
-                this.columnEs_Kit.ReadOnly = true;
-                this.columnEs_Kit.MaxLength = 2;
+                this.columnCodigoBarra.ReadOnly = true;
+                this.columnCodigoBarra.MaxLength = 50;
+                this.columnDescripcion.ReadOnly = true;
+                this.columnDescripcion.MaxLength = 200;
+                this.columnEsKit.ReadOnly = true;
+                this.columnEsKit.MaxLength = 2;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4548,45 +4546,12 @@ namespace POS_DePrisa {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Código_de_Barra {
-                get {
-                    try {
-                        return ((string)(this[this.tableRptProductosDisponibles.Código_de_BarraColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Código de Barra\' in table \'RptProductosDisponibles\' is DBNu" +
-                                "ll.", e);
-                    }
-                }
-                set {
-                    this[this.tableRptProductosDisponibles.Código_de_BarraColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Nombre {
                 get {
                     return ((string)(this[this.tableRptProductosDisponibles.NombreColumn]));
                 }
                 set {
                     this[this.tableRptProductosDisponibles.NombreColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Descripción {
-                get {
-                    try {
-                        return ((string)(this[this.tableRptProductosDisponibles.DescripciónColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Descripción\' in table \'RptProductosDisponibles\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableRptProductosDisponibles.DescripciónColumn] = value;
                 }
             }
             
@@ -4603,82 +4568,114 @@ namespace POS_DePrisa {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal _Costo__C__ {
+            public string CodigoBarra {
                 get {
                     try {
-                        return ((decimal)(this[this.tableRptProductosDisponibles._Costo__C__Column]));
+                        return ((string)(this[this.tableRptProductosDisponibles.CodigoBarraColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Costo (C$)\' in table \'RptProductosDisponibles\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'CodigoBarra\' in table \'RptProductosDisponibles\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRptProductosDisponibles._Costo__C__Column] = value;
+                    this[this.tableRptProductosDisponibles.CodigoBarraColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Es_Kit {
+            public string Descripcion {
                 get {
                     try {
-                        return ((string)(this[this.tableRptProductosDisponibles.Es_KitColumn]));
+                        return ((string)(this[this.tableRptProductosDisponibles.DescripcionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Es Kit\' in table \'RptProductosDisponibles\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Descripcion\' in table \'RptProductosDisponibles\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRptProductosDisponibles.Es_KitColumn] = value;
+                    this[this.tableRptProductosDisponibles.DescripcionColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsCódigo_de_BarraNull() {
-                return this.IsNull(this.tableRptProductosDisponibles.Código_de_BarraColumn);
+            public decimal Costo {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableRptProductosDisponibles.CostoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Costo\' in table \'RptProductosDisponibles\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRptProductosDisponibles.CostoColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetCódigo_de_BarraNull() {
-                this[this.tableRptProductosDisponibles.Código_de_BarraColumn] = global::System.Convert.DBNull;
+            public string EsKit {
+                get {
+                    try {
+                        return ((string)(this[this.tableRptProductosDisponibles.EsKitColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EsKit\' in table \'RptProductosDisponibles\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRptProductosDisponibles.EsKitColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsDescripciónNull() {
-                return this.IsNull(this.tableRptProductosDisponibles.DescripciónColumn);
+            public bool IsCodigoBarraNull() {
+                return this.IsNull(this.tableRptProductosDisponibles.CodigoBarraColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetDescripciónNull() {
-                this[this.tableRptProductosDisponibles.DescripciónColumn] = global::System.Convert.DBNull;
+            public void SetCodigoBarraNull() {
+                this[this.tableRptProductosDisponibles.CodigoBarraColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is_Costo__C__Null() {
-                return this.IsNull(this.tableRptProductosDisponibles._Costo__C__Column);
+            public bool IsDescripcionNull() {
+                return this.IsNull(this.tableRptProductosDisponibles.DescripcionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set_Costo__C__Null() {
-                this[this.tableRptProductosDisponibles._Costo__C__Column] = global::System.Convert.DBNull;
+            public void SetDescripcionNull() {
+                this[this.tableRptProductosDisponibles.DescripcionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsEs_KitNull() {
-                return this.IsNull(this.tableRptProductosDisponibles.Es_KitColumn);
+            public bool IsCostoNull() {
+                return this.IsNull(this.tableRptProductosDisponibles.CostoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetEs_KitNull() {
-                this[this.tableRptProductosDisponibles.Es_KitColumn] = global::System.Convert.DBNull;
+            public void SetCostoNull() {
+                this[this.tableRptProductosDisponibles.CostoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsEsKitNull() {
+                return this.IsNull(this.tableRptProductosDisponibles.EsKitColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetEsKitNull() {
+                this[this.tableRptProductosDisponibles.EsKitColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -8095,37 +8092,37 @@ SELECT idUsuario, nombre, nombreUsuario, pw, fechaCreacion, estado, idRol FROM T
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "RptProductosDisponibles";
             tableMapping.ColumnMappings.Add("ID", "ID");
-            tableMapping.ColumnMappings.Add("Código de Barra", "Código de Barra");
             tableMapping.ColumnMappings.Add("Nombre", "Nombre");
-            tableMapping.ColumnMappings.Add("Descripción", "Descripción");
             tableMapping.ColumnMappings.Add("Stock", "Stock");
-            tableMapping.ColumnMappings.Add("Costo (C$)", "Costo (C$)");
-            tableMapping.ColumnMappings.Add("Es Kit", "Es Kit");
+            tableMapping.ColumnMappings.Add("CodigoBarra", "CodigoBarra");
+            tableMapping.ColumnMappings.Add("Descripcion", "Descripcion");
+            tableMapping.ColumnMappings.Add("Costo", "Costo");
+            tableMapping.ColumnMappings.Add("EsKit", "EsKit");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM [Tbl_Producto] WHERE (([idProducto] = @Original_ID) AND ([Nombre] = @" +
-                "Original_Nombre) AND ([Stock] = @Original_Stock) AND ((@p7 = 1 AND [costo] IS NU" +
-                "LL) OR ([costo] = @p6)))";
+                "Original_Nombre) AND ([Stock] = @Original_Stock) AND ((@IsNull_Costo = 1 AND [Co" +
+                "sto] IS NULL) OR ([Costo] = @Original_Costo)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Nombre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Stock", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Stock", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p7", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Costo (C$)", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p6", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "Costo (C$)", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Costo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Costo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Costo", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "Costo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [Tbl_Producto] SET [Nombre] = @Nombre, [Stock] = @Stock, [costo] = @p5 WHERE (([idProducto] = @Original_ID) AND ([Nombre] = @Original_Nombre) AND ([Stock] = @Original_Stock) AND ((@p7 = 1 AND [costo] IS NULL) OR ([costo] = @p6)));
-SELECT idProducto AS ID, ISNULL(codigoBarra, 'Sin especificar') AS [Código de Barra], nombre AS Nombre, ISNULL(descripcion, 'Sin especificar') AS Descripción, stock AS Stock, costo AS [Costo (C$)], CASE WHEN tieneKit = 1 THEN 'Si' ELSE 'No' END AS [Es Kit] FROM Tbl_Producto WHERE (idProducto = @idProducto)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Tbl_Producto] SET [Nombre] = @Nombre, [Stock] = @Stock, [Costo] = @Costo WHERE (([idProducto] = @Original_ID) AND ([Nombre] = @Original_Nombre) AND ([Stock] = @Original_Stock) AND ((@IsNull_Costo = 1 AND [Costo] IS NULL) OR ([Costo] = @Original_Costo)));
+SELECT idProducto AS ID, ISNULL(codigoBarra, 'Sin especificar') AS CodigoBarra, nombre AS Nombre, ISNULL(descripcion, 'Sin especificar') AS Descripcion, stock AS Stock, costo AS Costo, CASE WHEN tieneKit = 1 THEN 'Si' ELSE 'No' END AS EsKit FROM Tbl_Producto WHERE (idProducto = @idProducto)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Stock", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Stock", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p5", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "Costo (C$)", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Costo", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "Costo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Nombre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Stock", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Stock", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p7", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Costo (C$)", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p6", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "Costo (C$)", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Costo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Costo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Costo", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "Costo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idProducto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -8142,8 +8139,8 @@ SELECT idProducto AS ID, ISNULL(codigoBarra, 'Sin especificar') AS [Código de B
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT idProducto AS ID, ISNULL(codigoBarra, 'Sin especificar') AS [Código de Barra], nombre AS Nombre, ISNULL(descripcion, 'Sin especificar') AS Descripción, stock AS Stock, costo AS [Costo (C$)], 
-                  CASE WHEN tieneKit = 1 THEN 'Si' ELSE 'No' END AS [Es Kit]
+            this._commandCollection[0].CommandText = @"SELECT idProducto AS ID, ISNULL(codigoBarra, 'Sin especificar') AS CodigoBarra, nombre AS Nombre, ISNULL(descripcion, 'Sin especificar') AS Descripcion, stock AS Stock, costo AS Costo, 
+                  CASE WHEN tieneKit = 1 THEN 'Si' ELSE 'No' END AS EsKit
 FROM     Tbl_Producto";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
@@ -8205,7 +8202,7 @@ FROM     Tbl_Producto";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, string Original_Nombre, int Original_Stock, decimal p6) {
+        public virtual int Delete(int Original_ID, string Original_Nombre, int Original_Stock, decimal Original_Costo) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
             if ((Original_Nombre == null)) {
                 throw new global::System.ArgumentNullException("Original_Nombre");
@@ -8215,7 +8212,7 @@ FROM     Tbl_Producto";
             }
             this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_Stock));
             this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((decimal)(p6));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((decimal)(Original_Costo));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8236,7 +8233,7 @@ FROM     Tbl_Producto";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Nombre, int Stock, decimal p5, int Original_ID, string Original_Nombre, int Original_Stock, decimal p6, int idProducto) {
+        public virtual int Update(string Nombre, int Stock, decimal Costo, int Original_ID, string Original_Nombre, int Original_Stock, decimal Original_Costo, int idProducto) {
             if ((Nombre == null)) {
                 throw new global::System.ArgumentNullException("Nombre");
             }
@@ -8244,7 +8241,7 @@ FROM     Tbl_Producto";
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Nombre));
             }
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Stock));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(p5));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(Costo));
             this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_ID));
             if ((Original_Nombre == null)) {
                 throw new global::System.ArgumentNullException("Original_Nombre");
@@ -8254,7 +8251,7 @@ FROM     Tbl_Producto";
             }
             this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Stock));
             this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(p6));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(Original_Costo));
             this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(idProducto));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8276,8 +8273,8 @@ FROM     Tbl_Producto";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Nombre, int Stock, decimal p5, int Original_ID, string Original_Nombre, int Original_Stock, decimal p6) {
-            return this.Update(Nombre, Stock, p5, Original_ID, Original_Nombre, Original_Stock, p6, Original_ID);
+        public virtual int Update(string Nombre, int Stock, decimal Costo, int Original_ID, string Original_Nombre, int Original_Stock, decimal Original_Costo) {
+            return this.Update(Nombre, Stock, Costo, Original_ID, Original_Nombre, Original_Stock, Original_Costo, Original_ID);
         }
     }
     

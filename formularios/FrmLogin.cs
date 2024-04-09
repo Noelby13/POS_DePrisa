@@ -27,9 +27,20 @@ namespace POS_DePrisa.formularios
 
         private void txtUser_Click(object sender, EventArgs e)
         {
+            Color campoInactivo = Color.FromArgb(144, 148, 165);
+
             if (txtUser.Text == "Usuario")
             {
                 txtUser.Text = "";
+                txtUser.ForeColor = Color.Black;
+            }
+
+            if (txtContra.Text == "")
+            {
+                txtContra.UseSystemPasswordChar = false;
+                txtContra.Text = "Contraseña";
+                txtContra.ForeColor = Color.FromArgb(144, 148, 165);
+
             }
         }
 
@@ -39,6 +50,13 @@ namespace POS_DePrisa.formularios
             {
                 txtContra.Text = "";
                 txtContra.UseSystemPasswordChar = true;
+                txtContra.ForeColor = Color.Black;
+            }
+
+            if (txtUser.Text == "")
+            {
+                txtUser.Text = "Usuario";
+                txtUser.ForeColor = Color.FromArgb(144, 148, 165);
             }
         }
 

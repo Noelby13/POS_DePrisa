@@ -35,6 +35,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>imagenes\iconDePrisa.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -85,6 +88,9 @@
     <Compile Include="dao\DProducto.cs" />
     <Compile Include="dao\DRol.cs" />
     <Compile Include="dao\DUsuario.cs" />
+    <Compile Include="DBDePrisaDataSet.cs">
+      <DependentUpon>DBDePrisaDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DBDePrisaDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -241,7 +247,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="reportes\RptProductosDisponibles.rdlc" />
+    <EmbeddedResource Include="reportes\RptProductosDisponibles.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="DBDePrisaDataSet.xsc">
       <DependentUpon>DBDePrisaDataSet.xsd</DependentUpon>
     </None>
@@ -274,6 +282,8 @@
   <ItemGroup>
     <Content Include="imagenes\Elipses.png" />
     <Content Include="imagenes\iconClose32.png" />
+    <None Include="imagenes\profileIcon.png" />
+    <None Include="imagenes\iconDePrisa.ico" />
     <Content Include="imagenes\iconFactura32.png" />
     <Content Include="imagenes\iconOficina32.png" />
     <Content Include="imagenes\iconConfiguracion32.png" />
@@ -297,6 +307,7 @@
     <Content Include="imagenes\iconUsuario32.png" />
     <Content Include="imagenes\Logo DePrisa %281%29.png" />
     <Content Include="imagenes\Logo DePrisa.svg" />
+    <None Include="imagenes\logoDePrisaHorizontal.png" />
     <Content Include="imagenes\logoPrisaBlue.jpg" />
     <Content Include="imagenes\logoPrisaBlueHorizontal.jpg" />
   </ItemGroup>
