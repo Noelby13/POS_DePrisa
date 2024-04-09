@@ -101,8 +101,8 @@
             // 
             this.btnOcultar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOcultar.AutoSize = true;
-            this.btnOcultar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.btnOcultar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
+            this.btnOcultar.BackColor = System.Drawing.Color.White;
+            this.btnOcultar.BackgroundColor = System.Drawing.Color.White;
             this.btnOcultar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnOcultar.BorderRadius = 10;
             this.btnOcultar.BorderSize = 1;
@@ -143,7 +143,7 @@
             this.gbTipoReporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbTipoReporte.Location = new System.Drawing.Point(3, 3);
             this.gbTipoReporte.Name = "gbTipoReporte";
-            this.gbTipoReporte.Size = new System.Drawing.Size(248, 52);
+            this.gbTipoReporte.Size = new System.Drawing.Size(354, 52);
             this.gbTipoReporte.TabIndex = 12;
             this.gbTipoReporte.TabStop = false;
             this.gbTipoReporte.Text = "Seleccione su reporte";
@@ -158,15 +158,15 @@
             "Productos Disponibles"});
             this.cbxTipoReporte.Location = new System.Drawing.Point(0, 21);
             this.cbxTipoReporte.Name = "cbxTipoReporte";
-            this.cbxTipoReporte.Size = new System.Drawing.Size(232, 28);
+            this.cbxTipoReporte.Size = new System.Drawing.Size(348, 28);
             this.cbxTipoReporte.TabIndex = 11;
             // 
             // btnGenerarReporte
             // 
             this.btnGenerarReporte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGenerarReporte.AutoSize = true;
-            this.btnGenerarReporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.btnGenerarReporte.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
+            this.btnGenerarReporte.BackColor = System.Drawing.Color.White;
+            this.btnGenerarReporte.BackgroundColor = System.Drawing.Color.White;
             this.btnGenerarReporte.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnGenerarReporte.BorderRadius = 10;
             this.btnGenerarReporte.BorderSize = 1;
@@ -176,7 +176,7 @@
             this.btnGenerarReporte.ForeColor = System.Drawing.Color.Black;
             this.btnGenerarReporte.Image = global::POS_DePrisa.Properties.Resources.iconPdf32;
             this.btnGenerarReporte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGenerarReporte.Location = new System.Drawing.Point(258, 4);
+            this.btnGenerarReporte.Location = new System.Drawing.Point(364, 4);
             this.btnGenerarReporte.Margin = new System.Windows.Forms.Padding(4);
             this.btnGenerarReporte.Name = "btnGenerarReporte";
             this.btnGenerarReporte.Size = new System.Drawing.Size(191, 47);
@@ -196,9 +196,9 @@
             this.tscbTipoReporte,
             this.tsbGenerarReporte,
             this.tsbMostrar});
-            this.tsMenu.Location = new System.Drawing.Point(453, 0);
+            this.tsMenu.Location = new System.Drawing.Point(532, 0);
             this.tsMenu.Name = "tsMenu";
-            this.tsMenu.Size = new System.Drawing.Size(312, 27);
+            this.tsMenu.Size = new System.Drawing.Size(342, 31);
             this.tsMenu.TabIndex = 10;
             this.tsMenu.Visible = false;
             // 
@@ -210,7 +210,7 @@
             "-----REPORTES GENERALES-----",
             "Productos Disponibles"});
             this.tscbTipoReporte.Name = "tscbTipoReporte";
-            this.tscbTipoReporte.Size = new System.Drawing.Size(200, 27);
+            this.tscbTipoReporte.Size = new System.Drawing.Size(230, 31);
             // 
             // tsbGenerarReporte
             // 
@@ -218,16 +218,16 @@
             this.tsbGenerarReporte.Image = global::POS_DePrisa.Properties.Resources.iconPdf32;
             this.tsbGenerarReporte.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbGenerarReporte.Name = "tsbGenerarReporte";
-            this.tsbGenerarReporte.Size = new System.Drawing.Size(29, 24);
+            this.tsbGenerarReporte.Size = new System.Drawing.Size(29, 28);
             this.tsbGenerarReporte.Text = "Generar Reporte";
             // 
             // tsbMostrar
             // 
             this.tsbMostrar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbMostrar.Image = global::POS_DePrisa.Properties.Resources.iconOcultar28;
+            this.tsbMostrar.Image = global::POS_DePrisa.Properties.Resources.ver;
             this.tsbMostrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbMostrar.Name = "tsbMostrar";
-            this.tsbMostrar.Size = new System.Drawing.Size(29, 24);
+            this.tsbMostrar.Size = new System.Drawing.Size(29, 28);
             this.tsbMostrar.Text = "Mostrar Menu";
             this.tsbMostrar.Click += new System.EventHandler(this.tsbMostrar_Click);
             // 

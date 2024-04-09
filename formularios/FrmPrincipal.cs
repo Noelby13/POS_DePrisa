@@ -19,7 +19,6 @@ namespace POS_DePrisa
         private Usuario userSistema;
         public void desactivarBotones()
         {
-            btnConfiguracion.Enabled = false;
             btnFacturas.Enabled = false;
             btnUsuarios.Enabled = false;
             btnReportes.Enabled = false;
@@ -28,7 +27,6 @@ namespace POS_DePrisa
 
         public void activarBotones()
         {
-            btnConfiguracion.Enabled = true;
             btnFacturas.Enabled = true;
             btnUsuarios.Enabled = true;
             btnReportes.Enabled = true;
