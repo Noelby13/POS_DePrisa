@@ -92,7 +92,7 @@ namespace POS_DePrisa
         private void btnFacturas_Click(object sender, EventArgs e)
         {
             //utiliza el panelshowData para cargarFrmProducto
-            showForm(new FrmProducto());
+            showForm(new FrmFacturacion());
 
         }
 

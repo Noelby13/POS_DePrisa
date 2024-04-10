@@ -110,11 +110,23 @@
     <Compile Include="formularios\FrmAperturaCaja.Designer.cs">
       <DependentUpon>FrmAperturaCaja.cs</DependentUpon>
     </Compile>
+    <Compile Include="formularios\FrmBuscarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\FrmBuscarProducto.Designer.cs">
+      <DependentUpon>FrmBuscarProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="formularios\FrmCierreTurno.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="formularios\FrmCierreTurno.Designer.cs">
       <DependentUpon>FrmCierreTurno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formularios\FrmFacturacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\FrmFacturacion.Designer.cs">
+      <DependentUpon>FrmFacturacion.cs</DependentUpon>
     </Compile>
     <Compile Include="formularios\FrmLogin.cs">
       <SubType>Form</SubType>
@@ -158,28 +170,28 @@
     <Compile Include="formularios\FrmUsuario.Designer.cs">
       <DependentUpon>FrmUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="formularios\Producto\FrmCantidadDetalleKit.cs">
+    <Compile Include="formularios\Productos\FrmCantidadDetalleKit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formularios\Producto\FrmCantidadDetalleKit.Designer.cs">
+    <Compile Include="formularios\Productos\FrmCantidadDetalleKit.Designer.cs">
       <DependentUpon>FrmCantidadDetalleKit.cs</DependentUpon>
     </Compile>
-    <Compile Include="formularios\Producto\FrmCategoria.cs">
+    <Compile Include="formularios\Productos\FrmCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formularios\Producto\FrmCategoria.Designer.cs">
+    <Compile Include="formularios\Productos\FrmCategoria.Designer.cs">
       <DependentUpon>FrmCategoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="formularios\Producto\FrmGuardarProducto.cs">
+    <Compile Include="formularios\Productos\FrmGuardarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formularios\Producto\FrmGuardarProducto.Designer.cs">
+    <Compile Include="formularios\Productos\FrmGuardarProducto.Designer.cs">
       <DependentUpon>FrmGuardarProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="formularios\Producto\FrmPrueba.cs">
+    <Compile Include="formularios\Productos\FrmPrueba.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formularios\Producto\FrmPrueba.Designer.cs">
+    <Compile Include="formularios\Productos\FrmPrueba.Designer.cs">
       <DependentUpon>FrmPrueba.cs</DependentUpon>
     </Compile>
     <Compile Include="formularios\Usuario\FrmCrudUsuario.cs">
@@ -198,8 +210,14 @@
     <EmbeddedResource Include="formularios\FrmAperturaCaja.resx">
       <DependentUpon>FrmAperturaCaja.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formularios\FrmBuscarProducto.resx">
+      <DependentUpon>FrmBuscarProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formularios\FrmCierreTurno.resx">
       <DependentUpon>FrmCierreTurno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\FrmFacturacion.resx">
+      <DependentUpon>FrmFacturacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -222,16 +240,16 @@
     <EmbeddedResource Include="formularios\FrmUsuario.resx">
       <DependentUpon>FrmUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formularios\Producto\FrmCantidadDetalleKit.resx">
+    <EmbeddedResource Include="formularios\Productos\FrmCantidadDetalleKit.resx">
       <DependentUpon>FrmCantidadDetalleKit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formularios\Producto\FrmCategoria.resx">
+    <EmbeddedResource Include="formularios\Productos\FrmCategoria.resx">
       <DependentUpon>FrmCategoria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formularios\Producto\FrmGuardarProducto.resx">
+    <EmbeddedResource Include="formularios\Productos\FrmGuardarProducto.resx">
       <DependentUpon>FrmGuardarProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formularios\Producto\FrmPrueba.resx">
+    <EmbeddedResource Include="formularios\Productos\FrmPrueba.resx">
       <DependentUpon>FrmPrueba.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\Usuario\FrmCrudUsuario.resx">
@@ -281,6 +299,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="imagenes\Elipses.png" />
+    <Content Include="imagenes\iconBarCode28.png" />
+    <Content Include="imagenes\iconBarCode32.png" />
     <Content Include="imagenes\iconClose32.png" />
     <None Include="imagenes\profileIcon.png" />
     <None Include="imagenes\iconDePrisa.ico" />
@@ -304,6 +324,8 @@
     <Content Include="imagenes\iconAdd24.png" />
     <Content Include="imagenes\iconDelete24.png" />
     <Content Include="imagenes\iconClean24.png" />
+    <Content Include="imagenes\iconSearch24.png" />
+    <Content Include="imagenes\iconSearch32.png" />
     <Content Include="imagenes\iconUsuario32.png" />
     <Content Include="imagenes\Logo DePrisa %281%29.png" />
     <Content Include="imagenes\Logo DePrisa.svg" />

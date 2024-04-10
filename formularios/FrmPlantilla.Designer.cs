@@ -58,7 +58,7 @@
             // 
             this.tableLayoutBackGround.BackColor = System.Drawing.Color.Gray;
             this.tableLayoutBackGround.ColumnCount = 1;
-            this.tableLayoutBackGround.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1732F));
+            this.tableLayoutBackGround.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1299F));
             this.tableLayoutBackGround.Controls.Add(this.panelShowData, 0, 2);
             this.tableLayoutBackGround.Controls.Add(this.tableLayoutPanel1, 0, 1);
             this.tableLayoutBackGround.Controls.Add(this.gradientPanel1, 0, 0);
@@ -67,20 +67,20 @@
             this.tableLayoutBackGround.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutBackGround.Name = "tableLayoutBackGround";
             this.tableLayoutBackGround.RowCount = 3;
-            this.tableLayoutBackGround.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-            this.tableLayoutBackGround.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tableLayoutBackGround.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutBackGround.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.tableLayoutBackGround.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutBackGround.Size = new System.Drawing.Size(1732, 551);
+            this.tableLayoutBackGround.Size = new System.Drawing.Size(1299, 448);
             this.tableLayoutBackGround.TabIndex = 1;
             // 
             // panelShowData
             // 
             this.panelShowData.BackColor = System.Drawing.Color.White;
             this.panelShowData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelShowData.Location = new System.Drawing.Point(0, 96);
+            this.panelShowData.Location = new System.Drawing.Point(0, 78);
             this.panelShowData.Margin = new System.Windows.Forms.Padding(0);
             this.panelShowData.Name = "panelShowData";
-            this.panelShowData.Size = new System.Drawing.Size(1732, 455);
+            this.panelShowData.Size = new System.Drawing.Size(1299, 370);
             this.panelShowData.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -93,12 +93,12 @@
             this.tableLayoutPanel1.Controls.Add(this.btnOcultar, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutMenu, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 40);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 33);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1732, 55);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1299, 44);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // btnOcultar
@@ -116,10 +116,9 @@
             this.btnOcultar.ForeColor = System.Drawing.Color.Black;
             this.btnOcultar.Image = global::POS_DePrisa.Properties.Resources.iconOcultar28;
             this.btnOcultar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOcultar.Location = new System.Drawing.Point(1564, 4);
-            this.btnOcultar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnOcultar.Location = new System.Drawing.Point(1173, 3);
             this.btnOcultar.Name = "btnOcultar";
-            this.btnOcultar.Size = new System.Drawing.Size(164, 47);
+            this.btnOcultar.Size = new System.Drawing.Size(123, 38);
             this.btnOcultar.TabIndex = 10;
             this.btnOcultar.Text = "Ocultar menu";
             this.btnOcultar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -138,7 +137,7 @@
             this.flowLayoutMenu.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutMenu.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutMenu.Name = "flowLayoutMenu";
-            this.flowLayoutMenu.Size = new System.Drawing.Size(1560, 55);
+            this.flowLayoutMenu.Size = new System.Drawing.Size(1170, 44);
             this.flowLayoutMenu.TabIndex = 3;
             // 
             // roundedButton1
@@ -156,10 +155,9 @@
             this.roundedButton1.ForeColor = System.Drawing.Color.Black;
             this.roundedButton1.Image = global::POS_DePrisa.Properties.Resources.iconAdd28;
             this.roundedButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.roundedButton1.Location = new System.Drawing.Point(4, 4);
-            this.roundedButton1.Margin = new System.Windows.Forms.Padding(4);
+            this.roundedButton1.Location = new System.Drawing.Point(3, 3);
             this.roundedButton1.Name = "roundedButton1";
-            this.roundedButton1.Size = new System.Drawing.Size(132, 47);
+            this.roundedButton1.Size = new System.Drawing.Size(99, 38);
             this.roundedButton1.TabIndex = 6;
             this.roundedButton1.Text = "Nuevo";
             this.roundedButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -183,10 +181,9 @@
             this.btnCategoria.ForeColor = System.Drawing.Color.Black;
             this.btnCategoria.Image = global::POS_DePrisa.Properties.Resources.iconCategoria28;
             this.btnCategoria.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCategoria.Location = new System.Drawing.Point(144, 4);
-            this.btnCategoria.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCategoria.Location = new System.Drawing.Point(108, 3);
             this.btnCategoria.Name = "btnCategoria";
-            this.btnCategoria.Size = new System.Drawing.Size(171, 47);
+            this.btnCategoria.Size = new System.Drawing.Size(128, 38);
             this.btnCategoria.TabIndex = 9;
             this.btnCategoria.Text = "Categoria";
             this.btnCategoria.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -204,9 +201,9 @@
             this.toolStripButton6,
             this.toolStripButton7,
             this.toolStripButton8});
-            this.toolStrip2.Location = new System.Drawing.Point(261, 0);
+            this.toolStrip2.Location = new System.Drawing.Point(196, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(180, 31);
+            this.toolStrip2.Size = new System.Drawing.Size(135, 25);
             this.toolStrip2.TabIndex = 10;
             this.toolStrip2.Visible = false;
             // 
@@ -216,7 +213,7 @@
             this.toolStripButton5.Image = global::POS_DePrisa.Properties.Resources.iconAdd16;
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButton5.Size = new System.Drawing.Size(24, 22);
             this.toolStripButton5.Text = "guardar";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
@@ -226,7 +223,7 @@
             this.toolStripButton6.Image = global::POS_DePrisa.Properties.Resources.iconCategoria16;
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButton6.Size = new System.Drawing.Size(24, 22);
             this.toolStripButton6.Text = "toolStripButton2";
             // 
             // toolStripButton7
@@ -235,7 +232,7 @@
             this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButton7.Size = new System.Drawing.Size(24, 22);
             this.toolStripButton7.Text = "toolStripButton3";
             // 
             // toolStripButton8
@@ -244,7 +241,7 @@
             this.toolStripButton8.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton8.Image")));
             this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButton8.Size = new System.Drawing.Size(24, 22);
             this.toolStripButton8.Text = "MostrarMenu";
             this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
             // 
@@ -256,7 +253,7 @@
             this.gradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.gradientPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(1732, 39);
+            this.gradientPanel1.Size = new System.Drawing.Size(1299, 32);
             this.gradientPanel1.TabIndex = 4;
             // 
             // label1
@@ -310,11 +307,11 @@
             // 
             // FrmPlantilla
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1732, 551);
+            this.ClientSize = new System.Drawing.Size(1299, 448);
             this.Controls.Add(this.tableLayoutBackGround);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmPlantilla";
             this.Text = "FrmPlantilla";
             this.tableLayoutBackGround.ResumeLayout(false);
