@@ -205,4 +205,16 @@
   <data name="profileIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\profileIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="iconBarCode28" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\iconBarCode28.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconBarCode32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\iconBarCode32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconSearch24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\iconSearch24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconSearch32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\iconSearch32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

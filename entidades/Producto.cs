@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace POS_DePrisa.entidades
 {
-    internal class Producto
+    public class Producto
     {
         public Producto(int idProducto, string codigoBarra, string nombre, string descripcion, int stock, double precio, bool tieneIva, bool tieneKit, float descuentoMaximo, int estado, int idcategoria)
         {

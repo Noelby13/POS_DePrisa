@@ -68,38 +68,48 @@ namespace POS_DePrisa.formularios
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            DRol loginRol = new DRol();
-            DUsuario loginUsuario = new DUsuario();
+            //    DRol loginRol = new DRol();
+            //    DUsuario loginUsuario = new DUsuario();
+            //    Usuario user = new Usuario();
+
+
+            //    if (txtUser.Text.Trim() == "Usuario" && txtContra.Text.Trim() == "Contraseña")
+            //    {
+            //        Mostrar un cuadro de diálogo de error
+            //        MessageBox.Show("Ingresa tus datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //    else
+            //    {
+            //        if (loginUsuario.validarCredenciales(txtUser.Text.Trim(), txtContra.Text.Trim()))
+            //        {
+            //            int idRol = loginRol.BuscarRol(txtUser.Text.Trim());
+            //            user = loginUsuario.ObtenerUsuarioPorNombreUsuario(txtUser.Text.Trim());
+            //            var frm = new FrmPrincipal(user);
+            //            frm.Show();
+            //            this.Hide();
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("Nombre de usuario o clave invalidos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //            txtUser.Text = "Usuario";
+            //            txtContra.Text = "Contraseña";
+
+
+            //        }
+            //    }
+
+            //crea un usuario temporal
             Usuario user = new Usuario();
-           
-
-            if (txtUser.Text.Trim() == "Usuario" && txtContra.Text.Trim() == "Contraseña")
-            {
-                // Mostrar un cuadro de diálogo de error
-                MessageBox.Show("Ingresa tus datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                if (loginUsuario.validarCredenciales(txtUser.Text.Trim(), txtContra.Text.Trim())) {
-                    int idRol = loginRol.BuscarRol(txtUser.Text.Trim());
-                    user = loginUsuario.ObtenerUsuarioPorNombreUsuario(txtUser.Text.Trim());
-                    var frm = new FrmPrincipal(user);
-                    frm.Show();
-                    this.Hide();
-                }
-                else
-                {
-                    MessageBox.Show("Nombre de usuario o clave invalidos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtUser.Text = "Usuario";
-                    txtContra.Text = "Contraseña";
+            user.IdRol = 1;
+            user.Nombre = "Administrador";
+            user.NombreUsuario = "admin";
+            user.Pw = "admin";
+            var frm = new FrmPrincipal(user);
+            frm.Show();
 
 
-                }
-            }
-            
-            
-            
-           
+
+
         }
 
         private void chkContraseña_CheckedChanged(object sender, EventArgs e)
