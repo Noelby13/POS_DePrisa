@@ -35,26 +35,9 @@ namespace POS_DePrisa.formularios
             cargarDataGrid();
         }
 
-        private void configurarData()
-        {
-            DataGridViewColumn columnaPrecio = dgvListaProducto.Columns["Precio"];
 
-            if (columnaPrecio != null)
-            {
-                // Configurar color de fondo y formato de la columna "Precio"
-                columnaPrecio.DefaultCellStyle.BackColor = Color.LightGreen;
-                columnaPrecio.DefaultCellStyle.Format = "C"; // Formato de moneda
-            }
-            else
-            {
-                MessageBox.Show("La columna 'Precio' no existe.");
-            }
-
-
-        }
         private void ConfigurarEstiloDataGridView()
         {
-            MessageBox.Show("Configurando estilo del DataGridView...");
             // Configurar estilo de las celdas
             DataGridViewCellStyle estiloCeldas = new DataGridViewCellStyle();
             estiloCeldas.BackColor = Color.White;
@@ -80,7 +63,6 @@ namespace POS_DePrisa.formularios
             {
                 // Configurar color de fondo y formato de la columna "Precio"
                 columnaPrecio.DefaultCellStyle.ForeColor = Color.LightGreen;
-                MessageBox.Show("Configurando estilo de la columna 'Precio'...");
                 columnaPrecio.DefaultCellStyle.Format = "C"; // Formato de moneda
                 dgvListaProducto.Refresh();
             }
@@ -88,6 +70,19 @@ namespace POS_DePrisa.formularios
             {
                 MessageBox.Show("La columna 'Precio' no existe.");
             }
+        }
+
+        private void addNewRow()
+        {
+            //agrega una nueva fila al datagrid atraves de row.add
+            DataGridViewRow row = (DataGridViewRow)dgvListaProducto.Rows[0].Clone();
+            row.Cells[0].Value = "Producto 1";
+            row.Cells[1].Value = 1000;
+            dgvListaProducto.Rows.Add(row);
+
+
+          
+
         }
 
         private void cargarDataGrid()
@@ -103,10 +98,11 @@ namespace POS_DePrisa.formularios
                 dgvListaProducto.DataSource = listaProductos;
                 //dgvListaProducto.Columns["Precio"].DefaultCellStyle.BackColor = Color.Red;
                 //dgvListaProducto.Columns["Precio"].DefaultCellStyle.Format = "C";
-                ConfigurarEstiloDataGridView();
             }
             dgvListaProducto.Refresh();
-       
+            ConfigurarEstiloDataGridView();
+
+
 
         }
 
@@ -149,6 +145,11 @@ namespace POS_DePrisa.formularios
         {
             FrmBuscarProducto frmBuscarProducto = new FrmBuscarProducto(dgvListaProducto, listaProductos);
             frmBuscarProducto.ShowDialog();
+        }
+
+        private void btnEliminarProducto_Click(object sender, EventArgs e)
+        {
+            addNewRow();
         }
     }
 }
