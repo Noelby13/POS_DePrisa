@@ -212,6 +212,7 @@
             this.btnEliminarProducto.TextColor = System.Drawing.Color.Black;
             this.btnEliminarProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEliminarProducto.UseVisualStyleBackColor = false;
+            this.btnEliminarProducto.Click += new System.EventHandler(this.btnEliminarProducto_Click);
             // 
             // toolStrip1
             // 

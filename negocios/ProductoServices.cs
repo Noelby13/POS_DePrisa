@@ -117,6 +117,11 @@ namespace POS_DePrisa.negocios
             return resultado;
         }
 
+        public List<Producto> buscar(string nombre)
+        {
+            return dProducto.buscar(nombre);
+        }
+
 
 
     }

@@ -159,5 +159,48 @@ namespace POS_DePrisa.dao
             }
             return resultado;
         }
+
+        public List<Producto> buscar(String nombre) {
+            List<Producto> productos = new List<Producto>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT TOP 5 * FROM Tbl_Producto WHERE Nombre LIKE @Nombre";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Nombre", "%" + nombre + "%");
+                        SqlDataReader reader = command.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                Producto producto = new Producto();
+                                producto.IdProducto = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
+                                producto.CodigoBarra = reader.IsDBNull(1) ? string.Empty : reader.GetString(1);
+                                producto.Nombre = reader.IsDBNull(2) ? string.Empty : reader.GetString(2);
+                                producto.Descripcion = reader.IsDBNull(3) ? string.Empty : reader.GetString(3);
+                                producto.Stock = reader.IsDBNull(4) ? 0 : reader.GetInt32(4);
+                                producto.Precio = reader.IsDBNull(5) ? 0.0 : Convert.ToDouble(reader.GetValue(5));
+                                producto.TieneIva = reader.IsDBNull(6) ? false : reader.GetBoolean(6);
+                                producto.TieneKit = reader.IsDBNull(7) ? false : reader.GetBoolean(7);
+                                producto.DescuentoMaximo = reader.IsDBNull(8) ? 0f : float.Parse(reader.GetValue(8).ToString());
+                                producto.estado = reader.IsDBNull(9) ? 0 : reader.GetInt32(9);
+                                producto.idcategoria = reader.IsDBNull(10) ? 0 : reader.GetInt32(10);
+                                productos.Add(producto);
+                            }
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                String Error = $"Eror en buscar()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return productos;
+        }
     }
 }
