@@ -122,6 +122,12 @@
     <Compile Include="formularios\FrmCierreTurno.Designer.cs">
       <DependentUpon>FrmCierreTurno.cs</DependentUpon>
     </Compile>
+    <Compile Include="formularios\FrmDescuento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\FrmDescuento.Designer.cs">
+      <DependentUpon>FrmDescuento.cs</DependentUpon>
+    </Compile>
     <Compile Include="formularios\FrmFacturacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,7 @@
     <Compile Include="formularios\Usuario\FrmCrudUsuario.Designer.cs">
       <DependentUpon>FrmCrudUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="helpers\RowData.cs" />
     <Compile Include="negocios\CategoriaServices.cs" />
     <Compile Include="negocios\ProductoServices.cs" />
     <Compile Include="negocios\ResultadoOperacion.cs" />
@@ -215,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\FrmCierreTurno.resx">
       <DependentUpon>FrmCierreTurno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\FrmDescuento.resx">
+      <DependentUpon>FrmDescuento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\FrmFacturacion.resx">
       <DependentUpon>FrmFacturacion.cs</DependentUpon>
