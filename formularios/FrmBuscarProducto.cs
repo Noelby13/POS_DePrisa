@@ -15,11 +15,15 @@ namespace POS_DePrisa.formularios
     {
         private DataGridView dg;
         private List<entidades.Producto> ListaProductos;
-        public FrmBuscarProducto(DataGridView dg, List<entidades.Producto> listaProductos)
+        private BindingList<helpers.RowData> listaFactura;
+        //declara una propiedad funcion que se le pasara una funcion que no retorna nada y no recibe parametros
+        public Action refreshDg { get; set; }
+        public FrmBuscarProducto(DataGridView dg, BindingList<helpers.RowData> listaProductosFactura)
         {
             InitializeComponent();
             this.dg = dg;
-            ListaProductos = listaProductos;
+            ListaProductos = new List<entidades.Producto>();
+           listaFactura = listaProductosFactura;
         }
 
         private void FrmBuscarProducto_Load(object sender, EventArgs e)
@@ -48,29 +52,70 @@ namespace POS_DePrisa.formularios
 
         }
 
-        private void addFakeData()
-        {
-            //crea lo productos primeros y luego los agrega a la lista
-            entidades.Producto p1 = new entidades.Producto();
-            p1.IdProducto = 1;
-            p1.Nombre = "Producto 1";
-            p1.Precio = 1000;
-            p1.Stock = 10;
-            p1.CodigoBarra = "1234";
-            p1.Descripcion = "Descripcion del producto 1";
-            ListaProductos.Add(p1);
-
-
-           
-    
-        }
 
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
-            addFakeData();
-            dg.DataSource = null; // Limpia el origen de datos actual
-            dg.DataSource = ListaProductos; // Asigna la lista actualizada como origen de datos
-            dg.Refresh(); // Refresca el DataGridView para mostrar los cambios
+            //valida que haya un producto seleccionado
+            if (dgvListaProducto.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //obten el producto seleccionado
+            entidades.Producto producto = (entidades.Producto)dgvListaProducto.CurrentRow.DataBoundItem;
+
+            if ( producto== null)
+            {
+                //crea un objeto tipo rowData
+                return;
+      
+            }
+            if (producto.Stock <= 0)
+            {
+                MessageBox.Show("No hay existencias de este producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //valida que si el producto ya esta en la lista de productos, le sume uno a la cantidad
+            foreach (helpers.RowData item in listaFactura)
+            {
+                if (item.IdProducto == producto.IdProducto)
+                {
+                    item.Cantidad++;
+                    refreshDg();
+                    return;
+                }
+            }
+
+            //crea un objeto tipo rowData
+            helpers.RowData rowData = ProductoToRowData(producto);
+            //agrega el objeto a la lista de productos
+            listaFactura.Add(rowData);
+            refreshDg();
+            //actualiza el datagridview
+            //dg.AutoGenerateColumns = false;
+            //dg.DataSource = listaProductoFactura;
+            //dg.Refresh();
+            //cierra el formulario
+            this.Close();
+        }
+
+        //genera una funcion que acepte un objeto tipo producto y lo convierta en un objeto tipo rowData
+        private helpers.RowData ProductoToRowData(entidades.Producto producto)
+        {
+            helpers.RowData rowData = new helpers.RowData();
+            rowData.IdProducto = producto.IdProducto;
+            rowData.CodigoBarra = producto.CodigoBarra;
+            rowData.Nombre = producto.Nombre;
+            rowData.Precio = (decimal)producto.Precio;
+            rowData.Cantidad = 1;
+            rowData.TieneIva = producto.TieneIva;
+            rowData.TieneKit = producto.TieneKit;
+            rowData.DescuentoMaximo = (decimal)producto.DescuentoMaximo;
+            rowData.estado = true;
+            rowData.idcategoria = producto.idcategoria;
+            return rowData;
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
@@ -123,5 +168,14 @@ namespace POS_DePrisa.formularios
             }
         }
 
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dgvListaProducto_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

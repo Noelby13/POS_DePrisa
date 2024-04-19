@@ -108,7 +108,7 @@ namespace POS_DePrisa
 
         private void btnProductos_Click(object sender, EventArgs e)
         {
-            showForm(new FrmPlantilla());
+            showForm(new FrmProducto());
         }
 
         private void btnUsuarios_Click(object sender, EventArgs e)

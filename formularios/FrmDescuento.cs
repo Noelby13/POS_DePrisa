@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.ReportingServices.RdlExpressions.ExpressionHostObjectModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,7 @@ namespace POS_DePrisa.formularios
         private BindingList<helpers.RowData> bs;
         private int x;
         private int y;
+        public Action refreshPrincipalDg { get; set; }
 
 
         public FrmDescuento(string codigoBarra, BindingList<helpers.RowData> bs, int x, int y)
@@ -63,16 +65,18 @@ namespace POS_DePrisa.formularios
 
             if (txtPrecio.Text == "")
             {
-                MessageBox.Show("Debe ingresar un precio");
-                return;
+                this.Close();
             }
 
             if (validarDescuento())
             {
                 helpers.RowData row = bs.FirstOrDefault(x => x.CodigoBarra == codigoBarra);
                 row.Precio = Convert.ToDecimal(txtPrecio.Text);
+                refreshPrincipalDg();
                 this.Close();
             }
+
+
         }
 
         private void defineLocation()

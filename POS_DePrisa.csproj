@@ -315,6 +315,9 @@
     <None Include="imagenes\profileIcon.png" />
     <None Include="imagenes\iconDePrisa.ico" />
     <Content Include="imagenes\iconFactura32.png" />
+    <Content Include="imagenes\iconHistorial24.png" />
+    <Content Include="imagenes\iconHistorial32.png" />
+    <Content Include="imagenes\iconImprimir24.png" />
     <Content Include="imagenes\iconOficina32.png" />
     <Content Include="imagenes\iconConfiguracion32.png" />
     <None Include="Resources\ver.png" />
@@ -336,6 +339,8 @@
     <Content Include="imagenes\iconClean24.png" />
     <Content Include="imagenes\iconSearch24.png" />
     <Content Include="imagenes\iconSearch32.png" />
+    <Content Include="imagenes\iconShoppingCart27.png" />
+    <Content Include="imagenes\iconShoppingCart36.png" />
     <Content Include="imagenes\iconUsuario32.png" />
     <Content Include="imagenes\Logo DePrisa %281%29.png" />
     <Content Include="imagenes\Logo DePrisa.svg" />

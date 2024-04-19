@@ -253,6 +253,36 @@ namespace POS_DePrisa.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconHistorial24 {
+            get {
+                object obj = ResourceManager.GetObject("iconHistorial24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconHistorial32 {
+            get {
+                object obj = ResourceManager.GetObject("iconHistorial32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconImprimir24 {
+            get {
+                object obj = ResourceManager.GetObject("iconImprimir24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconOcultar28 {
             get {
                 object obj = ResourceManager.GetObject("iconOcultar28", resourceCulture);
@@ -306,6 +336,26 @@ namespace POS_DePrisa.Properties {
         internal static System.Drawing.Bitmap iconSearch32 {
             get {
                 object obj = ResourceManager.GetObject("iconSearch32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconShoppingCart27 {
+            get {
+                object obj = ResourceManager.GetObject("iconShoppingCart27", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconShoppingCart36 {
+            get {
+                object obj = ResourceManager.GetObject("iconShoppingCart36", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
