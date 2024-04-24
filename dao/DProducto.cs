@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing.Text;
 using System.Linq;
 using System.Net.Configuration;
 using System.Text;
@@ -201,6 +202,49 @@ namespace POS_DePrisa.dao
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return productos;
+        }
+
+        public entidades.Producto obtenerProductoByCodigoBarra(string codigoBarra)
+        {
+            entidades.Producto producto = new entidades.Producto();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Tbl_Producto WHERE CodigoBarra = @codigoBarra";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@codigoBarra", codigoBarra);
+                        SqlDataReader reader = command.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                producto.IdProducto = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
+                                producto.CodigoBarra = reader.IsDBNull(1) ? string.Empty : reader.GetString(1);
+                                producto.Nombre = reader.IsDBNull(2) ? string.Empty : reader.GetString(2);
+                                producto.Descripcion = reader.IsDBNull(3) ? string.Empty : reader.GetString(3);
+                                producto.Stock = reader.IsDBNull(4) ? 0 : reader.GetInt32(4);
+                                producto.Precio = reader.IsDBNull(5) ? 0.0 : Convert.ToDouble(reader.GetValue(5));
+                                producto.TieneIva = reader.IsDBNull(6) ? false : reader.GetBoolean(6);
+                                producto.TieneKit = reader.IsDBNull(7) ? false : reader.GetBoolean(7);
+                                producto.DescuentoMaximo = reader.IsDBNull(8) ? 0f : float.Parse(reader.GetValue(8).ToString());
+                                producto.estado = reader.IsDBNull(9) ? 0 : reader.GetInt32(9);
+                                producto.idcategoria = reader.IsDBNull(10) ? 0 : reader.GetInt32(10);
+                            }
+                        }
+                    }
+                    connection.Close();
+                }
+                return producto;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener producto por codigo de barra: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return producto;
         }
     }
 }

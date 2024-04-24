@@ -136,7 +136,7 @@ namespace POS_DePrisa.formularios.Producto
             // para confirmar quita la siguiente comillas
              //Producto producto1 = new Producto();
 
-            var produ = productoServices.obtenerProducto();
+            var produ = new entidades.Producto();
 
             try
             {
@@ -351,7 +351,83 @@ namespace POS_DePrisa.formularios.Producto
             cargarProductosKit();
         }
 
-        private async void dgvListaProductoPrincipal_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //private async void dgvListaProductoPrincipal_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    //valida que sea en filas validas
+        //    if (e.RowIndex < 0)
+        //    {
+        //        return;
+        //    }
+        //    limpiarCampos();
+        //    modoEdicion = true;
+
+        //    //carga los datos del producto seleccionado pero utiliza el nombre de la columna
+        //    idProductoSelected = Convert.ToInt32(dgvListaProductoPrincipal.CurrentRow.Cells["IdProducto"].Value);
+        //    txtNombre.Text = dgvListaProductoPrincipal.CurrentRow.Cells["Nombre"].Value.ToString();
+        //    txtCodigoBarra.Text = dgvListaProductoPrincipal.CurrentRow.Cells["CodigoBarra"].Value.ToString();
+        //    txtDescripcion.Text = dgvListaProductoPrincipal.CurrentRow.Cells["Descripcion"].Value.ToString();
+        //    txtCantidad.Text = dgvListaProductoPrincipal.CurrentRow.Cells["Stock"].Value.ToString();
+        //    txtPrecio.Text = dgvListaProductoPrincipal.CurrentRow.Cells["Costo"].Value.ToString();
+        //    txtDescuento.Text = dgvListaProductoPrincipal.CurrentRow.Cells["DescuentoMaximo"].Value.ToString();
+        //    cbxCategoria.SelectedValue = dgvListaProductoPrincipal.CurrentRow.Cells["IdCategoria"].Value;
+        //    if (Convert.ToBoolean(dgvListaProductoPrincipal.CurrentRow.Cells["tieneKit"].Value) == true)
+        //    {
+        //        rbKitSi.Checked = true;
+        //    }
+        //    else
+        //    {
+        //        rbKitNo.Checked = true;
+        //    }
+        //    if (Convert.ToBoolean(dgvListaProductoPrincipal.CurrentRow.Cells["tieneIva"].Value) == true)
+        //    {
+        //        rbIvaSi.Checked = true;
+        //    }
+        //    else
+        //    {
+        //        rbIvaNo.Checked = true;
+        //    }
+        //    if (rbKitSi.Checked == true)
+        //    {
+        //        await CargarListaProductoAsync(dgvListaProductos);
+        //        cargarProductosKit();
+        //    }
+
+
+        //    btnGuardarProducto.Enabled = false;
+        //    btnEliminar.Enabled = true;
+        //    btnActualizar.Enabled = true;
+
+        //}
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //cargarListaProductos(dgvListaProductos);
+            //cargarProductosKit();
+        }
+
+        private void dgvListaProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           //validar fila 
+           if (e.RowIndex < 0)
+            {
+                return;
+            }
+           btnAgregar.Enabled = true;
+          
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            limpiarCampos();
+        }
+
+        
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void dgvListaProductoPrincipal_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //valida que sea en filas validas
             if (e.RowIndex < 0)
@@ -396,35 +472,6 @@ namespace POS_DePrisa.formularios.Producto
             btnGuardarProducto.Enabled = false;
             btnEliminar.Enabled = true;
             btnActualizar.Enabled = true;
-
-        }
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //cargarListaProductos(dgvListaProductos);
-            //cargarProductosKit();
-        }
-
-        private void dgvListaProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-           //validar fila 
-           if (e.RowIndex < 0)
-            {
-                return;
-            }
-           btnAgregar.Enabled = true;
-          
-        }
-
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            limpiarCampos();
-        }
-
-        
-        private void btnActualizar_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

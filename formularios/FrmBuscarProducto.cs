@@ -108,11 +108,11 @@ namespace POS_DePrisa.formularios
             rowData.IdProducto = producto.IdProducto;
             rowData.CodigoBarra = producto.CodigoBarra;
             rowData.Nombre = producto.Nombre;
-            rowData.Precio = (decimal)producto.Precio;
+            rowData.Precio = (double)producto.Precio;
             rowData.Cantidad = 1;
             rowData.TieneIva = producto.TieneIva;
             rowData.TieneKit = producto.TieneKit;
-            rowData.DescuentoMaximo = (decimal)producto.DescuentoMaximo;
+            rowData.DescuentoMaximo = (double)producto.DescuentoMaximo;
             rowData.estado = true;
             rowData.idcategoria = producto.idcategoria;
             return rowData;

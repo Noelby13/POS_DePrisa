@@ -50,9 +50,9 @@ namespace POS_DePrisa.negocios
             return resultado;
         }
 
-        public Producto obtenerProducto()
+        public Producto obtenerProducto(String codigoBarra)
         {
-            return new Producto();
+            return dProducto.obtenerProductoByCodigoBarra(codigoBarra);
         }
 
         public DataSet listarProductos()

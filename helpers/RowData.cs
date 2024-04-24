@@ -8,7 +8,7 @@ namespace POS_DePrisa.helpers
 {
     public class RowData
     {
-        public RowData(int idProducto, string codigoBarra, string nombre, string descripcion, decimal precio, int cantidad, bool tieneIva, bool tieneKit, decimal descuentoMaximo, bool estado, int idcategoria)
+        public RowData(int idProducto, string codigoBarra, string nombre, string descripcion, double precio, int cantidad, bool tieneIva, bool tieneKit, double descuentoMaximo, bool estado, int idcategoria)
         {
             IdProducto = idProducto;
             CodigoBarra = codigoBarra;
@@ -32,12 +32,12 @@ namespace POS_DePrisa.helpers
         public string CodigoBarra { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-        public decimal Precio { get; set; }
+        public double Precio { get; set; }
         public int Cantidad { get; set; }
-        public decimal Importe => Cantidad * Precio;
+        public double Importe => Cantidad * Precio;
         public bool TieneIva { get; set; }
         public bool TieneKit { get; set; }
-        public decimal DescuentoMaximo { get; set; }
+        public double DescuentoMaximo { get; set; }
         public bool estado { get; set; }
         public int idcategoria { get; set; }
     }

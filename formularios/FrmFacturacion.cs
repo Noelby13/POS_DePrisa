@@ -81,7 +81,7 @@ namespace POS_DePrisa.formularios
                 if (listaProductoFactura.Count > 0)
                 {
                     //calcula el total de la compra utilizando el importe
-                    decimal total = 0;
+                    double total = 0;
                     foreach (helpers.RowData item in listaProductoFactura)
                     {
                         total += item.Importe;
@@ -327,6 +327,11 @@ namespace POS_DePrisa.formularios
                                                                    // Muestra el formulario
                         descuentoForm.ShowDialog();
                     }
+                    else
+                    {
+                        MessageBox.Show($"El producto {dgvListaProducto.Rows[e.RowIndex].Cells["Nombre"].Value} no tiene descuento", "Error al intentar aplicar descuento", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
             }
             catch(Exception ex)
@@ -385,6 +390,11 @@ namespace POS_DePrisa.formularios
             {
                 e.CellStyle.BackColor = Color.LightGreen;
             }
+        }
+
+        private void txtCodigoProducto_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
 

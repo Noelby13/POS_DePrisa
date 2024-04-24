@@ -105,9 +105,7 @@ namespace POS_DePrisa.formularios.Producto
 
 
             
-            ProductoServices productoServices = new ProductoServices();
-            var produ = productoServices.obtenerProducto();
-
+            var produ = new entidades.Producto();
             try
             {
                 produ.CodigoBarra = txtCodigoBarra.Text;
@@ -142,6 +140,7 @@ namespace POS_DePrisa.formularios.Producto
                 produ.TieneIva = false;
             }
 
+            ProductoServices productoServices = new ProductoServices();
             var resultado = productoServices.Guardar(produ);
 
             if (!resultado.IsExitoso)
