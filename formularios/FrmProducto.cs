@@ -32,5 +32,10 @@ namespace POS_DePrisa.formularios
         {
             showForm(new FrmPrueba());
         }
+
+        private void btnCategoria_Click(object sender, EventArgs e)
+        {
+            showForm(new FrmCategoria());
+        }
     }
 }

@@ -579,6 +579,7 @@
             this.btnAgregarProducto.TextColor = System.Drawing.Color.Black;
             this.btnAgregarProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAgregarProducto.UseVisualStyleBackColor = false;
+            this.btnAgregarProducto.Click += new System.EventHandler(this.btnAgregarProducto_Click);
             // 
             // gradientPanel1
             // 

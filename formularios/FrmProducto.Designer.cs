@@ -34,11 +34,9 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutMenu = new System.Windows.Forms.FlowLayoutPanel();
             this.btnGuardarProducto = new POS_DePrisa.customControls.RoundedButton();
-            this.roundedButton2 = new POS_DePrisa.customControls.RoundedButton();
-            this.roundedButton3 = new POS_DePrisa.customControls.RoundedButton();
-            this.roundedButton4 = new POS_DePrisa.customControls.RoundedButton();
             this.gradientPanel1 = new POS_DePrisa.customControls.GradientPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnCategoria = new POS_DePrisa.customControls.RoundedButton();
             this.tableLayoutBackGround.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutMenu.SuspendLayout();
@@ -95,9 +93,7 @@
             // 
             this.flowLayoutMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
             this.flowLayoutMenu.Controls.Add(this.btnGuardarProducto);
-            this.flowLayoutMenu.Controls.Add(this.roundedButton2);
-            this.flowLayoutMenu.Controls.Add(this.roundedButton3);
-            this.flowLayoutMenu.Controls.Add(this.roundedButton4);
+            this.flowLayoutMenu.Controls.Add(this.btnCategoria);
             this.flowLayoutMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutMenu.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutMenu.Margin = new System.Windows.Forms.Padding(0);
@@ -121,7 +117,7 @@
             this.btnGuardarProducto.Image = global::POS_DePrisa.Properties.Resources.iconAdd28;
             this.btnGuardarProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGuardarProducto.Location = new System.Drawing.Point(4, 4);
-            this.btnGuardarProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardarProducto.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardarProducto.Name = "btnGuardarProducto";
             this.btnGuardarProducto.Size = new System.Drawing.Size(132, 47);
             this.btnGuardarProducto.TabIndex = 6;
@@ -131,84 +127,6 @@
             this.btnGuardarProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardarProducto.UseVisualStyleBackColor = false;
             this.btnGuardarProducto.Click += new System.EventHandler(this.btnGuardarProducto_Click);
-            // 
-            // roundedButton2
-            // 
-            this.roundedButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.roundedButton2.AutoSize = true;
-            this.roundedButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.roundedButton2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.roundedButton2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.roundedButton2.BorderRadius = 10;
-            this.roundedButton2.BorderSize = 1;
-            this.roundedButton2.FlatAppearance.BorderSize = 0;
-            this.roundedButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundedButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roundedButton2.ForeColor = System.Drawing.Color.Black;
-            this.roundedButton2.Image = global::POS_DePrisa.Properties.Resources.iconAdd28;
-            this.roundedButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.roundedButton2.Location = new System.Drawing.Point(144, 4);
-            this.roundedButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.roundedButton2.Name = "roundedButton2";
-            this.roundedButton2.Size = new System.Drawing.Size(132, 47);
-            this.roundedButton2.TabIndex = 7;
-            this.roundedButton2.Text = "Nuevo";
-            this.roundedButton2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.roundedButton2.TextColor = System.Drawing.Color.Black;
-            this.roundedButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.roundedButton2.UseVisualStyleBackColor = false;
-            // 
-            // roundedButton3
-            // 
-            this.roundedButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.roundedButton3.AutoSize = true;
-            this.roundedButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.roundedButton3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.roundedButton3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.roundedButton3.BorderRadius = 10;
-            this.roundedButton3.BorderSize = 1;
-            this.roundedButton3.FlatAppearance.BorderSize = 0;
-            this.roundedButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundedButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roundedButton3.ForeColor = System.Drawing.Color.Black;
-            this.roundedButton3.Image = global::POS_DePrisa.Properties.Resources.iconAdd28;
-            this.roundedButton3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.roundedButton3.Location = new System.Drawing.Point(284, 4);
-            this.roundedButton3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.roundedButton3.Name = "roundedButton3";
-            this.roundedButton3.Size = new System.Drawing.Size(132, 47);
-            this.roundedButton3.TabIndex = 8;
-            this.roundedButton3.Text = "Nuevo";
-            this.roundedButton3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.roundedButton3.TextColor = System.Drawing.Color.Black;
-            this.roundedButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.roundedButton3.UseVisualStyleBackColor = false;
-            // 
-            // roundedButton4
-            // 
-            this.roundedButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.roundedButton4.AutoSize = true;
-            this.roundedButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.roundedButton4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.roundedButton4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.roundedButton4.BorderRadius = 10;
-            this.roundedButton4.BorderSize = 1;
-            this.roundedButton4.FlatAppearance.BorderSize = 0;
-            this.roundedButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundedButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roundedButton4.ForeColor = System.Drawing.Color.Black;
-            this.roundedButton4.Image = global::POS_DePrisa.Properties.Resources.iconAdd28;
-            this.roundedButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.roundedButton4.Location = new System.Drawing.Point(424, 4);
-            this.roundedButton4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.roundedButton4.Name = "roundedButton4";
-            this.roundedButton4.Size = new System.Drawing.Size(132, 47);
-            this.roundedButton4.TabIndex = 9;
-            this.roundedButton4.Text = "Nuevo";
-            this.roundedButton4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.roundedButton4.TextColor = System.Drawing.Color.Black;
-            this.roundedButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.roundedButton4.UseVisualStyleBackColor = false;
             // 
             // gradientPanel1
             // 
@@ -234,6 +152,33 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Productos";
             // 
+            // btnCategoria
+            // 
+            this.btnCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCategoria.AutoSize = true;
+            this.btnCategoria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
+            this.btnCategoria.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
+            this.btnCategoria.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCategoria.BorderRadius = 10;
+            this.btnCategoria.BorderSize = 1;
+            this.btnCategoria.FlatAppearance.BorderSize = 0;
+            this.btnCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategoria.ForeColor = System.Drawing.Color.Black;
+            this.btnCategoria.Image = global::POS_DePrisa.Properties.Resources.iconCategoria28;
+            this.btnCategoria.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCategoria.Location = new System.Drawing.Point(144, 4);
+            this.btnCategoria.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCategoria.Name = "btnCategoria";
+            this.btnCategoria.Size = new System.Drawing.Size(171, 47);
+            this.btnCategoria.TabIndex = 10;
+            this.btnCategoria.Text = "Categoria";
+            this.btnCategoria.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCategoria.TextColor = System.Drawing.Color.Black;
+            this.btnCategoria.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCategoria.UseVisualStyleBackColor = false;
+            this.btnCategoria.Click += new System.EventHandler(this.btnCategoria_Click);
+            // 
             // FrmProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -242,7 +187,7 @@
             this.Controls.Add(this.tableLayoutBackGround);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmProducto";
             this.Text = "FrmProducto";
             this.tableLayoutBackGround.ResumeLayout(false);
@@ -263,10 +208,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutMenu;
         private customControls.RoundedButton btnGuardarProducto;
-        private customControls.RoundedButton roundedButton2;
-        private customControls.RoundedButton roundedButton3;
-        private customControls.RoundedButton roundedButton4;
         private customControls.GradientPanel gradientPanel1;
         private System.Windows.Forms.Label label1;
+        private customControls.RoundedButton btnCategoria;
     }
 }

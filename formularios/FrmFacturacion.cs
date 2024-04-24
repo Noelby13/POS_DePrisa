@@ -1,4 +1,5 @@
 ﻿using Microsoft.ReportingServices.RdlExpressions.ExpressionHostObjectModel;
+using POS_DePrisa.helpers;
 using POS_DePrisa.negocios;
 using System;
 using System.Collections.Generic;
@@ -394,6 +395,50 @@ namespace POS_DePrisa.formularios
 
         private void txtCodigoProducto_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private helpers.RowData ProductoToRowData(entidades.Producto producto)
+        {
+            helpers.RowData rowData = new helpers.RowData();
+            rowData.IdProducto = producto.IdProducto;
+            rowData.CodigoBarra = producto.CodigoBarra;
+            rowData.Nombre = producto.Nombre;
+            rowData.Precio = (double)producto.Precio;
+            rowData.Cantidad = 1;
+            rowData.TieneIva = producto.TieneIva;
+            rowData.TieneKit = producto.TieneKit;
+            rowData.DescuentoMaximo = (double)producto.DescuentoMaximo;
+            rowData.estado = true;
+            rowData.idcategoria = producto.idcategoria;
+            return rowData;
+        }
+
+        private void btnAgregarProducto_Click(object sender, EventArgs e)
+        {
+            if (txtCodigoProducto.Text == "")
+            {
+                return;
+            }
+
+            ProductoServices productoServices = new ProductoServices();
+            entidades.Producto producto = productoServices.obtenerProducto(txtCodigoProducto.Text);
+
+            //se valora si el producto existe en la base de datos. La razon del cero es el valor por defecto que se le asigna cuando viene nullo por parte de la BD
+            if (producto.IdProducto != 0)
+            {
+                var rowData = ProductoToRowData(producto);
+                listaProductoFactura.Add(rowData);
+                actualizarDgvLista();
+                txtCodigoProducto.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Producto no encontrado");
+            }
+            
+
+            //obten el producto seleccionado
 
         }
 
