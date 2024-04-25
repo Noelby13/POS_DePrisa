@@ -25,7 +25,7 @@ namespace POS_DePrisa.helpers
 
         public RowData()
         {
-            
+            descuentoAplicado = 0;
         }
 
         public int IdProducto { get; set; }
@@ -38,7 +38,11 @@ namespace POS_DePrisa.helpers
         public bool TieneIva { get; set; }
         public bool TieneKit { get; set; }
         public double DescuentoMaximo { get; set; }
+
+        public double descuentoAplicado { get; set; }
         public bool estado { get; set; }
         public int idcategoria { get; set; }
+
+
     }
 }

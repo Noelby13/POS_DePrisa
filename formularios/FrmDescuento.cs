@@ -101,6 +101,7 @@ namespace POS_DePrisa.formularios
             {
                 helpers.RowData row = bs.FirstOrDefault(x => x.CodigoBarra == codigoBarra);
                 row.Precio = Convert.ToDouble(txtPrecio.Text);
+                row.descuentoAplicado = productoSelected.Precio- Convert.ToDouble(txtPrecio.Text);
                 refreshPrincipalDg();
                 this.Close();
             }

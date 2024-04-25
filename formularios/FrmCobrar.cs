@@ -1,4 +1,7 @@
-﻿using POS_DePrisa.formularios.Producto;
+﻿using POS_DePrisa.entidades;
+using POS_DePrisa.formularios.Producto;
+using POS_DePrisa.negocios;
+using POS_DePrisa.store;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +22,8 @@ namespace POS_DePrisa.formularios
         private bool isMixtoSelected = false;
         private double totalFactura; 
         private BindingList<helpers.RowData> listaProductoFactura { get; set; }
+        public Action refreshPrincipalDg { get; set; }
+
 
 
         public FrmCobrar(BindingList<helpers.RowData> listaProductoFactura)
@@ -110,6 +115,12 @@ namespace POS_DePrisa.formularios
 
         private void btnCobrar_Click(object sender, EventArgs e)
         {
+            if (txtPagoCon.Text == "")
+            {
+                MessageBox.Show("Debe ingresar el monto a pagar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             //valida que si txtPagoCon menor que el total de la factura, no se puede cobrar
             if (Convert.ToDouble(txtPagoCon.Text) < totalFactura)
             {
@@ -117,8 +128,52 @@ namespace POS_DePrisa.formularios
                 return;
             }
 
+            //valida que si no se ha seleccionado un metodo de pago
+            if (isEfectivoSelected || isTarjetaSelected || isMixtoSelected)
+            {
+                MessageBox.Show("Debe seleccionar un método de pago", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            FacturaServices facturaServices = new FacturaServices();
+            Factura factura = new Factura();
+            factura.Fecha = DateTime.Now;
+            factura.Estado = 1;
+            factura.IdArqueo = GlobalData.arqueoCaja.IdArqueoCaja;
+            factura.IdUsuario = GlobalData.usuario.IdUsuario;
+            factura.IdFactura = facturaServices.obtenerIdUltimaFactura();
+
+            var listaDetallesFactura = convertirListaProductoFactura(factura.IdFactura);
+
+            var resultado = facturaServices.guardarFactura(factura, listaDetallesFactura); 
+
+            if (!resultado.IsExitoso){
+                MessageBox.Show("Error al guardar la factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             MessageBox.Show("Cobro realizado con éxito", "Cobro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //borra todos los datos de la lista de productos
+            listaProductoFactura.Clear();
+            refreshPrincipalDg();
+
+            this.Close();
+        }
+
+        //genera un metodo que transforme una lista de rowdata a lista de DetallesFactura
+        private List<DetalleFactura> convertirListaProductoFactura(int idFactura)
+        {
+            List<DetalleFactura> listaDetallesFactura = new List<DetalleFactura>();
+            foreach (helpers.RowData item in listaProductoFactura)
+            {
+                DetalleFactura detalle = new DetalleFactura();
+                detalle.Cantidad = item.Cantidad;
+                detalle.Precio = (float)item.Precio;
+                detalle.IdProducto = item.IdProducto;
+                detalle.Descuento = (float)item.descuentoAplicado;
+                detalle.IdFactura = idFactura;
+                listaDetallesFactura.Add(detalle);
+            }
+            return listaDetallesFactura;
         }
     }
 }

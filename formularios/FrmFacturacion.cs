@@ -55,6 +55,7 @@ namespace POS_DePrisa.formularios
                 dgvListaProducto.Columns["descuentomaximo"].Visible = false;
                 dgvListaProducto.Columns["estado"].Visible = false;
                 dgvListaProducto.Columns["idcategoria"].Visible = false;
+                dgvListaProducto.Columns["descuentoAplicado"].Visible = false;
 
 
                 foreach (DataGridViewColumn column in dgvListaProducto.Columns)
@@ -412,6 +413,7 @@ namespace POS_DePrisa.formularios
             rowData.estado = true;
             rowData.idcategoria = producto.idcategoria;
 
+
             if (producto.TieneIva)
             {
                 rowData.Nombre = producto.Nombre + "*";
@@ -460,9 +462,8 @@ namespace POS_DePrisa.formularios
             }
 
             FrmCobrar cobrarForm = new FrmCobrar(listaProductoFactura);
+            cobrarForm.refreshPrincipalDg = actualizarDgvLista;
             cobrarForm.ShowDialog();
-
-
         }
 
 

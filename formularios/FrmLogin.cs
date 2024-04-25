@@ -164,6 +164,7 @@ namespace POS_DePrisa.formularios
                 {
                     return;
                 }
+                GlobalData.arqueoCaja = arqueoServices.obtenerArqueoAbierto();
             }
        
 

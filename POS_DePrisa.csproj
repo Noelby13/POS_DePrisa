@@ -215,6 +215,7 @@
     <Compile Include="helpers\RowData.cs" />
     <Compile Include="negocios\ArqueoServices.cs" />
     <Compile Include="negocios\CategoriaServices.cs" />
+    <Compile Include="negocios\FacturaServices.cs" />
     <Compile Include="negocios\ProductoServices.cs" />
     <Compile Include="negocios\ResultadoOperacion.cs" />
     <Compile Include="negocios\UsuarioServices.cs" />
