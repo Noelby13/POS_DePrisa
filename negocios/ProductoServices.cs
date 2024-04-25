@@ -50,6 +50,26 @@ namespace POS_DePrisa.negocios
             return resultado;
         }
 
+        public ResultadoOperacion borrar(Producto producto)
+        {
+            ResultadoOperacion resultado = new ResultadoOperacion();
+            if (producto is null)
+            {
+                resultado.IsExitoso = false;
+                resultado.Mensaje = "El producto no puede ser nulo";
+                return resultado;
+            }
+            if (!dProducto.eliminarProducto(producto.IdProducto))
+            {
+                resultado.IsExitoso = false;
+                resultado.Mensaje = "Error al borrar el producto";
+                return resultado;
+            }
+            resultado.IsExitoso = true;
+            resultado.Mensaje = "Producto borrado con éxito";
+            return resultado;
+        }
+
         public Producto obtenerProducto(String codigoBarra)
         {
             return dProducto.obtenerProductoByCodigoBarra(codigoBarra);

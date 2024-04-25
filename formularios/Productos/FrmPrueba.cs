@@ -473,5 +473,10 @@ namespace POS_DePrisa.formularios.Producto
             btnEliminar.Enabled = true;
             btnActualizar.Enabled = true;
         }
+
+        private void btnEliminar_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

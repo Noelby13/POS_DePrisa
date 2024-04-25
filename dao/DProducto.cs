@@ -28,7 +28,7 @@ namespace POS_DePrisa.dao
 
             try
             {
-                string query = "SELECT * FROM Tbl_Producto";
+                string query = "SELECT * FROM Tbl_Producto where estado = 1";
 
 
                 //Utilizamos using para que el objeto se destruya al salir del bloque
@@ -79,7 +79,7 @@ namespace POS_DePrisa.dao
                         command.Parameters.AddWithValue("@TieneIva", producto.TieneIva);
                         command.Parameters.AddWithValue("@TieneKit", producto.TieneKit);
                         command.Parameters.AddWithValue("@DescuentoMaximo", producto.DescuentoMaximo);
-                        command.Parameters.AddWithValue("@estado", producto.estado);
+                        command.Parameters.AddWithValue("@estado", 1);
                         command.Parameters.AddWithValue("@idcategoria", producto.idcategoria);
                         int result = command.ExecuteNonQuery();
                         if (result > 0)
@@ -168,7 +168,7 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT TOP 5 * FROM Tbl_Producto WHERE Nombre LIKE @Nombre";
+                    string query = "SELECT TOP 5 * FROM Tbl_Producto WHERE Nombre LIKE @Nombre and estado = 1";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Nombre", "%" + nombre + "%");
@@ -272,6 +272,35 @@ namespace POS_DePrisa.dao
             catch (Exception ex)
             {
                 String Error = $"Eror en disminuirStock()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return resutado;
+        }
+
+        //eliminar un producto mediante borrado logico
+        public bool eliminarProducto(int idProducto)
+        {
+            bool resutado = false;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "UPDATE Tbl_Producto SET Estado = 0 WHERE IdProducto = @idProducto";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@idProducto", idProducto);
+                        if (command.ExecuteNonQuery() > 0)
+                        {
+                            resutado = true;
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                String Error = $"Error en eliminarProducto()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return resutado;

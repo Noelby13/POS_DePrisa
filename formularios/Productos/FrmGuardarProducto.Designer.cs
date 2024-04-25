@@ -172,6 +172,7 @@
             this.roundedButton2.TextColor = System.Drawing.Color.Black;
             this.roundedButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.roundedButton2.UseVisualStyleBackColor = false;
+            this.roundedButton2.Click += new System.EventHandler(this.roundedButton2_Click);
             // 
             // roundedButton1
             // 

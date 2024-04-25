@@ -321,5 +321,10 @@ namespace POS_DePrisa.formularios.Producto
         {
 
         }
+
+        private void roundedButton2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

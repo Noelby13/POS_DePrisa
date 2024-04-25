@@ -231,6 +231,34 @@ namespace POS_DePrisa.formularios.Productos
 
         private  void dgvListaProductoPrincipal_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+        }
+
+
+
+        private async void btnEliminar_Click(object sender, EventArgs e)
+        {
+            //pregunta al usuario que si desea eliminar el producto
+            DialogResult dialogResult = MessageBox.Show($"¿Desea eliminar el producto {productoSelected.Nombre}?", "Eliminar", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                ProductoServices productoServices = new ProductoServices();
+                var resultado = productoServices.borrar(productoSelected);
+                if (!resultado.IsExitoso)
+                {
+                    MessageBox.Show(resultado.Mensaje);
+                    return;
+                }
+                MessageBox.Show("Producto eliminado con exito");
+                limpiarCampos();
+                await CargarListaProductoAsync(dgvListaProductoPrincipal);
+            }
+
+        }
+
+        private void dgvListaProductoPrincipal_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
             //valida que sea en filas validas
             if (e.RowIndex < 0)
             {
@@ -247,7 +275,10 @@ namespace POS_DePrisa.formularios.Productos
             txtPrecio.Text = dgvListaProductoPrincipal.CurrentRow.Cells["Costo"].Value.ToString();
             txtDescuento.Text = dgvListaProductoPrincipal.CurrentRow.Cells["DescuentoMaximo"].Value.ToString();
             cbxCategoria.SelectedValue = dgvListaProductoPrincipal.CurrentRow.Cells["IdCategoria"].Value;
-           
+
+            //convierte la fila a un producto
+            productoSelected.Nombre = dgvListaProductoPrincipal.CurrentRow.Cells["Nombre"].Value.ToString();
+
             if (Convert.ToBoolean(dgvListaProductoPrincipal.CurrentRow.Cells["tieneIva"].Value) == true)
             {
                 rbIvaSi.Checked = true;
