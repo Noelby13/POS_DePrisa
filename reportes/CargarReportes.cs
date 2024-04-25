@@ -35,7 +35,7 @@ namespace POS_DePrisa.reportes
         }
 
         //carga el reporte sin parametros
-        public static void VerFactura(int idFactura, List<DetalleFactura> detallesFact )
+        public static void VerFactura(int idFactura)
         {
             try
             {
@@ -51,18 +51,22 @@ namespace POS_DePrisa.reportes
                 ReportDataSource rptFacturaInfo = new ReportDataSource("dsFacturaInfo", facturaInfo);
 
                 FrmReporteVistaPrevia frmVistaPrevia = new FrmReporteVistaPrevia();
+                //define un tamaño del formulario de vista previa
+                frmVistaPrevia.Width = 400;
                 frmVistaPrevia.reportViewer1.LocalReport.DataSources.Clear();
                 frmVistaPrevia.reportViewer1.LocalReport.DataSources.Add(rptDetalles);
                 frmVistaPrevia.reportViewer1.LocalReport.DataSources.Add(rptFacturaInfo);
                 frmVistaPrevia.reportViewer1.LocalReport.ReportPath = "reportes/rptFactura.rdlc";
                 frmVistaPrevia.reportViewer1.RefreshReport();
-                frmVistaPrevia.Show();
+                frmVistaPrevia.ShowDialog();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar el reporte: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+       
 
 
 

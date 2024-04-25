@@ -53,7 +53,16 @@ namespace POS_DePrisa
                 activarBotonesCajero();
             }
             lblNombreCompleto.Text = userSistema.Nombre;
-            lblNombre.Text = userSistema.NombreUsuario;
+
+            //pon en lblNombre, si idRol 1 = Administrador, si idRol 2 = Cajero
+            if (userSistema.IdRol == 1)
+            {
+                lblNombre.Text = "Administrador";
+            }
+            else
+            {
+                lblNombre.Text = "Cajero";
+            }
         }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)

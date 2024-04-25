@@ -1,6 +1,7 @@
 ﻿using Microsoft.ReportingServices.RdlExpressions.ExpressionHostObjectModel;
 using POS_DePrisa.helpers;
 using POS_DePrisa.negocios;
+using POS_DePrisa.reportes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -506,6 +507,15 @@ namespace POS_DePrisa.formularios
             FrmCobrar cobrarForm = new FrmCobrar(listaProductoFactura);
             cobrarForm.refreshPrincipalDg = actualizarDgvLista;
             cobrarForm.ShowDialog();
+        }
+
+        private void roundedButton3_Click(object sender, EventArgs e)
+        {
+            FacturaServices facturaServices = new FacturaServices();
+            var idFactura = facturaServices.obtenerIdUltimaFactura();
+
+            CargarReportes.VerFactura(idFactura);
+
         }
 
 

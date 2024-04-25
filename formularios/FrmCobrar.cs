@@ -157,12 +157,9 @@ namespace POS_DePrisa.formularios
             listaProductoFactura.Clear();
             refreshPrincipalDg();
 
-            CargarReportes.VerFactura(factura.IdFactura, listaDetallesFactura);
+            CargarReportes.VerFactura(factura.IdFactura);
 
-
-
-
-            //this.Close();
+            this.Close();
         }
 
         //genera un metodo que transforme una lista de rowdata a lista de DetallesFactura
