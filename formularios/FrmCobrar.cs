@@ -1,6 +1,7 @@
 ﻿using POS_DePrisa.entidades;
 using POS_DePrisa.formularios.Producto;
 using POS_DePrisa.negocios;
+using POS_DePrisa.reportes;
 using POS_DePrisa.store;
 using System;
 using System.Collections.Generic;
@@ -156,7 +157,12 @@ namespace POS_DePrisa.formularios
             listaProductoFactura.Clear();
             refreshPrincipalDg();
 
-            this.Close();
+            CargarReportes.VerFactura(factura.IdFactura, listaDetallesFactura);
+
+
+
+
+            //this.Close();
         }
 
         //genera un metodo que transforme una lista de rowdata a lista de DetallesFactura

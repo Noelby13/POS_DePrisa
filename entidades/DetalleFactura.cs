@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace POS_DePrisa.entidades
 {
-    internal class DetalleFactura
+    public class DetalleFactura
     {
 
         // * Definicion de atributos *
