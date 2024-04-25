@@ -49,7 +49,7 @@ namespace POS_DePrisa.formularios.Productos
         private async void FrmSaveProduct_Load(object sender, EventArgs e)
         {
             await CargarComboAsync();
-            await CargarListaProductoAsync(dgvListaProducto);
+            await CargarListaProductoAsync(dgvListaProductoPrincipal);
 
         }
 
@@ -122,8 +122,8 @@ namespace POS_DePrisa.formularios.Productos
 
             ProductoServices productoServices = new ProductoServices();
             var datos = productoServices.listarProductos();
-            dgvListaProducto.DataSource = datos;
-            dgvListaProducto.Columns[0].Visible = false;
+            dgvListaProductoPrincipal.DataSource = datos;
+            dgvListaProductoPrincipal.Columns[0].Visible = false;
         }
 
         private void limpiarCampos()
@@ -186,7 +186,7 @@ namespace POS_DePrisa.formularios.Productos
             return true;
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private async void btnGuardar_Click(object sender, EventArgs e)
         {
             if (!validarCampos())
             {
@@ -219,8 +219,47 @@ namespace POS_DePrisa.formularios.Productos
 
             MessageBox.Show("Producto guardado con exito");
             limpiarCampos();
-            cargarDataGrid();
+            await CargarListaProductoAsync(dgvListaProductoPrincipal);
 
+        }
+
+        private void btnActualizar_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private  void dgvListaProductoPrincipal_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //valida que sea en filas validas
+            if (e.RowIndex < 0)
+            {
+                return;
+            }
+            limpiarCampos();
+
+            //carga los datos del producto seleccionado pero utiliza el nombre de la columna
+            productoSelected.IdProducto = Convert.ToInt32(dgvListaProductoPrincipal.CurrentRow.Cells["IdProducto"].Value);
+            txtNombre.Text = dgvListaProductoPrincipal.CurrentRow.Cells["Nombre"].Value.ToString();
+            txtCodigoBarra.Text = dgvListaProductoPrincipal.CurrentRow.Cells["CodigoBarra"].Value.ToString();
+            txtDescripcion.Text = dgvListaProductoPrincipal.CurrentRow.Cells["Descripcion"].Value.ToString();
+            txtCantidad.Text = dgvListaProductoPrincipal.CurrentRow.Cells["Stock"].Value.ToString();
+            txtPrecio.Text = dgvListaProductoPrincipal.CurrentRow.Cells["Costo"].Value.ToString();
+            txtDescuento.Text = dgvListaProductoPrincipal.CurrentRow.Cells["DescuentoMaximo"].Value.ToString();
+            cbxCategoria.SelectedValue = dgvListaProductoPrincipal.CurrentRow.Cells["IdCategoria"].Value;
+           
+            if (Convert.ToBoolean(dgvListaProductoPrincipal.CurrentRow.Cells["tieneIva"].Value) == true)
+            {
+                rbIvaSi.Checked = true;
+            }
+            else
+            {
+                rbIvaNo.Checked = true;
+            }
+
+            btnGuardar.Enabled = false;
+            btnEliminar.Enabled = true;
+            btnActualizar.Enabled = true;
         }
     }
 }

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dgvListaProducto = new System.Windows.Forms.DataGridView();
+            this.dgvListaProductoPrincipal = new System.Windows.Forms.DataGridView();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnEliminar = new POS_DePrisa.customControls.RoundedButton();
@@ -57,7 +57,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListaProducto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaProductoPrincipal)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,7 +78,7 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.groupBox2.Controls.Add(this.dgvListaProducto);
+            this.groupBox2.Controls.Add(this.dgvListaProductoPrincipal);
             this.groupBox2.Controls.Add(this.txtBuscar);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.groupBox2.Location = new System.Drawing.Point(838, 11);
@@ -88,32 +88,32 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Buscar Producto";
             // 
-            // dgvListaProducto
+            // dgvListaProductoPrincipal
             // 
-            this.dgvListaProducto.AllowUserToAddRows = false;
-            this.dgvListaProducto.AllowUserToDeleteRows = false;
-            this.dgvListaProducto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvListaProductoPrincipal.AllowUserToAddRows = false;
+            this.dgvListaProductoPrincipal.AllowUserToDeleteRows = false;
+            this.dgvListaProductoPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvListaProducto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvListaProducto.BackgroundColor = System.Drawing.Color.White;
-            this.dgvListaProducto.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvListaProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListaProducto.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvListaProducto.Location = new System.Drawing.Point(7, 77);
-            this.dgvListaProducto.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvListaProducto.MultiSelect = false;
-            this.dgvListaProducto.Name = "dgvListaProducto";
-            this.dgvListaProducto.ReadOnly = true;
-            this.dgvListaProducto.RowHeadersWidth = 51;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(173)))), ((int)(((byte)(223)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(81)))), ((int)(((byte)(161)))));
-            this.dgvListaProducto.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvListaProducto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListaProducto.Size = new System.Drawing.Size(846, 505);
-            this.dgvListaProducto.TabIndex = 15;
+            this.dgvListaProductoPrincipal.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvListaProductoPrincipal.BackgroundColor = System.Drawing.Color.White;
+            this.dgvListaProductoPrincipal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvListaProductoPrincipal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListaProductoPrincipal.GridColor = System.Drawing.SystemColors.Control;
+            this.dgvListaProductoPrincipal.Location = new System.Drawing.Point(7, 77);
+            this.dgvListaProductoPrincipal.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvListaProductoPrincipal.MultiSelect = false;
+            this.dgvListaProductoPrincipal.Name = "dgvListaProductoPrincipal";
+            this.dgvListaProductoPrincipal.ReadOnly = true;
+            this.dgvListaProductoPrincipal.RowHeadersWidth = 51;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(173)))), ((int)(((byte)(223)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(81)))), ((int)(((byte)(161)))));
+            this.dgvListaProductoPrincipal.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvListaProductoPrincipal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvListaProductoPrincipal.Size = new System.Drawing.Size(846, 505);
+            this.dgvListaProductoPrincipal.TabIndex = 15;
             // 
             // txtBuscar
             // 
@@ -237,6 +237,7 @@
             this.btnActualizar.TextColor = System.Drawing.Color.Black;
             this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click_1);
             // 
             // btnGuardar
             // 
@@ -448,7 +449,7 @@
             this.panel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListaProducto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaProductoPrincipal)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -459,7 +460,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dgvListaProducto;
+        private System.Windows.Forms.DataGridView dgvListaProductoPrincipal;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.GroupBox groupBox1;
         private customControls.RoundedButton btnEliminar;
