@@ -115,6 +115,14 @@ namespace POS_DePrisa.formularios
             rowData.DescuentoMaximo = (double)producto.DescuentoMaximo;
             rowData.estado = true;
             rowData.idcategoria = producto.idcategoria;
+
+            //valida que si tiene iva agregar asterisco al final del nombre
+            if (producto.TieneIva)
+            {
+                rowData.Nombre = producto.Nombre + "*";
+            }
+
+
             return rowData;
         }
 

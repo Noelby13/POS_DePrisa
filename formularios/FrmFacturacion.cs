@@ -411,6 +411,13 @@ namespace POS_DePrisa.formularios
             rowData.DescuentoMaximo = (double)producto.DescuentoMaximo;
             rowData.estado = true;
             rowData.idcategoria = producto.idcategoria;
+
+            if (producto.TieneIva)
+            {
+                rowData.Nombre = producto.Nombre + "*";
+            }
+
+
             return rowData;
         }
 
@@ -439,6 +446,22 @@ namespace POS_DePrisa.formularios
             
 
             //obten el producto seleccionado
+
+        }
+
+        private void btnCobrar_Click(object sender, EventArgs e)
+        {
+            
+
+            if (listaProductoFactura.Count == 0)
+            {
+                MessageBox.Show("No hay productos en la lista");
+                return;
+            }
+
+            FrmCobrar cobrarForm = new FrmCobrar(listaProductoFactura);
+            cobrarForm.ShowDialog();
+
 
         }
 

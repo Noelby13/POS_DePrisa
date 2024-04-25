@@ -193,6 +193,16 @@ namespace POS_DePrisa.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconCoin40 {
+            get {
+                object obj = ResourceManager.GetObject("iconCoin40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconConfiguracion32 {
             get {
                 object obj = ResourceManager.GetObject("iconConfiguracion32", resourceCulture);
@@ -223,9 +233,39 @@ namespace POS_DePrisa.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconDollar40 {
+            get {
+                object obj = ResourceManager.GetObject("iconDollar40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icondUpdate24 {
             get {
                 object obj = ResourceManager.GetObject("icondUpdate24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconEsc28 {
+            get {
+                object obj = ResourceManager.GetObject("iconEsc28", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconEsc32 {
+            get {
+                object obj = ResourceManager.GetObject("iconEsc32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -283,6 +323,26 @@ namespace POS_DePrisa.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconImprimir28 {
+            get {
+                object obj = ResourceManager.GetObject("iconImprimir28", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconMastercard40 {
+            get {
+                object obj = ResourceManager.GetObject("iconMastercard40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconOcultar28 {
             get {
                 object obj = ResourceManager.GetObject("iconOcultar28", resourceCulture);
@@ -316,6 +376,16 @@ namespace POS_DePrisa.Properties {
         internal static System.Drawing.Bitmap iconPdf32 {
             get {
                 object obj = ResourceManager.GetObject("iconPdf32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconRecibirDinero28 {
+            get {
+                object obj = ResourceManager.GetObject("iconRecibirDinero28", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
