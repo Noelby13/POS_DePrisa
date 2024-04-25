@@ -142,7 +142,7 @@ namespace POS_DePrisa.formularios
             factura.Estado = 1;
             factura.IdArqueo = GlobalData.arqueoCaja.IdArqueoCaja;
             factura.IdUsuario = GlobalData.usuario.IdUsuario;
-            factura.IdFactura = facturaServices.obtenerIdUltimaFactura();
+            factura.IdFactura = facturaServices.obtenerIdUltimaFactura()+1;
 
             var listaDetallesFactura = convertirListaProductoFactura(factura.IdFactura);
 

@@ -39,6 +39,7 @@ namespace POS_DePrisa.reportes
         {
             try
             {
+                MessageBox.Show("idFactura: " + idFactura);
                 DBDePrisaDataSetTableAdapters.RptDetallesFacturaTableAdapter detallesFacturaTableAdapter  = new RptDetallesFacturaTableAdapter();
                 DataTable detalles = detallesFacturaTableAdapter.GetData(idFactura);
 

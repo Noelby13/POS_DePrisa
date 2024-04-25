@@ -23,6 +23,7 @@ namespace POS_DePrisa.formularios
         //private List<helpers.RowData> listaProductosFactura;
 
         private BindingList<helpers.RowData> listaProductoFactura;
+        private bool permitirEventosDGV = false;  // Bandera para controlar la activación de eventos
 
         public FrmFacturacion()
         {
@@ -65,7 +66,7 @@ namespace POS_DePrisa.formularios
                         column.ReadOnly = true;
                     }
                 }
-
+                ActivarDeteccionCambios();
             }
             catch (Exception ex)
             {
@@ -78,6 +79,7 @@ namespace POS_DePrisa.formularios
         {
             try
             {
+                DesactivarDeteccionCambios();
                     dgvListaProducto.DataSource = listaProductoFactura  ;
                 dgvListaProducto.Refresh();
                 if (listaProductoFactura.Count > 0)
@@ -96,7 +98,7 @@ namespace POS_DePrisa.formularios
                     lblTotal.Text = "C$ 0";
                 }
 
-
+                ActivarDeteccionCambios();
 
             }
             catch (Exception ex)
@@ -378,11 +380,43 @@ namespace POS_DePrisa.formularios
 
         private void dgvListaProducto_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+            if (!permitirEventosDGV) return;  // No ejecutar si la bandera está desactivada
+
+
             if (dgvListaProducto.Columns[e.ColumnIndex].Name == "Cantidad")
             {
+                //obten el codigo de barra del producto seleccionado
+                string codigoBarra = dgvListaProducto.Rows[e.RowIndex].Cells["CodigoBarra"].Value.ToString();
+
+                //obten stock del producto seleccionado
+                ProductoServices productoServices = new ProductoServices();
+                var producto = productoServices.obtenerProducto(codigoBarra);
+
+                //valida que la cantidad ingresada no sea mayor al stock
+
+                if (Convert.ToInt32(dgvListaProducto.Rows[e.RowIndex].Cells["Cantidad"].Value) > producto.Stock)
+                {
+                    MessageBox.Show($"La cantidad ingresada es mayor al stock del producto {producto.Nombre}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgvListaProducto.Rows[e.RowIndex].Cells["Cantidad"].Value = 1;
+                    return;
+                }
+     
+                
                 actualizarDgvLista();
 
             }
+        }
+
+        // Método para activar la detección de cambios
+        public void ActivarDeteccionCambios()
+        {
+            permitirEventosDGV = true;
+        }
+
+        // Método para desactivar la detección de cambios
+        public void DesactivarDeteccionCambios()
+        {
+            permitirEventosDGV = false;
         }
 
         private void dgvListaProducto_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -436,6 +470,12 @@ namespace POS_DePrisa.formularios
             //se valora si el producto existe en la base de datos. La razon del cero es el valor por defecto que se le asigna cuando viene nullo por parte de la BD
             if (producto.IdProducto != 0)
             {
+                if(producto.Stock == 0)
+                {
+                    MessageBox.Show("Producto sin stock");
+                    return;
+                }
+
                 var rowData = ProductoToRowData(producto);
                 listaProductoFactura.Add(rowData);
                 actualizarDgvLista();
@@ -460,6 +500,8 @@ namespace POS_DePrisa.formularios
                 MessageBox.Show("No hay productos en la lista");
                 return;
             }
+
+            //valida que 
 
             FrmCobrar cobrarForm = new FrmCobrar(listaProductoFactura);
             cobrarForm.refreshPrincipalDg = actualizarDgvLista;
