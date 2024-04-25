@@ -11,11 +11,11 @@ namespace POS_DePrisa.entidades
 
         // * Definicion de atributos de la clase *
         public int IdArqueoCaja { get; set; }
-        public float MontoInicial { get; set; }
-        public float MontoFinal { get; set; }
+        public decimal MontoInicial { get; set; }
+        public decimal MontoFinal { get; set; }
         public DateTime FechaApertura { get; set; }
         public DateTime FechaCierre { get; set; }
-        public int Estado { get; set; }
+        public bool Estado { get; set; }
         public int IdUsuario { get; set; }
 
         // * Definicion de constructores *
@@ -25,7 +25,7 @@ namespace POS_DePrisa.entidades
         }
 
         // Constructor con parametros
-        public ArqueoCaja(int idArqueoCaja, float montoInicial, float montoFinal, DateTime fechaApertura, DateTime fechaCierre, int estado, int idUsuario)
+        public ArqueoCaja(int idArqueoCaja, decimal montoInicial, decimal montoFinal, DateTime fechaApertura, DateTime fechaCierre, bool estado, int idUsuario)
         {
             IdArqueoCaja = idArqueoCaja;
             MontoInicial = montoInicial;

@@ -213,6 +213,7 @@
       <DependentUpon>FrmCrudUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="helpers\RowData.cs" />
+    <Compile Include="negocios\ArqueoServices.cs" />
     <Compile Include="negocios\CategoriaServices.cs" />
     <Compile Include="negocios\ProductoServices.cs" />
     <Compile Include="negocios\ResultadoOperacion.cs" />
@@ -220,6 +221,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="reportes\CargarReportes.cs" />
+    <Compile Include="store\GlobalData.cs" />
     <EmbeddedResource Include="formularios\FrmAperturaCaja.resx">
       <DependentUpon>FrmAperturaCaja.cs</DependentUpon>
     </EmbeddedResource>
