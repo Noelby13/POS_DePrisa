@@ -206,6 +206,12 @@
     <Compile Include="formularios\Productos\FrmPrueba.Designer.cs">
       <DependentUpon>FrmPrueba.cs</DependentUpon>
     </Compile>
+    <Compile Include="formularios\Productos\FrmSaveProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\Productos\FrmSaveProduct.Designer.cs">
+      <DependentUpon>FrmSaveProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="formularios\Usuario\FrmCrudUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -273,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\Productos\FrmPrueba.resx">
       <DependentUpon>FrmPrueba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\Productos\FrmSaveProduct.resx">
+      <DependentUpon>FrmSaveProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\Usuario\FrmCrudUsuario.resx">
       <DependentUpon>FrmCrudUsuario.cs</DependentUpon>

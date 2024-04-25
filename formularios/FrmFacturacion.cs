@@ -97,6 +97,7 @@ namespace POS_DePrisa.formularios
                 else
                 {
                     lblTotal.Text = "C$ 0";
+                    lblCantidad.Text = "0 Productos en la venta actual";
                 }
 
                 ActivarDeteccionCambios();
@@ -164,7 +165,23 @@ namespace POS_DePrisa.formularios
 
         private void btnEliminarProducto_Click(object sender, EventArgs e)
         {
+            //valida que haya un producto seleccionado
+            if (dgvListaProducto.SelectedRows.Count > 0)
+            {
+                //obtiene el id del producto seleccionado
+                int idProducto = Convert.ToInt32(dgvListaProducto.SelectedRows[0].Cells["idproducto"].Value);
+                //busca el producto en la lista
+                helpers.RowData producto = listaProductoFactura.Where(x => x.IdProducto == idProducto).FirstOrDefault();
+                //elimina el producto de la lista
+                listaProductoFactura.Remove(producto);
+                //actualiza el datagrid
+            }
+            else
+            {
+                return; 
+            }
             actualizarDgvLista();
+
         }
 
 
@@ -441,6 +458,7 @@ namespace POS_DePrisa.formularios
             rowData.CodigoBarra = producto.CodigoBarra;
             rowData.Nombre = producto.Nombre;
             rowData.Precio = (double)producto.Precio;
+            rowData.Descripcion = producto.Descripcion;
             rowData.Cantidad = 1;
             rowData.TieneIva = producto.TieneIva;
             rowData.TieneKit = producto.TieneKit;

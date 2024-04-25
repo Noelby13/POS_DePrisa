@@ -200,7 +200,7 @@ namespace POS_DePrisa.formularios.Producto
                     MessageBox.Show(resultado.Mensaje);
                     return;
                 }
-                MessageBox.Show("Usuario eliminado con éxito", "Eliminación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Categoria eliminado con éxito", "Eliminación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnLimpiar_Click(sender, e);
                 cargarListaCategorias();
             }

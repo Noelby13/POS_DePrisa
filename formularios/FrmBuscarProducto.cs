@@ -109,6 +109,7 @@ namespace POS_DePrisa.formularios
             rowData.CodigoBarra = producto.CodigoBarra;
             rowData.Nombre = producto.Nombre;
             rowData.Precio = (double)producto.Precio;
+            rowData.Descripcion = producto.Descripcion;
             rowData.Cantidad = 1;
             rowData.TieneIva = producto.TieneIva;
             rowData.TieneKit = producto.TieneKit;

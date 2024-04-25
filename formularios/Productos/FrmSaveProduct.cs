@@ -1,0 +1,226 @@
+﻿using POS_DePrisa.negocios;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace POS_DePrisa.formularios.Productos
+{
+    public partial class FrmSaveProduct : Form
+    {
+
+        private entidades.Producto productoSelected;
+        public FrmSaveProduct()
+        {
+            InitializeComponent();
+            productoSelected = new entidades.Producto();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbKitSi_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbKitNo_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGuardarProducto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void FrmSaveProduct_Load(object sender, EventArgs e)
+        {
+            await CargarComboAsync();
+            await CargarListaProductoAsync(dgvListaProducto);
+
+        }
+
+        private async Task CargarComboAsync()
+        {
+            await Task.Run(() =>
+            {
+                ProductoServices productoServices = new ProductoServices();
+                var categorias = productoServices.listarCategorias();
+
+                // Actualizar el ComboBox en el hilo de la interfaz de usuario
+                this.Invoke((MethodInvoker)delegate
+                {
+                    cbxCategoria.DataSource = categorias.Tables[0];
+                    cbxCategoria.DisplayMember = "Nombre";
+                    cbxCategoria.ValueMember = "IdCategoria";
+                    cbxCategoria.SelectedIndex = -1;
+                });
+            });
+        }
+
+        private async Task CargarListaProductoAsync(DataGridView dg)
+        {
+            await Task.Run(() =>
+            {
+                ProductoServices services = new ProductoServices();
+                var productos = services.listarProductos();
+
+                this.Invoke((MethodInvoker)delegate
+                {
+                    dg.DataSource = productos.Tables[0];
+                    OcultarMostrarColumnas(dg);
+                    CambiarNombresColumnas(dg);
+                });
+            });
+        }
+
+        private void OcultarMostrarColumnas(DataGridView dg)
+        {
+            dg.Columns["IdProducto"].Visible = false;
+            dg.Columns["IdCategoria"].Visible = false;
+            dg.Columns["TieneKit"].Visible = false;
+            dg.Columns["TieneIva"].Visible = false;
+            dg.Columns["DescuentoMaximo"].Visible = false;
+            dg.Columns["Costo"].Visible = true;
+            dg.Columns["Stock"].Visible = true;
+            dg.Columns["Descripcion"].Visible = true;
+            dg.Columns["CodigoBarra"].Visible = false;
+            dg.Columns["Nombre"].Visible = true;
+            dg.Columns["estado"].Visible = false;
+        }
+
+        private void CambiarNombresColumnas(DataGridView dg)
+        {
+            dg.Columns["Nombre"].HeaderText = "Nombre";
+            dg.Columns["CodigoBarra"].HeaderText = "Codigo de Barra";
+            dg.Columns["Descripcion"].HeaderText = "Descripcion";
+            dg.Columns["Stock"].HeaderText = "Stock";
+            dg.Columns["Costo"].HeaderText = "Precio";
+            dg.Columns["DescuentoMaximo"].HeaderText = "Descuento Maximo";
+            dg.Columns["TieneKit"].HeaderText = "Tiene Kit";
+            dg.Columns["TieneIva"].HeaderText = "Tiene Iva";
+        }
+
+
+
+        private void cargarDataGrid()
+        {
+            // Cargar datos en el datagrid
+
+            ProductoServices productoServices = new ProductoServices();
+            var datos = productoServices.listarProductos();
+            dgvListaProducto.DataSource = datos;
+            dgvListaProducto.Columns[0].Visible = false;
+        }
+
+        private void limpiarCampos()
+        {
+            txtNombre.Text = "";
+            txtCodigoBarra.Text = "";
+            txtDescripcion.Text = "";
+            txtCantidad.Text = "";
+            txtPrecio.Text = "";
+            txtDescuento.Text = "";
+
+            cbxCategoria.SelectedIndex = -1;
+
+            btnActualizar.Enabled = false;
+            btnEliminar.Enabled = false;
+
+            btnGuardar.Enabled = true;
+
+
+        }
+
+        private void btnLimpiar_Click_1(object sender, EventArgs e)
+        {
+            limpiarCampos();
+        }
+        private bool validarCampos()
+        {
+
+            if (txtCodigoBarra.Text == "")
+            {
+                MessageBox.Show("El campo Codigo de Barra es obligatorio");
+                return false;
+            }
+            if (txtNombre.Text == "")
+            {
+                MessageBox.Show("El campo Nombre es obligatorio");
+                return false;
+            }
+            if (txtCantidad.Text == "")
+            {
+                MessageBox.Show("El campo Stock es obligatorio");
+                return false;
+            }
+            if (txtPrecio.Text == "")
+            {
+                MessageBox.Show("El campo Precio es obligatorio");
+                return false;
+            }
+            if (txtDescuento.Text == "")
+            {
+                MessageBox.Show("El campo Descuento Maximo es obligatorio");
+                return false;
+            }
+
+            if (cbxCategoria.SelectedIndex == -1)
+            {
+                MessageBox.Show("El campo Categoria es obligatorio");
+                return false;
+            }
+            return true;
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (!validarCampos())
+            {
+                return;
+            }
+
+            ProductoServices productoServices = new ProductoServices();
+
+            entidades.Producto producto = new entidades.Producto();
+
+            producto.CodigoBarra = txtCodigoBarra.Text;
+            producto.Nombre = txtNombre.Text;
+            producto.Descripcion = txtDescripcion.Text;
+            producto.Stock = Convert.ToInt32(txtCantidad.Text);
+            producto.Precio = Convert.ToDouble(txtPrecio.Text);
+            producto.DescuentoMaximo = (float)Convert.ToDouble(txtDescuento.Text);
+            producto.idcategoria = Convert.ToInt32(cbxCategoria.SelectedValue);
+
+            producto.TieneIva = rbIvaSi.Checked;
+
+            var resultado = productoServices.Guardar(producto);
+
+            if (!resultado.IsExitoso)
+            {
+                MessageBox.Show(resultado.Mensaje);
+                return;
+
+            }
+            
+
+            MessageBox.Show("Producto guardado con exito");
+            limpiarCampos();
+            cargarDataGrid();
+
+        }
+    }
+}

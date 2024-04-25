@@ -1,4 +1,5 @@
 ﻿using POS_DePrisa.formularios.Producto;
+using POS_DePrisa.formularios.Productos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,7 +31,7 @@ namespace POS_DePrisa.formularios
 
         private void btnGuardarProducto_Click(object sender, EventArgs e)
         {
-            showForm(new FrmPrueba());
+            showForm(new FrmSaveProduct());
         }
 
         private void btnCategoria_Click(object sender, EventArgs e)
