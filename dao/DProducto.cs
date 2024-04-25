@@ -246,5 +246,35 @@ namespace POS_DePrisa.dao
             }
             return producto;
         }
+
+        //disminuye la cantidad de un producto en el inventario
+        public bool disminuirStock(int idProducto, int cantidad)
+        {
+            bool resutado = false;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "UPDATE Tbl_Producto SET Stock = Stock - @cantidad WHERE IdProducto = @idProducto";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@cantidad", cantidad);
+                        command.Parameters.AddWithValue("@idProducto", idProducto);
+                        if (command.ExecuteNonQuery() > 0)
+                        {
+                            resutado = true;
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                String Error = $"Eror en disminuirStock()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return resutado;
+        }
     }
 }

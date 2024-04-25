@@ -1,4 +1,5 @@
-﻿using POS_DePrisa.dao;
+﻿using Microsoft.ReportingServices.RdlExpressions.ExpressionHostObjectModel;
+using POS_DePrisa.dao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,29 @@ namespace POS_DePrisa.negocios
                 resultado.IsExitoso = false;
                 return resultado;
             }
+
+            //disminuir stock
+
+            DProducto dProducto = new DProducto();
+            var resultado1 = false;
+            String errorMessage = "Error al disminuir el stock del producto: \n";
+            foreach (var detalle in detallesFactura)
+            {
+                resultado1 = dProducto.disminuirStock(detalle.IdProducto, detalle.Cantidad);
+
+                if(!resultado1)
+                {
+                    errorMessage +=  + detalle.IdProducto + "\n";
+                }
+            }
+
+            if (errorMessage != "Error al disminuir el stock del producto: \n")
+            {
+                resultado.Mensaje = $"Ocurrio un error al disminuir el stock del producto, pero la venta fue realizada.\n Contacte a su administrador de sistema\n {errorMessage }";
+                resultado.IsExitoso = false;
+                return resultado;
+            }
+            
 
             resultado.Mensaje = "Factura guardada con éxito";
             resultado.IsExitoso = true;
