@@ -305,5 +305,43 @@ namespace POS_DePrisa.dao
             }
             return resutado;
         }
+
+        //actualizar un producto
+        public bool actualizarProducto(entidades.Producto producto)
+        {
+            bool resutado = false;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "UPDATE Tbl_Producto SET CodigoBarra = @CodigoBarra, Nombre = @Nombre, Descripcion = @Descripcion, Stock = @Stock, Costo = @Precio, TieneIva = @TieneIva, TieneKit = @TieneKit, DescuentoMaximo = @DescuentoMaximo, IdCategoria = @IdCategoria WHERE IdProducto = @IdProducto";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@IdProducto", producto.IdProducto);
+                        command.Parameters.AddWithValue("@CodigoBarra", producto.CodigoBarra);
+                        command.Parameters.AddWithValue("@Nombre", producto.Nombre);
+                        command.Parameters.AddWithValue("@Descripcion", producto.Descripcion);
+                        command.Parameters.AddWithValue("@Stock", producto.Stock);
+                        command.Parameters.AddWithValue("@Precio", producto.Precio);
+                        command.Parameters.AddWithValue("@TieneIva", producto.TieneIva);
+                        command.Parameters.AddWithValue("@TieneKit", producto.TieneKit);
+                        command.Parameters.AddWithValue("@DescuentoMaximo", producto.DescuentoMaximo);
+                        command.Parameters.AddWithValue("@IdCategoria", producto.idcategoria);
+                        if (command.ExecuteNonQuery() > 0)
+                        {
+                            resutado = true;
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                String Error = $"Error en actualizarProducto()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return resutado;
+        }
     }
 }

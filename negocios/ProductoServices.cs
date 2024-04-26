@@ -142,6 +142,27 @@ namespace POS_DePrisa.negocios
             return dProducto.buscar(nombre);
         }
 
+        //actualizar producto
+        public ResultadoOperacion actualizar(Producto producto)
+        {
+            ResultadoOperacion resultado = new ResultadoOperacion();
+            if (producto is null)
+            {
+                resultado.IsExitoso = false;
+                resultado.Mensaje = "El producto no puede ser nulo";
+                return resultado;
+            }
+            if (!dProducto.actualizarProducto(producto))
+            {
+                resultado.IsExitoso = false;
+                resultado.Mensaje = "Error al actualizar el producto";
+                return resultado;
+            }
+            resultado.IsExitoso = true;
+            resultado.Mensaje = "Producto actualizado con éxito";
+            return resultado;
+        }
+
 
 
     }

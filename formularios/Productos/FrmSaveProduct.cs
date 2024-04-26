@@ -223,8 +223,33 @@ namespace POS_DePrisa.formularios.Productos
 
         }
 
-        private void btnActualizar_Click_1(object sender, EventArgs e)
+        private async void btnActualizar_Click_1(object sender, EventArgs e)
         {
+            //crea un producto
+            entidades.Producto producto = new entidades.Producto();
+            producto.IdProducto = productoSelected.IdProducto;
+            producto.CodigoBarra = txtCodigoBarra.Text;
+            producto.Nombre = txtNombre.Text;
+            producto.Descripcion = txtDescripcion.Text;
+            producto.Stock = Convert.ToInt32(txtCantidad.Text);
+            producto.Precio = Convert.ToDouble(txtPrecio.Text);
+            producto.DescuentoMaximo = (float)Convert.ToDouble(txtDescuento.Text);
+            producto.idcategoria = Convert.ToInt32(cbxCategoria.SelectedValue);
+            producto.TieneIva = rbIvaSi.Checked;
+
+            ProductoServices productoServices = new ProductoServices();
+            var resultado = productoServices.actualizar(producto);
+
+            if (!resultado.IsExitoso)
+            {
+                MessageBox.Show(resultado.Mensaje);
+                return;
+            }
+
+            MessageBox.Show("Producto actualizado con exito");
+            limpiarCampos();
+            await CargarListaProductoAsync(dgvListaProductoPrincipal);
+
 
         }
 
