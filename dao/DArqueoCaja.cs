@@ -91,7 +91,7 @@ namespace POS_DePrisa.dao
             return resultado;
         }
 
-        //inicia el arqueo de caja
+        //Inicia el arqueo de caja usando un procedimiento almacenado
         //1 = Abierto, 2 = Cerrado,
         public bool IniciarArqueoCaja(ArqueoCaja arqueoCaja)
         {
@@ -101,13 +101,19 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "INSERT INTO Tbl_ArqueoCaja (MontoInicial, FechaApertura, Estado, IdUsuario) VALUES (@MontoInicial, @FechaApertura, @Estado, @IdUsuario)";
+                    string query = "usp_InsertarArqueoCaja"; // Nombre del procedimiento almacenado
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        // Agregar parámetros
                         command.Parameters.AddWithValue("@MontoInicial", arqueoCaja.MontoInicial);
+                        command.Parameters.AddWithValue("@MontoFinal", arqueoCaja.MontoFinal);
                         command.Parameters.AddWithValue("@FechaApertura", arqueoCaja.FechaApertura);
+                        command.Parameters.AddWithValue("@FechaCierre", arqueoCaja.FechaCierre);
                         command.Parameters.AddWithValue("@Estado", arqueoCaja.Estado);
                         command.Parameters.AddWithValue("@IdUsuario", arqueoCaja.IdUsuario);
+
                         int result = command.ExecuteNonQuery();
                         if (result > 0)
                         {

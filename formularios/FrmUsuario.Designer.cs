@@ -181,7 +181,7 @@
             this.btnNuevo.ForeColor = System.Drawing.Color.Black;
             this.btnNuevo.Image = global::POS_DePrisa.Properties.Resources.iconAdd28;
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(114, 4);
+            this.btnNuevo.Location = new System.Drawing.Point(4, 4);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(132, 47);
@@ -227,6 +227,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmUsuario";
             this.Text = "FrmUsuario";
+            this.Load += new System.EventHandler(this.FrmUsuario_Load);
             this.tableLayoutBackGround.ResumeLayout(false);
             this.tableLayoutBackGround.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);

@@ -82,7 +82,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.tabControl1.Location = new System.Drawing.Point(0, 12);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1029, 596);
@@ -118,9 +118,9 @@
             this.tpProducto.Controls.Add(this.label2);
             this.tpProducto.ImageKey = "(ninguno)";
             this.tpProducto.Location = new System.Drawing.Point(4, 25);
-            this.tpProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpProducto.Margin = new System.Windows.Forms.Padding(4);
             this.tpProducto.Name = "tpProducto";
-            this.tpProducto.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpProducto.Padding = new System.Windows.Forms.Padding(4);
             this.tpProducto.Size = new System.Drawing.Size(1021, 567);
             this.tpProducto.TabIndex = 1;
             this.tpProducto.Text = "Nuevo producto";
@@ -139,7 +139,7 @@
             this.roundedButton3.ForeColor = System.Drawing.Color.Black;
             this.roundedButton3.Image = global::POS_DePrisa.Properties.Resources.iconClean24;
             this.roundedButton3.Location = new System.Drawing.Point(49, 422);
-            this.roundedButton3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.roundedButton3.Margin = new System.Windows.Forms.Padding(4);
             this.roundedButton3.Name = "roundedButton3";
             this.roundedButton3.Size = new System.Drawing.Size(133, 47);
             this.roundedButton3.TabIndex = 25;
@@ -163,7 +163,7 @@
             this.roundedButton2.ForeColor = System.Drawing.Color.Black;
             this.roundedButton2.Image = global::POS_DePrisa.Properties.Resources.iconDelete24;
             this.roundedButton2.Location = new System.Drawing.Point(455, 422);
-            this.roundedButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.roundedButton2.Margin = new System.Windows.Forms.Padding(4);
             this.roundedButton2.Name = "roundedButton2";
             this.roundedButton2.Size = new System.Drawing.Size(133, 47);
             this.roundedButton2.TabIndex = 24;
@@ -188,7 +188,7 @@
             this.roundedButton1.ForeColor = System.Drawing.Color.Black;
             this.roundedButton1.Image = global::POS_DePrisa.Properties.Resources.icondUpdate24;
             this.roundedButton1.Location = new System.Drawing.Point(312, 422);
-            this.roundedButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.roundedButton1.Margin = new System.Windows.Forms.Padding(4);
             this.roundedButton1.Name = "roundedButton1";
             this.roundedButton1.Size = new System.Drawing.Size(152, 47);
             this.roundedButton1.TabIndex = 23;
@@ -204,7 +204,7 @@
             this.panel2.Controls.Add(this.rbKitSi);
             this.panel2.Controls.Add(this.rbKitNo);
             this.panel2.Location = new System.Drawing.Point(175, 324);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(175, 39);
             this.panel2.TabIndex = 22;
@@ -214,7 +214,7 @@
             this.rbKitSi.AutoSize = true;
             this.rbKitSi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbKitSi.Location = new System.Drawing.Point(72, 10);
-            this.rbKitSi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbKitSi.Margin = new System.Windows.Forms.Padding(4);
             this.rbKitSi.Name = "rbKitSi";
             this.rbKitSi.Size = new System.Drawing.Size(47, 26);
             this.rbKitSi.TabIndex = 6;
@@ -228,7 +228,7 @@
             this.rbKitNo.AutoSize = true;
             this.rbKitNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbKitNo.Location = new System.Drawing.Point(1, 10);
-            this.rbKitNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbKitNo.Margin = new System.Windows.Forms.Padding(4);
             this.rbKitNo.Name = "rbKitNo";
             this.rbKitNo.Size = new System.Drawing.Size(58, 26);
             this.rbKitNo.TabIndex = 5;
@@ -251,7 +251,7 @@
             this.btnGuardarProducto.ForeColor = System.Drawing.Color.Black;
             this.btnGuardarProducto.Image = global::POS_DePrisa.Properties.Resources.iconAdd24;
             this.btnGuardarProducto.Location = new System.Drawing.Point(184, 422);
-            this.btnGuardarProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardarProducto.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardarProducto.Name = "btnGuardarProducto";
             this.btnGuardarProducto.Size = new System.Drawing.Size(136, 47);
             this.btnGuardarProducto.TabIndex = 21;
@@ -265,7 +265,7 @@
             // txtDescuento
             // 
             this.txtDescuento.Location = new System.Drawing.Point(175, 277);
-            this.txtDescuento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDescuento.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(84, 22);
             this.txtDescuento.TabIndex = 20;
@@ -273,7 +273,7 @@
             // txtPrecio
             // 
             this.txtPrecio.Location = new System.Drawing.Point(175, 231);
-            this.txtPrecio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPrecio.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(84, 22);
             this.txtPrecio.TabIndex = 19;
@@ -281,16 +281,17 @@
             // txtCantidad
             // 
             this.txtCantidad.Location = new System.Drawing.Point(175, 190);
-            this.txtCantidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCantidad.Margin = new System.Windows.Forms.Padding(4);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(84, 22);
             this.txtCantidad.TabIndex = 18;
             // 
             // cbxCategoria
             // 
+            this.cbxCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCategoria.FormattingEnabled = true;
             this.cbxCategoria.Location = new System.Drawing.Point(175, 154);
-            this.cbxCategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxCategoria.Margin = new System.Windows.Forms.Padding(4);
             this.cbxCategoria.Name = "cbxCategoria";
             this.cbxCategoria.Size = new System.Drawing.Size(237, 24);
             this.cbxCategoria.TabIndex = 17;
@@ -298,7 +299,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(175, 98);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(277, 47);
@@ -307,7 +308,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(175, 59);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(277, 22);
             this.txtNombre.TabIndex = 15;
@@ -315,7 +316,7 @@
             // txtCodigoBarra
             // 
             this.txtCodigoBarra.Location = new System.Drawing.Point(175, 27);
-            this.txtCodigoBarra.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigoBarra.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigoBarra.Name = "txtCodigoBarra";
             this.txtCodigoBarra.Size = new System.Drawing.Size(277, 22);
             this.txtCodigoBarra.TabIndex = 14;
@@ -325,7 +326,7 @@
             this.rbIvaSi.AutoSize = true;
             this.rbIvaSi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbIvaSi.Location = new System.Drawing.Point(245, 370);
-            this.rbIvaSi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbIvaSi.Margin = new System.Windows.Forms.Padding(4);
             this.rbIvaSi.Name = "rbIvaSi";
             this.rbIvaSi.Size = new System.Drawing.Size(47, 26);
             this.rbIvaSi.TabIndex = 13;
@@ -338,7 +339,7 @@
             this.rbIvaNo.Checked = true;
             this.rbIvaNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbIvaNo.Location = new System.Drawing.Point(175, 370);
-            this.rbIvaNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbIvaNo.Margin = new System.Windows.Forms.Padding(4);
             this.rbIvaNo.Name = "rbIvaNo";
             this.rbIvaNo.Size = new System.Drawing.Size(58, 26);
             this.rbIvaNo.TabIndex = 12;
@@ -456,9 +457,9 @@
             this.tabPage1.Controls.Add(this.btnAgregar);
             this.tabPage1.Controls.Add(this.btnQuitar);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(1021, 567);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Detalles Kit";
@@ -469,7 +470,7 @@
             this.dgvListaKit.AllowUserToDeleteRows = false;
             this.dgvListaKit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaKit.Location = new System.Drawing.Point(588, 95);
-            this.dgvListaKit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvListaKit.Margin = new System.Windows.Forms.Padding(4);
             this.dgvListaKit.MultiSelect = false;
             this.dgvListaKit.Name = "dgvListaKit";
             this.dgvListaKit.ReadOnly = true;
@@ -493,7 +494,7 @@
             // txtBuscarProducto
             // 
             this.txtBuscarProducto.Location = new System.Drawing.Point(15, 46);
-            this.txtBuscarProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBuscarProducto.Margin = new System.Windows.Forms.Padding(4);
             this.txtBuscarProducto.Name = "txtBuscarProducto";
             this.txtBuscarProducto.Size = new System.Drawing.Size(407, 22);
             this.txtBuscarProducto.TabIndex = 10;
@@ -515,7 +516,7 @@
             this.dgvListaProductos.AllowUserToDeleteRows = false;
             this.dgvListaProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaProductos.Location = new System.Drawing.Point(15, 95);
-            this.dgvListaProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvListaProductos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvListaProductos.MultiSelect = false;
             this.dgvListaProductos.Name = "dgvListaProductos";
             this.dgvListaProductos.ReadOnly = true;
@@ -541,7 +542,7 @@
             this.btnAgregar.Image = global::POS_DePrisa.Properties.Resources.iconAdd28;
             this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAgregar.Location = new System.Drawing.Point(431, 199);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(149, 47);
             this.btnAgregar.TabIndex = 7;
@@ -568,7 +569,7 @@
             this.btnQuitar.Image = global::POS_DePrisa.Properties.Resources.iconClose32;
             this.btnQuitar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQuitar.Location = new System.Drawing.Point(431, 254);
-            this.btnQuitar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQuitar.Margin = new System.Windows.Forms.Padding(4);
             this.btnQuitar.Name = "btnQuitar";
             this.btnQuitar.Size = new System.Drawing.Size(164, 47);
             this.btnQuitar.TabIndex = 6;
@@ -582,7 +583,7 @@
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1651, 12);
             this.panel1.TabIndex = 0;
@@ -601,7 +602,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(1069, 84);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(407, 22);
             this.textBox1.TabIndex = 11;
@@ -612,7 +613,7 @@
             this.dgvListaProductoPrincipal.AllowUserToDeleteRows = false;
             this.dgvListaProductoPrincipal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaProductoPrincipal.Location = new System.Drawing.Point(1069, 134);
-            this.dgvListaProductoPrincipal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvListaProductoPrincipal.Margin = new System.Windows.Forms.Padding(4);
             this.dgvListaProductoPrincipal.MultiSelect = false;
             this.dgvListaProductoPrincipal.Name = "dgvListaProductoPrincipal";
             this.dgvListaProductoPrincipal.ReadOnly = true;

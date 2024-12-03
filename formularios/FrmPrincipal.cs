@@ -127,7 +127,11 @@ namespace POS_DePrisa
 
         private void btnSalir_Click_2(object sender, EventArgs e)
         {
-            Application.Exit();
+             DialogResult dialogResult = MessageBox.Show("¿Está seguro de que desea salir de la aplicación?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
+                {
+                  Application.Exit();
+                 }
         }
 
         private void btnReportes_Click(object sender, EventArgs e)

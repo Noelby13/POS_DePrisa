@@ -1,4 +1,5 @@
-﻿using POS_DePrisa.entidades;
+﻿using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
+using POS_DePrisa.entidades;
 using POS_DePrisa.formularios.Producto;
 using POS_DePrisa.negocios;
 using POS_DePrisa.reportes;
@@ -9,6 +10,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,12 +40,57 @@ namespace POS_DePrisa.formularios
             calcularTotal();
         }
 
+        private void cleanButtons()
+        {
+            //Change selected values?
+            isTarjetaSelected = false;
+            isMixtoSelected = false;
+            isEfectivoSelected = false;
+            //Change background color
+            btnTarjeta.BackColor = Color.Silver;
+            btnEfectivo.BackColor = Color.Silver;
+            btnMixto.BackColor = Color.Silver;
+        }
+
+        private void updateButton(Button boton)
+        {
+            cleanButtons();
+            boton.BackColor = Color.Blue;
+
+        }
         private void btnEfectivo_Click(object sender, EventArgs e)
         {
-            //pon de color azul el boton efectivo
-            btnEfectivo.BackColor = Color.Blue;
-            
+           
+            Button clickedButton = sender as Button;
+            if (clickedButton != null) { 
+              updateButton(clickedButton);
+                //Updte selected value
+                isEfectivoSelected = true;
+            }
+        }
 
+        private void btnTarjeta_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            //The sender parameter in the event handler contains a reference to the object that raised the event.
+            if (clickedButton != null) {
+                updateButton(clickedButton);
+                //Update selected value
+                isTarjetaSelected = true;
+            }
+            
+        }
+
+        private void btnMixto_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            //The sender parameter in the event handler contains a reference to the object that raised the event.
+            if (clickedButton != null)
+            {
+                updateButton(clickedButton);
+                //update selected value
+                isMixtoSelected = true;
+            }
         }
 
         private void calcularTotal() {
@@ -66,12 +113,6 @@ namespace POS_DePrisa.formularios
 
             //asigno el total de la factura a la variable totalFactura
             this.totalFactura = totalFactura + totalIVA;
-        }
-
-
-        private void updateButton()
-        {
-     
         }
 
         private void txtPagoCon_TextChanged(object sender, EventArgs e)
@@ -128,9 +169,8 @@ namespace POS_DePrisa.formularios
                 MessageBox.Show("El monto a pagar no puede ser menor al total de la factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             //valida que si no se ha seleccionado un metodo de pago
-            if (isEfectivoSelected || isTarjetaSelected || isMixtoSelected)
+            if (!isEfectivoSelected & !isTarjetaSelected & !isMixtoSelected)
             {
                 MessageBox.Show("Debe seleccionar un método de pago", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -178,5 +218,7 @@ namespace POS_DePrisa.formularios
             }
             return listaDetallesFactura;
         }
+
+
     }
 }
