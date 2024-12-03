@@ -170,6 +170,7 @@ namespace POS_DePrisa.formularios.UsuarioForm
         {
             if (txtUsuario.Text.Length > 0)
             {
+                
                 var ds = usuarioServices.buscar(txtUsuario.Text);
                 dgvListaUsuario.DataSource = ds.Tables[0];
                 dgvListaUsuario.Columns["idUsuario"].Visible = false;
@@ -255,6 +256,11 @@ namespace POS_DePrisa.formularios.UsuarioForm
         private void txtContrasena_TextChanged(object sender, EventArgs e)
         {
             txtContrasena.UseSystemPasswordChar = true;
+        }
+
+        private void cbxRol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

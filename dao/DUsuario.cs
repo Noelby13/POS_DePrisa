@@ -1,5 +1,6 @@
 ﻿using POS_DePrisa.entidades;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -31,10 +32,7 @@ namespace POS_DePrisa.dao
             DataSet ds = new DataSet();
             try
             {
-                string query = "SELECT Tbl_Usuario.idUsuario, Tbl_Usuario.nombre, " +
-                               "Tbl_Usuario.nombreUsuario, Tbl_Usuario.pw, Tbl_Usuario.fechaCreacion," +
-                               " Tbl_Usuario.estado,Tbl_Rol.nombre as N'Rol', Tbl_Usuario.idRol\r\nFROM Tbl_Usuario\r\n" +
-                               "INNER JOIN Tbl_Rol ON Tbl_Usuario.idRol = Tbl_Rol.idRol\r\nWHERE Tbl_Usuario.Estado = 1";
+                string query = "select * from vwListarUsuarios";
 
                 //Se utiliza using para que el objeto se destruya al salir del bloque
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -71,7 +69,7 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "INSERT INTO Tbl_Usuario (Nombre, NombreUsuario, Pw, FechaCreacion, Estado, IdRol) VALUES (@Nombre, @NombreUsuario, @Pw, @FechaCreacion, @Estado, @IdRol)";
+                    string query = "Exec createUser @Nombre, @NombreUsuario, @Pw, @FechaCreacion, @Estado, @IdRol";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Nombre", usuario.Nombre);
@@ -107,9 +105,12 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Tbl_Usuario WHERE NombreUsuario = @NombreUsuario AND Pw = @Pw and estado <> 0";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("validarCredenciales", connection))
                     {
+                        // Configurar como procedimiento almacenado
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                        // Agregar parámetros de entrada
                         command.Parameters.AddWithValue("@NombreUsuario", nombreUsuario);
                         command.Parameters.AddWithValue("@Pw", contraseña);
                         SqlDataReader reader = command.ExecuteReader();
@@ -117,6 +118,7 @@ namespace POS_DePrisa.dao
                         {
                             resultado = true;
                         }
+
                     }
                     connection.Close();
                 }
@@ -132,15 +134,17 @@ namespace POS_DePrisa.dao
         public Usuario ObtenerUsuarioPorNombreUsuario(string nombreUsuario)
         {
             Usuario usuario = null; // Inicializamos el usuario como null
-
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Tbl_Usuario WHERE NombreUsuario = @NombreUsuario and estado <> 0";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("ObtenerUsuarioPorNombreUsuario", connection))
                     {
+                        // Configurar como procedimiento almacenado
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                        // Agregar parámetros de entrada
                         command.Parameters.AddWithValue("@NombreUsuario", nombreUsuario);
                         SqlDataReader reader = command.ExecuteReader();
                         if (reader.Read()) // Si hay filas en el resultado
@@ -157,38 +161,40 @@ namespace POS_DePrisa.dao
                                 IdRol = Convert.ToInt32(reader["idRol"])
                             };
                         }
+
                     }
                     connection.Close();
                 }
             }
             catch (Exception ex)
             {
-                String Error = $"Error en ObtenerUsuarioPorNombreUsuario()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                String Error = $"Eror en validarCredenciales()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return usuario; // Devolvemos el usuario encontrado o null si no se encuentra coincidencia
         }
 
-        public DataSet buscarUsuario(String nombre)
+        public DataSet buscarUsuario(String nombre) //usp_BuscarUsuario
         {
             DataSet ds = new DataSet();
             try
             {
-                string query = "SELECT Tbl_Usuario.idUsuario, Tbl_Usuario.nombre, Tbl_Usuario.nombreUsuario, " +
-                               "Tbl_Usuario.pw, Tbl_Usuario.fechaCreacion, Tbl_Usuario.estado, Tbl_Usuario.idRol, " +
-                               "Tbl_Rol.nombre as Rol FROM Tbl_Usuario INNER JOIN Tbl_Rol ON Tbl_Usuario.idRol = Tbl_Rol.idRol " +
-                               "WHERE Tbl_Usuario.nombre LIKE @nombre AND Tbl_Usuario.estado = 1";
-                
+               
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    using (SqlDataAdapter da = new SqlDataAdapter(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_BuscarUsuario", connection))
                     {
-                        da.SelectCommand.Parameters.AddWithValue("@nombre", "%" + nombre + "%");
-                        if (da != null)
+                        // Configurar como procedimiento almacenado
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        // Agregar parámetros de entrada
+                        command.Parameters.AddWithValue("@nombre", "%" + nombre + "%");
+
+                        using (SqlDataAdapter da = new SqlDataAdapter(command))
                         {
-                            da.Fill(ds);
+                                da.Fill(ds);
                         }
                     }
                     connection.Close();
@@ -211,7 +217,7 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "UPDATE Tbl_Usuario SET Nombre = @Nombre, NombreUsuario = @NombreUsuario, Pw = @Pw, IdRol = @IdRol WHERE idUsuario = @idUsuario";
+                    string query = "Exec usp_ActualizarUsuario @Nombre, @NombreUsuario, @Pw, @IdRol, @idUsuario";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Nombre", usuario.Nombre);
@@ -225,6 +231,7 @@ namespace POS_DePrisa.dao
                             resultado = true;
                         }
                     }
+                    
                     connection.Close();
                 }
             }
@@ -268,36 +275,50 @@ namespace POS_DePrisa.dao
         }
 
         //Método para validar si un usario existe más de una vez
-        public bool ValidarUserNameUnico(Usuario usuario)
-        {
-            bool resultado = true; // Inicialmente suponemos que el usuario es único
+public bool ValidarUserNameUnico(Usuario usuario)
+{
+    bool resultado = true; // Inicialmente suponemos que el usuario es único
 
-            try
+    try
+    {
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+            
+            // Usar el procedimiento almacenado en lugar de una consulta directa
+            using (SqlCommand command = new SqlCommand("usp_ObtenerUsuarioActivo", connection))
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                command.CommandType = CommandType.StoredProcedure;
+                
+                // Agregar el parámetro requerido por el procedimiento almacenado
+                command.Parameters.AddWithValue("@nombreUsuario", usuario.NombreUsuario);
+
+                // Ejecutar el procedimiento almacenado y obtener el resultado
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    connection.Open();
-                    string query = "SELECT idUsuario, estado FROM Tbl_Usuario WHERE nombreUsuario = @nombreUsuario AND estado <> 0";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    if (reader.Read())
                     {
-                        command.Parameters.AddWithValue("@nombreUsuario", usuario.NombreUsuario);
-                        int idObtenido = (int?)command.ExecuteScalar() ?? -1; // Obtener el ID del usuario, si es nulo establecer -1 como valor predeterminado
-                        if (idObtenido != -1 && idObtenido != usuario.IdUsuario)
+                        int idObtenido = reader.GetInt32(0); // Obtener el idUsuario
+                        
+                        // Si el ID obtenido es diferente al del usuario proporcionado, el nombre de usuario no es único
+                        if (idObtenido != usuario.IdUsuario)
                         {
-                            resultado = false; // Si el ID obtenido es diferente al del usuario proporcionado, el nombre de usuario no es único
+                            resultado = false;
                         }
                     }
-                    connection.Close();
                 }
             }
-            catch (Exception ex)
-            {
-                String Error = $"Error en ValidarUserNameUnico()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
-                MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            return resultado;
+            connection.Close();
         }
+    }
+    catch (Exception ex)
+    {
+        String Error = $"Error en ValidarUserNameUnico()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+        MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+
+    return resultado;
+}
 
         //Método para eliminar un usuario
         public bool eliminarUsuario(Usuario usuario)
@@ -308,24 +329,34 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "Update Tbl_Usuario set estado = 0 WHERE idUsuario = @idUsuario";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+
+                    // Procedimiento almacenado en lugar de query directa
+                    string storedProcedure = "usp_DesactivarUsuario";
+                    using (SqlCommand command = new SqlCommand(storedProcedure, connection))
                     {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        // Agregar parámetro requerido por el procedimiento almacenado
                         command.Parameters.AddWithValue("@idUsuario", usuario.IdUsuario);
+
                         int result = command.ExecuteNonQuery();
+
+                        // Verificar si el procedimiento afectó filas
                         if (result > 0)
                         {
                             resultado = true;
                         }
                     }
+
                     connection.Close();
                 }
             }
             catch (Exception ex)
             {
-                String Error = $"Error en eliminarU()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
-                MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string error = $"Error en eliminarUsuario()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
             return resultado;
         }
 

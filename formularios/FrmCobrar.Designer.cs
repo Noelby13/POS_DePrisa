@@ -40,19 +40,19 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnMixto = new POS_DePrisa.customControls.RoundedButton();
-            this.btnTarjeta = new POS_DePrisa.customControls.RoundedButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnEfectivo = new POS_DePrisa.customControls.RoundedButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lblIvaTotal = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.gradientPanel1 = new POS_DePrisa.customControls.GradientPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnMixto = new POS_DePrisa.customControls.RoundedButton();
+            this.btnTarjeta = new POS_DePrisa.customControls.RoundedButton();
+            this.btnEfectivo = new POS_DePrisa.customControls.RoundedButton();
+            this.gradientPanel1 = new POS_DePrisa.customControls.GradientPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnCobrar = new POS_DePrisa.customControls.RoundedButton();
             this.roundedButton1 = new POS_DePrisa.customControls.RoundedButton();
             this.roundedButton2 = new POS_DePrisa.customControls.RoundedButton();
@@ -61,9 +61,9 @@
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.gradientPanel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.gradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -205,50 +205,6 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Tarjeta";
             // 
-            // btnMixto
-            // 
-            this.btnMixto.BackColor = System.Drawing.Color.Silver;
-            this.btnMixto.BackgroundColor = System.Drawing.Color.Silver;
-            this.btnMixto.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnMixto.BorderRadius = 20;
-            this.btnMixto.BorderSize = 0;
-            this.btnMixto.FlatAppearance.BorderSize = 0;
-            this.btnMixto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMixto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMixto.ForeColor = System.Drawing.Color.Black;
-            this.btnMixto.Image = global::POS_DePrisa.Properties.Resources.iconDollar40;
-            this.btnMixto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnMixto.Location = new System.Drawing.Point(439, 13);
-            this.btnMixto.Name = "btnMixto";
-            this.btnMixto.Size = new System.Drawing.Size(145, 55);
-            this.btnMixto.TabIndex = 3;
-            this.btnMixto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnMixto.TextColor = System.Drawing.Color.Black;
-            this.btnMixto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnMixto.UseVisualStyleBackColor = false;
-            // 
-            // btnTarjeta
-            // 
-            this.btnTarjeta.BackColor = System.Drawing.Color.Silver;
-            this.btnTarjeta.BackgroundColor = System.Drawing.Color.Silver;
-            this.btnTarjeta.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnTarjeta.BorderRadius = 20;
-            this.btnTarjeta.BorderSize = 0;
-            this.btnTarjeta.FlatAppearance.BorderSize = 0;
-            this.btnTarjeta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTarjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTarjeta.ForeColor = System.Drawing.Color.Black;
-            this.btnTarjeta.Image = global::POS_DePrisa.Properties.Resources.iconMastercard40;
-            this.btnTarjeta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnTarjeta.Location = new System.Drawing.Point(288, 13);
-            this.btnTarjeta.Name = "btnTarjeta";
-            this.btnTarjeta.Size = new System.Drawing.Size(145, 55);
-            this.btnTarjeta.TabIndex = 2;
-            this.btnTarjeta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnTarjeta.TextColor = System.Drawing.Color.Black;
-            this.btnTarjeta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnTarjeta.UseVisualStyleBackColor = false;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -258,29 +214,6 @@
             this.label3.Size = new System.Drawing.Size(81, 25);
             this.label3.TabIndex = 1;
             this.label3.Text = "Efectivo";
-            // 
-            // btnEfectivo
-            // 
-            this.btnEfectivo.BackColor = System.Drawing.Color.Silver;
-            this.btnEfectivo.BackgroundColor = System.Drawing.Color.Silver;
-            this.btnEfectivo.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnEfectivo.BorderRadius = 20;
-            this.btnEfectivo.BorderSize = 0;
-            this.btnEfectivo.FlatAppearance.BorderSize = 0;
-            this.btnEfectivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEfectivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEfectivo.ForeColor = System.Drawing.Color.Black;
-            this.btnEfectivo.Image = global::POS_DePrisa.Properties.Resources.iconCoin40;
-            this.btnEfectivo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEfectivo.Location = new System.Drawing.Point(119, 13);
-            this.btnEfectivo.Name = "btnEfectivo";
-            this.btnEfectivo.Size = new System.Drawing.Size(145, 55);
-            this.btnEfectivo.TabIndex = 0;
-            this.btnEfectivo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEfectivo.TextColor = System.Drawing.Color.Black;
-            this.btnEfectivo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnEfectivo.UseVisualStyleBackColor = false;
-            this.btnEfectivo.Click += new System.EventHandler(this.btnEfectivo_Click);
             // 
             // panel2
             // 
@@ -338,6 +271,97 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "IVA(15%):";
             // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(233)))), ((int)(((byte)(240)))));
+            this.panel5.Controls.Add(this.flowLayoutPanel1);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(712, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(219, 547);
+            this.panel5.TabIndex = 1;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.Controls.Add(this.btnCobrar);
+            this.flowLayoutPanel1.Controls.Add(this.roundedButton1);
+            this.flowLayoutPanel1.Controls.Add(this.roundedButton2);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(219, 547);
+            this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // btnMixto
+            // 
+            this.btnMixto.BackColor = System.Drawing.Color.Silver;
+            this.btnMixto.BackgroundColor = System.Drawing.Color.Silver;
+            this.btnMixto.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnMixto.BorderRadius = 20;
+            this.btnMixto.BorderSize = 0;
+            this.btnMixto.FlatAppearance.BorderSize = 0;
+            this.btnMixto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMixto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMixto.ForeColor = System.Drawing.Color.Black;
+            this.btnMixto.Image = global::POS_DePrisa.Properties.Resources.iconDollar40;
+            this.btnMixto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnMixto.Location = new System.Drawing.Point(439, 13);
+            this.btnMixto.Name = "btnMixto";
+            this.btnMixto.Size = new System.Drawing.Size(145, 55);
+            this.btnMixto.TabIndex = 3;
+            this.btnMixto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnMixto.TextColor = System.Drawing.Color.Black;
+            this.btnMixto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnMixto.UseVisualStyleBackColor = false;
+            this.btnMixto.Click += new System.EventHandler(this.btnMixto_Click);
+            // 
+            // btnTarjeta
+            // 
+            this.btnTarjeta.BackColor = System.Drawing.Color.Silver;
+            this.btnTarjeta.BackgroundColor = System.Drawing.Color.Silver;
+            this.btnTarjeta.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnTarjeta.BorderRadius = 20;
+            this.btnTarjeta.BorderSize = 0;
+            this.btnTarjeta.FlatAppearance.BorderSize = 0;
+            this.btnTarjeta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTarjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTarjeta.ForeColor = System.Drawing.Color.Black;
+            this.btnTarjeta.Image = global::POS_DePrisa.Properties.Resources.iconMastercard40;
+            this.btnTarjeta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnTarjeta.Location = new System.Drawing.Point(288, 13);
+            this.btnTarjeta.Name = "btnTarjeta";
+            this.btnTarjeta.Size = new System.Drawing.Size(145, 55);
+            this.btnTarjeta.TabIndex = 2;
+            this.btnTarjeta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnTarjeta.TextColor = System.Drawing.Color.Black;
+            this.btnTarjeta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnTarjeta.UseVisualStyleBackColor = false;
+            this.btnTarjeta.Click += new System.EventHandler(this.btnTarjeta_Click);
+            // 
+            // btnEfectivo
+            // 
+            this.btnEfectivo.BackColor = System.Drawing.Color.Silver;
+            this.btnEfectivo.BackgroundColor = System.Drawing.Color.Silver;
+            this.btnEfectivo.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnEfectivo.BorderRadius = 20;
+            this.btnEfectivo.BorderSize = 0;
+            this.btnEfectivo.FlatAppearance.BorderSize = 0;
+            this.btnEfectivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEfectivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEfectivo.ForeColor = System.Drawing.Color.Black;
+            this.btnEfectivo.Image = global::POS_DePrisa.Properties.Resources.iconCoin40;
+            this.btnEfectivo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEfectivo.Location = new System.Drawing.Point(119, 13);
+            this.btnEfectivo.Name = "btnEfectivo";
+            this.btnEfectivo.Size = new System.Drawing.Size(145, 55);
+            this.btnEfectivo.TabIndex = 0;
+            this.btnEfectivo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEfectivo.TextColor = System.Drawing.Color.Black;
+            this.btnEfectivo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnEfectivo.UseVisualStyleBackColor = false;
+            this.btnEfectivo.Click += new System.EventHandler(this.btnEfectivo_Click);
+            // 
             // gradientPanel1
             // 
             this.gradientPanel1.ColorLeft = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(81)))), ((int)(((byte)(161)))));
@@ -361,28 +385,6 @@
             this.label1.Size = new System.Drawing.Size(78, 25);
             this.label1.TabIndex = 2;
             this.label1.Text = "Cobrar";
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(233)))), ((int)(((byte)(240)))));
-            this.panel5.Controls.Add(this.flowLayoutPanel1);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(712, 3);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(219, 547);
-            this.panel5.TabIndex = 1;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.Controls.Add(this.btnCobrar);
-            this.flowLayoutPanel1.Controls.Add(this.roundedButton1);
-            this.flowLayoutPanel1.Controls.Add(this.roundedButton2);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(219, 547);
-            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // btnCobrar
             // 
@@ -482,12 +484,12 @@
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.gradientPanel1.ResumeLayout(false);
-            this.gradientPanel1.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            this.gradientPanel1.ResumeLayout(false);
+            this.gradientPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

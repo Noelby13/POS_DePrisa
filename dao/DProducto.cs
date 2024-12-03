@@ -28,7 +28,7 @@ namespace POS_DePrisa.dao
 
             try
             {
-                string query = "SELECT * FROM Tbl_Producto where estado = 1";
+                string query = "select * from vw_ProductosActivos";
 
 
                 //Utilizamos using para que el objeto se destruya al salir del bloque
@@ -68,9 +68,13 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "INSERT INTO Tbl_Producto (CodigoBarra, Nombre, Descripcion, Stock, Costo, TieneIva, TieneKit, DescuentoMaximo, estado, idcategoria) VALUES (@CodigoBarra, @Nombre, @Descripcion, @Stock, @Costo, @TieneIva, @TieneKit, @DescuentoMaximo, @estado, @idcategoria)";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    // Usar el procedimiento almacenado
+                    using (SqlCommand command = new SqlCommand("usp_InsertarProducto", connection))
                     {
+                        // Configurar como procedimiento almacenado
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        // Agregar los parámetros necesarios
                         command.Parameters.AddWithValue("@CodigoBarra", producto.CodigoBarra);
                         command.Parameters.AddWithValue("@Nombre", producto.Nombre);
                         command.Parameters.AddWithValue("@Descripcion", producto.Descripcion);
@@ -79,8 +83,10 @@ namespace POS_DePrisa.dao
                         command.Parameters.AddWithValue("@TieneIva", producto.TieneIva);
                         command.Parameters.AddWithValue("@TieneKit", producto.TieneKit);
                         command.Parameters.AddWithValue("@DescuentoMaximo", producto.DescuentoMaximo);
-                        command.Parameters.AddWithValue("@estado", 1);
+                        command.Parameters.AddWithValue("@estado", 1); // Estado activo
                         command.Parameters.AddWithValue("@idcategoria", producto.idcategoria);
+
+                        // Ejecutar el procedimiento almacenado
                         int result = command.ExecuteNonQuery();
                         if (result > 0)
                         {
@@ -92,10 +98,10 @@ namespace POS_DePrisa.dao
             }
             catch (Exception ex)
             {
-                String Error = $"Eror en guardarProducto()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                String Error = $"Error en guardarProducto()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return resultado;   
+            return resultado;
         }
 
         public int obtenerIdProducto(string codigoBarra)
