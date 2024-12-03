@@ -1,4 +1,5 @@
 ﻿using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
+using POS_DePrisa.dao;
 using POS_DePrisa.entidades;
 using POS_DePrisa.formularios.Producto;
 using POS_DePrisa.negocios;
@@ -146,7 +147,7 @@ namespace POS_DePrisa.formularios
            
         }
 
-        private void roundedButton2_Click(object sender, EventArgs e)
+        private void btnCancelarCobro_Click(object sender, EventArgs e)
         {
             //valida que si quiere cerrar el formulario
             if (MessageBox.Show("¿Desea cancelar el cobro?", "Cerrar Factura", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -155,9 +156,63 @@ namespace POS_DePrisa.formularios
             }
         }
 
-        private void btnCobrar_Click(object sender, EventArgs e)
+        private void mostrarFactura (Factura factura)
+        {
+            CargarReportes.VerFactura(factura.IdFactura);
+        }
+
+        private void realizarPago(int type)
         {
             if (txtPagoCon.Text == "")
+            {
+                MessageBox.Show("Debe ingresar el monto a pagar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //valida que si txtPagoCon menor que el total de la factura, no se puede cobrar
+            if (Convert.ToDouble(txtPagoCon.Text) < totalFactura)
+            {
+                MessageBox.Show("El monto a pagar no puede ser menor al total de la factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            //valida que si no se ha seleccionado un metodo de pago
+            if (!isEfectivoSelected & !isTarjetaSelected & !isMixtoSelected)
+            {
+                MessageBox.Show("Debe seleccionar un método de pago", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            FacturaServices facturaServices = new FacturaServices();
+            Factura factura = new Factura();
+            factura.Fecha = DateTime.Now;
+            factura.Estado = 1;
+            factura.IdArqueo = GlobalData.arqueoCaja.IdArqueoCaja;
+            factura.IdUsuario = GlobalData.usuario.IdUsuario;
+            factura.IdFactura = facturaServices.obtenerIdUltimaFactura() + 1;
+
+            var listaDetallesFactura = convertirListaProductoFactura(factura.IdFactura);
+
+            var resultado = facturaServices.guardarFactura(factura, listaDetallesFactura);
+
+            if (!resultado.IsExitoso)
+            {
+                MessageBox.Show("Error al guardar la factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            MessageBox.Show("Cobro realizado con éxito", "Cobro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //borra todos los datos de la lista de productos
+            listaProductoFactura.Clear();
+            refreshPrincipalDg();
+
+            if (type == 1)
+            {
+                mostrarFactura(factura);
+            }
+        }
+
+        private void btnCobrar_Click(object sender, EventArgs e)
+        {
+            /*if (txtPagoCon.Text == "")
             {
                 MessageBox.Show("Debe ingresar el monto a pagar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -193,11 +248,12 @@ namespace POS_DePrisa.formularios
                 return;
             }
             MessageBox.Show("Cobro realizado con éxito", "Cobro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            */
             //borra todos los datos de la lista de productos
-            listaProductoFactura.Clear();
-            refreshPrincipalDg();
+            realizarPago(1);
 
-            CargarReportes.VerFactura(factura.IdFactura);
+
+            //CargarReportes.VerFactura(factura.IdFactura);
 
             this.Close();
         }
@@ -220,5 +276,19 @@ namespace POS_DePrisa.formularios
         }
 
 
+        private void btnCobrarSinImprimir_Click(object sender, EventArgs e)
+        {
+            realizarPago(2);
+            this.Close();
+        }
+
+        private void btnCancelarCobro_Click_1(object sender, EventArgs e)
+        {
+            //valida que si quiere cerrar el formulario
+            if (MessageBox.Show("¿Desea cancelar el cobro?", "Cerrar Factura", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
     }
 }

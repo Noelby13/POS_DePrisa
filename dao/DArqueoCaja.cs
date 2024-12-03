@@ -24,12 +24,13 @@ namespace POS_DePrisa.dao
 
 
         // Metodo para listar los arqueos de caja
+        //Para qué rayos Henry hizo esta función? será para algún reporte?
         public DataSet ListarArqueoCaja()
         {
             DataSet ds = new DataSet();
             try
             {
-                string query = "SELECT * FROM Tbl_ArqueoCaja";
+                string query = "Select * from vwArqueoCaja";
 
                 //Se utiliza using para que el objeto se destruya al salir del bloque
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -57,6 +58,7 @@ namespace POS_DePrisa.dao
 
 
         // Metodo para insertar un nuevo arqueo de caja
+        //Este arqueo todavia no lo usa, creo que esto se podria cambiar y en lugar de hacerlo con un insert puede ser un update 
         public bool GuardarArqueoCaja(ArqueoCaja arqueoCaja)
         {
             bool resultado = false;
@@ -108,9 +110,7 @@ namespace POS_DePrisa.dao
 
                         // Agregar parámetros
                         command.Parameters.AddWithValue("@MontoInicial", arqueoCaja.MontoInicial);
-                        command.Parameters.AddWithValue("@MontoFinal", arqueoCaja.MontoFinal);
                         command.Parameters.AddWithValue("@FechaApertura", arqueoCaja.FechaApertura);
-                        command.Parameters.AddWithValue("@FechaCierre", arqueoCaja.FechaCierre);
                         command.Parameters.AddWithValue("@Estado", arqueoCaja.Estado);
                         command.Parameters.AddWithValue("@IdUsuario", arqueoCaja.IdUsuario);
 
@@ -125,13 +125,14 @@ namespace POS_DePrisa.dao
             }
             catch (Exception ex)
             {
-                String Error = $"Eror en IniciarArqueoCaja()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                String Error = $"Error en IniciarArqueoCaja()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return resultado;
         }
 
         //validar si existe un arqueo de caja abierto 
+        /*
         public bool ExisteArqueoCajaAbierto()
         {
             bool resultado = false;
@@ -140,7 +141,7 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Tbl_ArqueoCaja WHERE Estado = 1";
+                    string query = "SELECT * FROM Tbl_ArqueoCaja WHERE estado = 1";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         SqlDataReader reader = command.ExecuteReader();
@@ -159,29 +160,36 @@ namespace POS_DePrisa.dao
             }
             return resultado;
         }
+        */
 
         //obtener el arqueo de caja abierto
+        //Estado Arqueo de Caja
+        //1 = abierto
+        //0 = cerrado
         public ArqueoCaja ObtenerArqueoCajaAbierto()
         {
-            ArqueoCaja arqueoCaja = new ArqueoCaja();
+            ArqueoCaja arqueoCaja = null;
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Tbl_ArqueoCaja WHERE Estado = 1";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_ObtenerArqueosActivos", connection))
                     {
+                        // Configurar el comando como un procedimiento almacenado
+                        command.CommandType = CommandType.StoredProcedure;
+
                         SqlDataReader reader = command.ExecuteReader();
                         if (reader.HasRows)
                         {
+                            arqueoCaja = new ArqueoCaja(); // Crear objeto si hay datos
                             while (reader.Read())
                             {
                                 arqueoCaja.IdArqueoCaja = reader.GetInt32(0);
                                 arqueoCaja.MontoInicial = reader.GetDecimal(1);
-                                //arqueoCaja.MontoFinal = reader.GetDecimal(2);
+                                //arqueoCaja.MontoFinal = reader.GetDecimal(2); // Si deseas leer MontoFinal, descomenta esta línea
                                 arqueoCaja.FechaApertura = reader.GetDateTime(3);
-                                //arqueoCaja.FechaCierre = reader.GetDateTime(4);
+                                //arqueoCaja.FechaCierre = reader.GetDateTime(4); // Si deseas leer FechaCierre, descomenta esta línea
                                 arqueoCaja.Estado = reader.GetBoolean(5);
                                 arqueoCaja.IdUsuario = reader.GetInt32(6);
                             }
@@ -192,7 +200,7 @@ namespace POS_DePrisa.dao
             }
             catch (Exception ex)
             {
-                String Error = $"Eror en ObtenerArqueoCajaAbierto()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                String Error = $"Error en ObtenerArqueoCajaAbierto()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return arqueoCaja;
