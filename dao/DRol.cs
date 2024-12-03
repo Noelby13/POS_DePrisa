@@ -30,7 +30,7 @@ namespace POS_DePrisa.dao
             DataSet ds = new DataSet();
             try
             {
-                string query = "SELECT * FROM Tbl_Rol";
+                string query = "SELECT * FROM vwListarRoles";
 
                 //Se utiliza using para que el objeto se destruya al salir del bloque
                 using (SqlConnection connection = new SqlConnection(connectionString))

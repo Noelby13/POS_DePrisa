@@ -112,16 +112,21 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT IdProducto FROM Tbl_Producto WHERE CodigoBarra = @CodigoBarra";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_ObtenerProductoPorCodigoBarra", connection))
                     {
+                        // Configurar como procedimiento almacenado
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        // Agregar parámetro al procedimiento
                         command.Parameters.AddWithValue("@CodigoBarra", codigoBarra);
+
+                        // Ejecutar el procedimiento y leer el resultado
                         SqlDataReader reader = command.ExecuteReader();
                         if (reader.HasRows)
                         {
                             while (reader.Read())
                             {
-                                idProducto = reader.GetInt32(0);
+                                idProducto = reader.GetInt32(0); // Obtener el IdProducto
                             }
                         }
                     }
@@ -130,11 +135,12 @@ namespace POS_DePrisa.dao
             }
             catch (Exception ex)
             {
-                String Error = $"Eror en obtenerIdProducto()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                String Error = $"Error en obtenerIdProducto()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return idProducto;
         }
+
 
 
         //validar si el codigo de barra ya existe
@@ -146,14 +152,18 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Tbl_Producto WHERE CodigoBarra = @CodigoBarra";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_ValidarCodigoBarras", connection))
                     {
+
+                        command.CommandType = CommandType.StoredProcedure;
+    
                         command.Parameters.AddWithValue("@CodigoBarra", codigoBarra);
+
+
                         SqlDataReader reader = command.ExecuteReader();
                         if (reader.HasRows)
                         {
-                            resultado = true;
+                            resultado = true; 
                         }
                     }
                     connection.Close();
@@ -161,7 +171,7 @@ namespace POS_DePrisa.dao
             }
             catch (Exception ex)
             {
-                String Error = $"Eror en validarCodigoBarra()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                String Error = $"Error en validarCodigoBarra()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return resultado;
@@ -256,20 +266,25 @@ namespace POS_DePrisa.dao
         //disminuye la cantidad de un producto en el inventario
         public bool disminuirStock(int idProducto, int cantidad)
         {
-            bool resutado = false;
+            bool resultado = false;
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "UPDATE Tbl_Producto SET Stock = Stock - @cantidad WHERE IdProducto = @idProducto";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_ActualizarStockProducto", connection))
                     {
-                        command.Parameters.AddWithValue("@cantidad", cantidad);
+                        // Configurar el comando como un procedimiento almacenado
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        // Agregar los parámetros necesarios
                         command.Parameters.AddWithValue("@idProducto", idProducto);
+                        command.Parameters.AddWithValue("@cantidad", cantidad);
+
+                        // Ejecutar el procedimiento almacenado
                         if (command.ExecuteNonQuery() > 0)
                         {
-                            resutado = true;
+                            resultado = true; // Si se ejecuta correctamente, se establece como true
                         }
                     }
                     connection.Close();
@@ -277,10 +292,11 @@ namespace POS_DePrisa.dao
             }
             catch (Exception ex)
             {
-                String Error = $"Eror en disminuirStock()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                // Manejo de errores
+                String Error = $"Error en disminuirStock()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return resutado;
+            return resultado;
         }
 
         //eliminar un producto mediante borrado logico

@@ -163,11 +163,11 @@ namespace POS_DePrisa.formularios
             }
 
             ArqueoServices arqueoServices = new ArqueoServices();
-            bool resultado = arqueoServices.validarArqueoAbierto();
+            ArqueoCaja resultado = arqueoServices.obtenerArqueoAbierto();
 
 
             // Gestión de arqueo de caja
-            if (!resultado)
+            if (resultado == null)
             {
                 FrmAperturaCaja frmAperturaCaja = new FrmAperturaCaja();
                 frmAperturaCaja.ShowDialog();
@@ -185,7 +185,7 @@ namespace POS_DePrisa.formularios
                 {
                     return;
                 }
-                GlobalData.arqueoCaja = arqueoServices.obtenerArqueoAbierto();
+                GlobalData.arqueoCaja = resultado; //arqueoServices.obtenerArqueoAbierto();
             }
        
 
