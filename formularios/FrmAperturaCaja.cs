@@ -1,4 +1,5 @@
 ﻿using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
+using POS_DePrisa.dao;
 using POS_DePrisa.entidades;
 using POS_DePrisa.negocios;
 using POS_DePrisa.store;
@@ -67,6 +68,7 @@ namespace POS_DePrisa.formularios
             ArqueoCaja arqueo = new ArqueoCaja();
             arqueo.FechaApertura = DateTime.Now;
             arqueo.MontoInicial = Convert.ToDecimal(txtMontoInicial.Text);
+            arqueo.MontoFinal = Convert.ToDecimal(txtMontoInicial.Text);
             arqueo.IdUsuario = GlobalData.usuario.IdUsuario;
             arqueo.Estado = true;
             var resultado = arqueoServices.iniciarArqueo(arqueo);
@@ -79,7 +81,6 @@ namespace POS_DePrisa.formularios
 
             //Obtenemos el arqueo abierto recien creado con su id generado por la base de datos
             GlobalData.arqueoCaja = arqueoServices.obtenerArqueoAbierto();
-
             MessageBox.Show("Caja abierta correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
             arqueoIsOpen = true;
 

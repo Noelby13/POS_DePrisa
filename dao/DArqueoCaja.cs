@@ -67,15 +67,16 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "INSERT INTO Tbl_ArqueoCaja (MontoInicial, MontoFinal, FechaApertura, FechaCierre, Estado, IdUsuario) VALUES (@MontoInicial, @MontoFinal, @FechaApertura, @FechaCierre, @Estado, @IdUsuario)";
+                    string query = "usp_CerrarArqueoDeCaja"; // Nombre del procedimiento almacenado
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@MontoInicial", arqueoCaja.MontoInicial);
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        // Agregar parámetros
+                        command.Parameters.AddWithValue("@idArqueo", arqueoCaja.IdArqueoCaja);
                         command.Parameters.AddWithValue("@MontoFinal", arqueoCaja.MontoFinal);
-                        command.Parameters.AddWithValue("@FechaApertura", arqueoCaja.FechaApertura);
-                        command.Parameters.AddWithValue("@FechaCierre", arqueoCaja.FechaCierre);
-                        command.Parameters.AddWithValue("@Estado", arqueoCaja.Estado);
-                        command.Parameters.AddWithValue("@IdUsuario", arqueoCaja.IdUsuario);
+                        command.Parameters.AddWithValue("@fechaCierre", DateTime.Now);
+
                         int result = command.ExecuteNonQuery();
                         if (result > 0)
                         {
@@ -87,7 +88,7 @@ namespace POS_DePrisa.dao
             }
             catch (Exception ex)
             {
-                String Error = $"Eror en InsertarArqueoCaja()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                String Error = $"Error en ActualizarMontoFinal\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return resultado;
@@ -95,6 +96,40 @@ namespace POS_DePrisa.dao
 
         //Inicia el arqueo de caja usando un procedimiento almacenado
         //1 = Abierto, 2 = Cerrado,
+        public bool ActualizarMontoFinal(ArqueoCaja arqueoCaja)
+        {
+            bool resultado = false;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "usp_ActulizarMontoFinal"; // Nombre del procedimiento almacenado
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        // Agregar parámetros
+                        command.Parameters.AddWithValue("@idArqueo", arqueoCaja.IdArqueoCaja);
+                        command.Parameters.AddWithValue("@MontoFinal", arqueoCaja.MontoFinal);
+
+                        int result = command.ExecuteNonQuery();
+                        if (result > 0)
+                        {
+                            resultado = true;
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                String Error = $"Error en ActualizarMontoFinal\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return resultado;
+        }
+
         public bool IniciarArqueoCaja(ArqueoCaja arqueoCaja)
         {
             bool resultado = false;
@@ -110,6 +145,7 @@ namespace POS_DePrisa.dao
 
                         // Agregar parámetros
                         command.Parameters.AddWithValue("@MontoInicial", arqueoCaja.MontoInicial);
+                        command.Parameters.AddWithValue("@MontoFinal", arqueoCaja.MontoFinal);
                         command.Parameters.AddWithValue("@FechaApertura", arqueoCaja.FechaApertura);
                         command.Parameters.AddWithValue("@Estado", arqueoCaja.Estado);
                         command.Parameters.AddWithValue("@IdUsuario", arqueoCaja.IdUsuario);
@@ -187,7 +223,7 @@ namespace POS_DePrisa.dao
                             {
                                 arqueoCaja.IdArqueoCaja = reader.GetInt32(0);
                                 arqueoCaja.MontoInicial = reader.GetDecimal(1);
-                                //arqueoCaja.MontoFinal = reader.GetDecimal(2); // Si deseas leer MontoFinal, descomenta esta línea
+                                arqueoCaja.MontoFinal = reader.GetDecimal(2); // Si deseas leer MontoFinal, descomenta esta línea
                                 arqueoCaja.FechaApertura = reader.GetDateTime(3);
                                 //arqueoCaja.FechaCierre = reader.GetDateTime(4); // Si deseas leer FechaCierre, descomenta esta línea
                                 arqueoCaja.Estado = reader.GetBoolean(5);

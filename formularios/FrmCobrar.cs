@@ -24,7 +24,11 @@ namespace POS_DePrisa.formularios
         private bool isEfectivoSelected = false;
         private bool isTarjetaSelected = false;
         private bool isMixtoSelected = false;
-        private double totalFactura; 
+        private double totalFactura;
+        private double PagoCon;
+        private double cambio;
+        private ArqueoCaja arqueoActual = GlobalData.arqueoCaja;
+        decimal montoTemporal = GlobalData.arqueoCaja.MontoFinal;
         private BindingList<helpers.RowData> listaProductoFactura { get; set; }
         public Action refreshPrincipalDg { get; set; }
 
@@ -116,6 +120,17 @@ namespace POS_DePrisa.formularios
             this.totalFactura = totalFactura + totalIVA;
         }
 
+        private bool comprobarEfectivo()
+        {
+            if ((decimal)cambio > arqueoActual.MontoFinal)
+            {
+                MessageBox.Show("El cambio es superior al dinero en caja"+ arqueoActual.MontoFinal.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            arqueoActual.MontoFinal += (decimal)this.totalFactura;
+            return true;
+        }
+
         private void txtPagoCon_TextChanged(object sender, EventArgs e)
         {
             try
@@ -133,8 +148,10 @@ namespace POS_DePrisa.formularios
                     return; 
                 }
 
+                 PagoCon = Convert.ToDouble(txtPagoCon.Text);
+
                 //realiza una resta del total de la factura menos el pago con
-                double cambio = Convert.ToDouble(txtPagoCon.Text) - totalFactura;
+                cambio = PagoCon - totalFactura;
                 txtCambio.Text = cambio.ToString();
 
             }
@@ -152,6 +169,7 @@ namespace POS_DePrisa.formularios
             //valida que si quiere cerrar el formulario
             if (MessageBox.Show("¿Desea cancelar el cobro?", "Cerrar Factura", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                arqueoActual.MontoFinal = montoTemporal;
                 this.Close();
             }
         }
@@ -161,25 +179,30 @@ namespace POS_DePrisa.formularios
             CargarReportes.VerFactura(factura.IdFactura);
         }
 
-        private void realizarPago(int type)
+        private int realizarPago(int type)
         {
             if (txtPagoCon.Text == "")
             {
                 MessageBox.Show("Debe ingresar el monto a pagar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return 3;
             }
 
             //valida que si txtPagoCon menor que el total de la factura, no se puede cobrar
             if (Convert.ToDouble(txtPagoCon.Text) < totalFactura)
             {
                 MessageBox.Show("El monto a pagar no puede ser menor al total de la factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return 3;
             }
             //valida que si no se ha seleccionado un metodo de pago
             if (!isEfectivoSelected & !isTarjetaSelected & !isMixtoSelected)
             {
                 MessageBox.Show("Debe seleccionar un método de pago", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return 3;
+            }
+
+            if (!comprobarEfectivo())
+            {
+                return 3;
             }
 
             FacturaServices facturaServices = new FacturaServices();
@@ -197,7 +220,7 @@ namespace POS_DePrisa.formularios
             if (!resultado.IsExitoso)
             {
                 MessageBox.Show("Error al guardar la factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return 3;
             }
             MessageBox.Show("Cobro realizado con éxito", "Cobro", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //borra todos los datos de la lista de productos
@@ -208,6 +231,8 @@ namespace POS_DePrisa.formularios
             {
                 mostrarFactura(factura);
             }
+
+            return 2;
         }
 
         private void btnCobrar_Click(object sender, EventArgs e)
@@ -250,12 +275,12 @@ namespace POS_DePrisa.formularios
             MessageBox.Show("Cobro realizado con éxito", "Cobro", MessageBoxButtons.OK, MessageBoxIcon.Information);
             */
             //borra todos los datos de la lista de productos
-            realizarPago(1);
-
-
+            int op = realizarPago(1);
+            if (op == 2)
+            {
+                this.Close();
+            }
             //CargarReportes.VerFactura(factura.IdFactura);
-
-            this.Close();
         }
 
         //genera un metodo que transforme una lista de rowdata a lista de DetallesFactura
@@ -278,8 +303,11 @@ namespace POS_DePrisa.formularios
 
         private void btnCobrarSinImprimir_Click(object sender, EventArgs e)
         {
-            realizarPago(2);
-            this.Close();
+
+            int op = realizarPago(2);
+            if (op == 2) {
+                this.Close();
+            }
         }
 
         private void btnCancelarCobro_Click_1(object sender, EventArgs e)

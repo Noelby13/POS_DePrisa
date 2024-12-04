@@ -270,6 +270,7 @@
             this.panelExitButton.Name = "panelExitButton";
             this.panelExitButton.Size = new System.Drawing.Size(169, 62);
             this.panelExitButton.TabIndex = 4;
+            this.panelExitButton.Paint += new System.Windows.Forms.PaintEventHandler(this.panelExitButton_Paint);
             // 
             // btnSalir
             // 
