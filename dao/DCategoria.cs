@@ -29,7 +29,7 @@ namespace POS_DePrisa.dao
             DataSet ds = new DataSet();
             try
             {
-                string query = "SELECT idCategoria,nombre FROM Tbl_Categoria where estado = 1";
+                string query = "Select * from vwCategorias";
 
                 //Se utiliza using para que el objeto se destruya al salir del bloque
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -65,14 +65,17 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "INSERT INTO Tbl_Categoria (Nombre, estado) VALUES (@Nombre, 1)";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_GuardarCategoria", connection))
                     {
+
+                        command.CommandType = CommandType.StoredProcedure;
+
                         command.Parameters.AddWithValue("@Nombre", categoria.Nombre);
-                        int result = command.ExecuteNonQuery();
-                        if (result > 0)
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
                         {
-                            resultado = true;
+                            resultado = true; //Cuando se ejecuta un Insert tampoco se devuelven filas, por lo que reader.HasRows siempre será false
                         }
                     }
                     connection.Close();
@@ -80,7 +83,7 @@ namespace POS_DePrisa.dao
             }
             catch (Exception ex)
             {
-                String Error = $"Eror en GuardarCategoria()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                String Error = $"Error en GuardarCategoria()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return resultado;
@@ -94,10 +97,14 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Tbl_Categoria WHERE Nombre = @Nombre and estado = 1";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_VerificarCategoriaUnica", connection))
                     {
+
+                        command.CommandType = CommandType.StoredProcedure;
+
                         command.Parameters.AddWithValue("@Nombre", categoria.Nombre);
+
+
                         SqlDataReader reader = command.ExecuteReader();
                         if (reader.HasRows)
                         {
@@ -109,7 +116,7 @@ namespace POS_DePrisa.dao
             }
             catch (Exception ex)
             {
-                String Error = $"Eror en validarCategoriaUnica()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                String Error = $"Error en validarCategoriaUnica()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return resultado;
@@ -123,15 +130,18 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "UPDATE Tbl_Categoria SET Nombre = @Nombre WHERE idCategoria = @idCategoria";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_actualizarCategoria", connection))
                     {
+
+                        command.CommandType = CommandType.StoredProcedure;
+
                         command.Parameters.AddWithValue("@Nombre", categoria.Nombre);
                         command.Parameters.AddWithValue("@idCategoria", categoria.IdCategoria);
-                        int result = command.ExecuteNonQuery();
-                        if (result > 0)
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
                         {
-                            resultado = true;
+                            resultado = true; //Cuando se ejecuta un Update no se devuelven filas, por lo que reader.HasRows siempre será false
                         }
                     }
                     connection.Close();
@@ -139,7 +149,7 @@ namespace POS_DePrisa.dao
             }
             catch (Exception ex)
             {
-                String Error = $"Eror en actualizarCategoria()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                String Error = $"Error en actualizarCategoria()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return resultado;
@@ -147,20 +157,24 @@ namespace POS_DePrisa.dao
 
         public bool eliminarCategoria(Categoria categoria)
         {
+
             bool resultado = false;
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "Update Tbl_Categoria set Estado = 0 WHERE idCategoria = @idCategoria";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_EliminarCategora", connection))
                     {
+
+                        command.CommandType = CommandType.StoredProcedure;
+
                         command.Parameters.AddWithValue("@idCategoria", categoria.IdCategoria);
-                        int result = command.ExecuteNonQuery();
-                        if (result > 0)
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
                         {
-                            resultado = true;
+                            resultado = true; 
                         }
                     }
                     connection.Close();
@@ -168,7 +182,7 @@ namespace POS_DePrisa.dao
             }
             catch (Exception ex)
             {
-                String Error = $"Eror en eliminarCategoria()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                String Error = $"Error en eliminarCategoria()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return resultado;
@@ -179,16 +193,17 @@ namespace POS_DePrisa.dao
             DataSet ds = new DataSet();
             try
             {
-                string query = "SELECT idCategoria,nombre FROM Tbl_Categoria WHERE Nombre LIKE @Nombre and Estado = 1";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    using (SqlDataAdapter da = new SqlDataAdapter(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_VerificarCategoriaUnica", connection))
                     {
-                        da.SelectCommand.Parameters.AddWithValue("@Nombre", "%" + nombre + "%");
-                        if (da != null)
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@Nombre", "%" + nombre + "%");
+
+                        using (SqlDataAdapter da = new SqlDataAdapter(command))
                         {
-                            da.Fill(ds);
+                            da.Fill(ds); // Llenar el DataSet con los resultados
                         }
                     }
                     connection.Close();

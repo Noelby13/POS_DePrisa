@@ -184,9 +184,9 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT TOP 5 * FROM Tbl_Producto WHERE Nombre LIKE @Nombre and estado = 1";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_buscarProducto", connection))
                     {
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@Nombre", "%" + nombre + "%");
                         SqlDataReader reader = command.ExecuteReader();
                         if (reader.HasRows)
@@ -214,7 +214,7 @@ namespace POS_DePrisa.dao
             }
             catch (Exception ex)
             {
-                String Error = $"Eror en buscar()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                String Error = $"Error en buscar()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return productos;
@@ -228,9 +228,9 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Tbl_Producto WHERE CodigoBarra = @codigoBarra";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_ValidarCodigoBarras", connection))
                     {
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@codigoBarra", codigoBarra);
                         SqlDataReader reader = command.ExecuteReader();
                         if (reader.HasRows)
@@ -308,9 +308,9 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "UPDATE Tbl_Producto SET Estado = 0 WHERE IdProducto = @idProducto";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_EliminarProducto", connection))
                     {
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@idProducto", idProducto);
                         if (command.ExecuteNonQuery() > 0)
                         {
@@ -337,14 +337,15 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "UPDATE Tbl_Producto SET CodigoBarra = @CodigoBarra, Nombre = @Nombre, Descripcion = @Descripcion, Stock = @Stock, Costo = @Precio, TieneIva = @TieneIva, TieneKit = @TieneKit, DescuentoMaximo = @DescuentoMaximo, IdCategoria = @IdCategoria WHERE IdProducto = @IdProducto";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_EditarProducto", connection))
                     {
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@IdProducto", producto.IdProducto);
                         command.Parameters.AddWithValue("@CodigoBarra", producto.CodigoBarra);
                         command.Parameters.AddWithValue("@Nombre", producto.Nombre);
                         command.Parameters.AddWithValue("@Descripcion", producto.Descripcion);
                         command.Parameters.AddWithValue("@Stock", producto.Stock);
+                        command.Parameters.AddWithValue("@estado", 2);
                         command.Parameters.AddWithValue("@Precio", producto.Precio);
                         command.Parameters.AddWithValue("@TieneIva", producto.TieneIva);
                         command.Parameters.AddWithValue("@TieneKit", producto.TieneKit);
