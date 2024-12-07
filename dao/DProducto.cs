@@ -28,7 +28,7 @@ namespace POS_DePrisa.dao
 
             try
             {
-                string query = "SELECT * FROM Tbl_Producto where estado = 1";
+                string query = "select * from vw_ProductosActivos";
 
 
                 //Utilizamos using para que el objeto se destruya al salir del bloque
@@ -68,9 +68,13 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "INSERT INTO Tbl_Producto (CodigoBarra, Nombre, Descripcion, Stock, Costo, TieneIva, TieneKit, DescuentoMaximo, estado, idcategoria) VALUES (@CodigoBarra, @Nombre, @Descripcion, @Stock, @Costo, @TieneIva, @TieneKit, @DescuentoMaximo, @estado, @idcategoria)";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    // Usar el procedimiento almacenado
+                    using (SqlCommand command = new SqlCommand("usp_InsertarProducto", connection))
                     {
+                        // Configurar como procedimiento almacenado
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        // Agregar los parámetros necesarios
                         command.Parameters.AddWithValue("@CodigoBarra", producto.CodigoBarra);
                         command.Parameters.AddWithValue("@Nombre", producto.Nombre);
                         command.Parameters.AddWithValue("@Descripcion", producto.Descripcion);
@@ -79,8 +83,10 @@ namespace POS_DePrisa.dao
                         command.Parameters.AddWithValue("@TieneIva", producto.TieneIva);
                         command.Parameters.AddWithValue("@TieneKit", producto.TieneKit);
                         command.Parameters.AddWithValue("@DescuentoMaximo", producto.DescuentoMaximo);
-                        command.Parameters.AddWithValue("@estado", 1);
+                        command.Parameters.AddWithValue("@estado", 1); // Estado activo
                         command.Parameters.AddWithValue("@idcategoria", producto.idcategoria);
+
+                        // Ejecutar el procedimiento almacenado
                         int result = command.ExecuteNonQuery();
                         if (result > 0)
                         {
@@ -92,10 +98,10 @@ namespace POS_DePrisa.dao
             }
             catch (Exception ex)
             {
-                String Error = $"Eror en guardarProducto()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                String Error = $"Error en guardarProducto()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return resultado;   
+            return resultado;
         }
 
         public int obtenerIdProducto(string codigoBarra)
@@ -106,16 +112,21 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT IdProducto FROM Tbl_Producto WHERE CodigoBarra = @CodigoBarra";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_ObtenerProductoPorCodigoBarra", connection))
                     {
+                        // Configurar como procedimiento almacenado
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        // Agregar parámetro al procedimiento
                         command.Parameters.AddWithValue("@CodigoBarra", codigoBarra);
+
+                        // Ejecutar el procedimiento y leer el resultado
                         SqlDataReader reader = command.ExecuteReader();
                         if (reader.HasRows)
                         {
                             while (reader.Read())
                             {
-                                idProducto = reader.GetInt32(0);
+                                idProducto = reader.GetInt32(0); // Obtener el IdProducto
                             }
                         }
                     }
@@ -124,11 +135,12 @@ namespace POS_DePrisa.dao
             }
             catch (Exception ex)
             {
-                String Error = $"Eror en obtenerIdProducto()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                String Error = $"Error en obtenerIdProducto()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return idProducto;
         }
+
 
 
         //validar si el codigo de barra ya existe
@@ -140,14 +152,18 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Tbl_Producto WHERE CodigoBarra = @CodigoBarra";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_ValidarCodigoBarras", connection))
                     {
+
+                        command.CommandType = CommandType.StoredProcedure;
+    
                         command.Parameters.AddWithValue("@CodigoBarra", codigoBarra);
+
+
                         SqlDataReader reader = command.ExecuteReader();
                         if (reader.HasRows)
                         {
-                            resultado = true;
+                            resultado = true; 
                         }
                     }
                     connection.Close();
@@ -155,7 +171,7 @@ namespace POS_DePrisa.dao
             }
             catch (Exception ex)
             {
-                String Error = $"Eror en validarCodigoBarra()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                String Error = $"Error en validarCodigoBarra()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return resultado;
@@ -168,9 +184,9 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT TOP 5 * FROM Tbl_Producto WHERE Nombre LIKE @Nombre and estado = 1";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_buscarProducto", connection))
                     {
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@Nombre", "%" + nombre + "%");
                         SqlDataReader reader = command.ExecuteReader();
                         if (reader.HasRows)
@@ -198,7 +214,7 @@ namespace POS_DePrisa.dao
             }
             catch (Exception ex)
             {
-                String Error = $"Eror en buscar()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                String Error = $"Error en buscar()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return productos;
@@ -212,9 +228,9 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Tbl_Producto WHERE CodigoBarra = @codigoBarra";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_ValidarCodigoBarras", connection))
                     {
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@codigoBarra", codigoBarra);
                         SqlDataReader reader = command.ExecuteReader();
                         if (reader.HasRows)
@@ -250,20 +266,25 @@ namespace POS_DePrisa.dao
         //disminuye la cantidad de un producto en el inventario
         public bool disminuirStock(int idProducto, int cantidad)
         {
-            bool resutado = false;
+            bool resultado = false;
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "UPDATE Tbl_Producto SET Stock = Stock - @cantidad WHERE IdProducto = @idProducto";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_ActualizarStockProducto", connection))
                     {
-                        command.Parameters.AddWithValue("@cantidad", cantidad);
+                        // Configurar el comando como un procedimiento almacenado
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        // Agregar los parámetros necesarios
                         command.Parameters.AddWithValue("@idProducto", idProducto);
+                        command.Parameters.AddWithValue("@cantidad", cantidad);
+
+                        // Ejecutar el procedimiento almacenado
                         if (command.ExecuteNonQuery() > 0)
                         {
-                            resutado = true;
+                            resultado = true; // Si se ejecuta correctamente, se establece como true
                         }
                     }
                     connection.Close();
@@ -271,10 +292,11 @@ namespace POS_DePrisa.dao
             }
             catch (Exception ex)
             {
-                String Error = $"Eror en disminuirStock()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
+                // Manejo de errores
+                String Error = $"Error en disminuirStock()\nTipo: {ex.GetType()}\nDescripción: {ex.Message}";
                 MessageBox.Show(Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return resutado;
+            return resultado;
         }
 
         //eliminar un producto mediante borrado logico
@@ -286,9 +308,9 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "UPDATE Tbl_Producto SET Estado = 0 WHERE IdProducto = @idProducto";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_EliminarProducto", connection))
                     {
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@idProducto", idProducto);
                         if (command.ExecuteNonQuery() > 0)
                         {
@@ -315,14 +337,15 @@ namespace POS_DePrisa.dao
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "UPDATE Tbl_Producto SET CodigoBarra = @CodigoBarra, Nombre = @Nombre, Descripcion = @Descripcion, Stock = @Stock, Costo = @Precio, TieneIva = @TieneIva, TieneKit = @TieneKit, DescuentoMaximo = @DescuentoMaximo, IdCategoria = @IdCategoria WHERE IdProducto = @IdProducto";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("usp_EditarProducto", connection))
                     {
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@IdProducto", producto.IdProducto);
                         command.Parameters.AddWithValue("@CodigoBarra", producto.CodigoBarra);
                         command.Parameters.AddWithValue("@Nombre", producto.Nombre);
                         command.Parameters.AddWithValue("@Descripcion", producto.Descripcion);
                         command.Parameters.AddWithValue("@Stock", producto.Stock);
+                        command.Parameters.AddWithValue("@estado", 2);
                         command.Parameters.AddWithValue("@Precio", producto.Precio);
                         command.Parameters.AddWithValue("@TieneIva", producto.TieneIva);
                         command.Parameters.AddWithValue("@TieneKit", producto.TieneKit);

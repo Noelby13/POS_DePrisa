@@ -69,5 +69,10 @@ namespace POS_DePrisa.formularios
         {
             showForm(new FrmCrudUsuario(userSistema));
         }
+
+        private void FrmUsuario_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

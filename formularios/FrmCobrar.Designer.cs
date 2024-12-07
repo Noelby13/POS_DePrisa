@@ -54,8 +54,8 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnCobrar = new POS_DePrisa.customControls.RoundedButton();
-            this.roundedButton1 = new POS_DePrisa.customControls.RoundedButton();
-            this.roundedButton2 = new POS_DePrisa.customControls.RoundedButton();
+            this.btnCobrarSinImprimir = new POS_DePrisa.customControls.RoundedButton();
+            this.btnCancelarCobro = new POS_DePrisa.customControls.RoundedButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -226,6 +226,7 @@
             this.btnMixto.TextColor = System.Drawing.Color.Black;
             this.btnMixto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnMixto.UseVisualStyleBackColor = false;
+            this.btnMixto.Click += new System.EventHandler(this.btnMixto_Click);
             // 
             // btnTarjeta
             // 
@@ -248,6 +249,7 @@
             this.btnTarjeta.TextColor = System.Drawing.Color.Black;
             this.btnTarjeta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnTarjeta.UseVisualStyleBackColor = false;
+            this.btnTarjeta.Click += new System.EventHandler(this.btnTarjeta_Click);
             // 
             // label3
             // 
@@ -376,8 +378,8 @@
             // 
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.Controls.Add(this.btnCobrar);
-            this.flowLayoutPanel1.Controls.Add(this.roundedButton1);
-            this.flowLayoutPanel1.Controls.Add(this.roundedButton2);
+            this.flowLayoutPanel1.Controls.Add(this.btnCobrarSinImprimir);
+            this.flowLayoutPanel1.Controls.Add(this.btnCancelarCobro);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -410,56 +412,57 @@
             this.btnCobrar.UseVisualStyleBackColor = false;
             this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
             // 
-            // roundedButton1
+            // btnCobrarSinImprimir
             // 
-            this.roundedButton1.AutoSize = true;
-            this.roundedButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.roundedButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.roundedButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.roundedButton1.BorderRadius = 0;
-            this.roundedButton1.BorderSize = 1;
-            this.roundedButton1.FlatAppearance.BorderSize = 0;
-            this.roundedButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundedButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roundedButton1.ForeColor = System.Drawing.Color.Black;
-            this.roundedButton1.Image = global::POS_DePrisa.Properties.Resources.iconRecibirDinero28;
-            this.roundedButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.roundedButton1.Location = new System.Drawing.Point(4, 54);
-            this.roundedButton1.Margin = new System.Windows.Forms.Padding(4);
-            this.roundedButton1.Name = "roundedButton1";
-            this.roundedButton1.Size = new System.Drawing.Size(191, 42);
-            this.roundedButton1.TabIndex = 10;
-            this.roundedButton1.Text = "Cobrar sin imprimir";
-            this.roundedButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.roundedButton1.TextColor = System.Drawing.Color.Black;
-            this.roundedButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.roundedButton1.UseVisualStyleBackColor = false;
+            this.btnCobrarSinImprimir.AutoSize = true;
+            this.btnCobrarSinImprimir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
+            this.btnCobrarSinImprimir.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
+            this.btnCobrarSinImprimir.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCobrarSinImprimir.BorderRadius = 0;
+            this.btnCobrarSinImprimir.BorderSize = 1;
+            this.btnCobrarSinImprimir.FlatAppearance.BorderSize = 0;
+            this.btnCobrarSinImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCobrarSinImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCobrarSinImprimir.ForeColor = System.Drawing.Color.Black;
+            this.btnCobrarSinImprimir.Image = global::POS_DePrisa.Properties.Resources.iconRecibirDinero28;
+            this.btnCobrarSinImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCobrarSinImprimir.Location = new System.Drawing.Point(4, 54);
+            this.btnCobrarSinImprimir.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCobrarSinImprimir.Name = "btnCobrarSinImprimir";
+            this.btnCobrarSinImprimir.Size = new System.Drawing.Size(191, 42);
+            this.btnCobrarSinImprimir.TabIndex = 10;
+            this.btnCobrarSinImprimir.Text = "Cobrar sin imprimir";
+            this.btnCobrarSinImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCobrarSinImprimir.TextColor = System.Drawing.Color.Black;
+            this.btnCobrarSinImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCobrarSinImprimir.UseVisualStyleBackColor = false;
+            this.btnCobrarSinImprimir.Click += new System.EventHandler(this.btnCobrarSinImprimir_Click);
             // 
-            // roundedButton2
+            // btnCancelarCobro
             // 
-            this.roundedButton2.AutoSize = true;
-            this.roundedButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.roundedButton2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
-            this.roundedButton2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.roundedButton2.BorderRadius = 10;
-            this.roundedButton2.BorderSize = 1;
-            this.roundedButton2.FlatAppearance.BorderSize = 0;
-            this.roundedButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundedButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roundedButton2.ForeColor = System.Drawing.Color.Black;
-            this.roundedButton2.Image = global::POS_DePrisa.Properties.Resources.iconEsc28;
-            this.roundedButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.roundedButton2.Location = new System.Drawing.Point(4, 104);
-            this.roundedButton2.Margin = new System.Windows.Forms.Padding(4);
-            this.roundedButton2.Name = "roundedButton2";
-            this.roundedButton2.Size = new System.Drawing.Size(191, 42);
-            this.roundedButton2.TabIndex = 11;
-            this.roundedButton2.Text = "Esc- Cancelar";
-            this.roundedButton2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.roundedButton2.TextColor = System.Drawing.Color.Black;
-            this.roundedButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.roundedButton2.UseVisualStyleBackColor = false;
-            this.roundedButton2.Click += new System.EventHandler(this.roundedButton2_Click);
+            this.btnCancelarCobro.AutoSize = true;
+            this.btnCancelarCobro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
+            this.btnCancelarCobro.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
+            this.btnCancelarCobro.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCancelarCobro.BorderRadius = 10;
+            this.btnCancelarCobro.BorderSize = 1;
+            this.btnCancelarCobro.FlatAppearance.BorderSize = 0;
+            this.btnCancelarCobro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarCobro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarCobro.ForeColor = System.Drawing.Color.Black;
+            this.btnCancelarCobro.Image = global::POS_DePrisa.Properties.Resources.iconEsc28;
+            this.btnCancelarCobro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancelarCobro.Location = new System.Drawing.Point(4, 104);
+            this.btnCancelarCobro.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelarCobro.Name = "btnCancelarCobro";
+            this.btnCancelarCobro.Size = new System.Drawing.Size(191, 42);
+            this.btnCancelarCobro.TabIndex = 11;
+            this.btnCancelarCobro.Text = "Esc- Cancelar";
+            this.btnCancelarCobro.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancelarCobro.TextColor = System.Drawing.Color.Black;
+            this.btnCancelarCobro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancelarCobro.UseVisualStyleBackColor = false;
+            this.btnCancelarCobro.Click += new System.EventHandler(this.btnCancelarCobro_Click_1);
             // 
             // FrmCobrar
             // 
@@ -514,8 +517,8 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private customControls.RoundedButton btnCobrar;
-        private customControls.RoundedButton roundedButton1;
-        private customControls.RoundedButton roundedButton2;
+        private customControls.RoundedButton btnCobrarSinImprimir;
+        private customControls.RoundedButton btnCancelarCobro;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label10;

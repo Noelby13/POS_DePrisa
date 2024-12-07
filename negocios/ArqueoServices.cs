@@ -18,10 +18,10 @@ namespace POS_DePrisa.negocios
         
 
         //validar si existe un arqueo abierto
-        public bool validarArqueoAbierto()
+        /*public bool validarArqueoAbierto()
         {
             return dArqueo.ExisteArqueoCajaAbierto();
-        }
+        }*/
 
         public bool guardarArqueo(entidades.ArqueoCaja arqueo)
         {
@@ -32,7 +32,7 @@ namespace POS_DePrisa.negocios
         //1 = Abierto, 2 = Cerrado,
         public bool iniciarArqueo(entidades.ArqueoCaja arqueo)
         {
-            return dArqueo.IniciarArqueoCaja(arqueo);
+            return dArqueo.IniciarArqueoCaja(arqueo); 
         }
 
         //obtener arqueo de caja abierto

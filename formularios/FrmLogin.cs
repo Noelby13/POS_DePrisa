@@ -142,11 +142,32 @@ namespace POS_DePrisa.formularios
             Usuario user = loginUsuario.ObtenerUsuarioPorNombreUsuario(txtUser.Text.Trim());
             GlobalData.usuario = user;
 
+            //Insertar acá lógica para verificar si se encuentra en horario laboral
+
+            DVerificarAcceso checkAcces = new DVerificarAcceso();
+            int resultAcceso = -1;
+            resultAcceso = checkAcces.VerificarAcceso(user, DateTime.Now);
+
+            if (resultAcceso == 0)
+            {
+                MessageBox.Show("Intento de acceso fuera de horario laboral. Acceso denegado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (resultAcceso == 1)
+            {
+                MessageBox.Show("Acceso fuera de horario laboral", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (resultAcceso == -1) {
+                MessageBox.Show("Ocurrio un error, Intentelo nuevamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             ArqueoServices arqueoServices = new ArqueoServices();
-            bool resultado = arqueoServices.validarArqueoAbierto();
+            ArqueoCaja resultado = arqueoServices.obtenerArqueoAbierto();
+
 
             // Gestión de arqueo de caja
-            if (!resultado)
+            if (resultado == null)
             {
                 FrmAperturaCaja frmAperturaCaja = new FrmAperturaCaja();
                 frmAperturaCaja.ShowDialog();
@@ -164,7 +185,7 @@ namespace POS_DePrisa.formularios
                 {
                     return;
                 }
-                GlobalData.arqueoCaja = arqueoServices.obtenerArqueoAbierto();
+                GlobalData.arqueoCaja = resultado; //arqueoServices.obtenerArqueoAbierto();
             }
        
 
